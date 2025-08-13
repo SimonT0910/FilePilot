@@ -19,7 +19,7 @@ namespace FilePilot1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //hola mundo
+            MessageBox.Show("print(hola mundo)");
         }
     }
 }
