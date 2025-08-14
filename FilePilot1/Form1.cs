@@ -15,11 +15,13 @@ namespace FilePilot1
         public Form1()
         {
             InitializeComponent();
+
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //hola mundo
         }
     }
 }
