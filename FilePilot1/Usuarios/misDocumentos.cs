@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FilePilot1
+namespace FilePilot1.Usuarios
 {
-    public partial class Form1 : Form
+    public partial class misDocumentos : Form
     {
-        public Form1()
+        public misDocumentos()
         {
             InitializeComponent();
-
-            this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
         }
     }
 }

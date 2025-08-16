@@ -1,6 +1,6 @@
 ﻿namespace FilePilot1
 {
-    partial class Form1
+    partial class Registro
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -51,7 +51,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(382, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(471, 51);
+            this.label1.Size = new System.Drawing.Size(465, 49);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registro de nuevo usuario";
             // 
@@ -179,11 +179,11 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Cancelar";
             // 
-            // Form1
+            // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(171)))), ((int)(((byte)(176)))));
             this.ClientSize = new System.Drawing.Size(1221, 520);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -199,7 +199,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Registro";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

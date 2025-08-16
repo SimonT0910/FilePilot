@@ -46,16 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Usuarios\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Usuarios\Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\misDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\misDocumentos.Designer.cs">
+      <DependentUpon>misDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\Registro.Designer.cs">
+      <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Usuarios\Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\misDocumentos.resx">
+      <DependentUpon>misDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\Registro.resx">
+      <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +106,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\inicio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\Subir documentos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\realizar respaldos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\Mis archivos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\abrir archivo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
