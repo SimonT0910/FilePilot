@@ -17,7 +17,7 @@ namespace FilePilot1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new misDocumentos());
+            Application.Run(new Categorias());
         }
     }
 }

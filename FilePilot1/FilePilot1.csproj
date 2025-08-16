@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -130,6 +131,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\abrir archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\agregar una categoria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\eliminar categoria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\categoria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\carpetas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
