@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnEliminarCategoria = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInicio = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnEliminarCategoria = new System.Windows.Forms.Button();
-            this.btnAgregarCategoria = new System.Windows.Forms.Button();
-            this.btnInicio = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -76,15 +76,26 @@
             this.panel1.Size = new System.Drawing.Size(232, 619);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // label3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(83, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Inicio";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(27, 535);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 26);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Eliminar categoria";
+            // 
+            // btnEliminarCategoria
+            // 
+            this.btnEliminarCategoria.BackgroundImage = global::FilePilot1.Properties.Resources.eliminar_categoria;
+            this.btnEliminarCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarCategoria.Location = new System.Drawing.Point(53, 434);
+            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
+            this.btnEliminarCategoria.Size = new System.Drawing.Size(118, 98);
+            this.btnEliminarCategoria.TabIndex = 4;
+            this.btnEliminarCategoria.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -96,15 +107,37 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Agregar categoria";
             // 
-            // label3
+            // btnAgregarCategoria
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 535);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 26);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Eliminar categoria";
+            this.btnAgregarCategoria.BackgroundImage = global::FilePilot1.Properties.Resources.agregar_categoria;
+            this.btnAgregarCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(53, 229);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(118, 98);
+            this.btnAgregarCategoria.TabIndex = 2;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(83, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 26);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Inicio";
+            // 
+            // btnInicio
+            // 
+            this.btnInicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
+            this.btnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInicio.Location = new System.Drawing.Point(53, 43);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(118, 98);
+            this.btnInicio.TabIndex = 0;
+            this.btnInicio.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -112,7 +145,7 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(539, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(208, 51);
+            this.label4.Size = new System.Drawing.Size(204, 49);
             this.label4.TabIndex = 2;
             this.label4.Text = "Categorias";
             // 
@@ -126,6 +159,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(130, 122);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -136,39 +170,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(186, 161);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnEliminarCategoria
-            // 
-            this.btnEliminarCategoria.BackgroundImage = global::FilePilot1.Properties.Resources.eliminar_categoria;
-            this.btnEliminarCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarCategoria.Location = new System.Drawing.Point(53, 434);
-            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
-            this.btnEliminarCategoria.Size = new System.Drawing.Size(118, 98);
-            this.btnEliminarCategoria.TabIndex = 4;
-            this.btnEliminarCategoria.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarCategoria
-            // 
-            this.btnAgregarCategoria.BackgroundImage = global::FilePilot1.Properties.Resources.agregar_una_categoria;
-            this.btnAgregarCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(53, 229);
-            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(118, 98);
-            this.btnAgregarCategoria.TabIndex = 2;
-            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
-            // 
-            // btnInicio
-            // 
-            this.btnInicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
-            this.btnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInicio.Location = new System.Drawing.Point(53, 43);
-            this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Size = new System.Drawing.Size(118, 98);
-            this.btnInicio.TabIndex = 0;
-            this.btnInicio.UseVisualStyleBackColor = true;
             // 
             // label5
             // 

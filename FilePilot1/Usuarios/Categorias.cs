@@ -16,5 +16,10 @@ namespace FilePilot1.Usuarios
         {
             InitializeComponent();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //g
+        }
     }
 }
