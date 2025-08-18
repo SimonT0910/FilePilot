@@ -65,7 +65,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap abrir_archivo {
             get {
-                object obj = ResourceManager.GetObject("abrir archivo", resourceCulture);
+                object obj = ResourceManager.GetObject("abrir_archivo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap agregar_una_categoria {
+        internal static System.Drawing.Bitmap agregar_categoria {
             get {
-                object obj = ResourceManager.GetObject("agregar una categoria", resourceCulture);
+                object obj = ResourceManager.GetObject("agregar_categoria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap area_trabajador {
             get {
-                object obj = ResourceManager.GetObject("area trabajador", resourceCulture);
+                object obj = ResourceManager.GetObject("area_trabajador", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,7 +145,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap cerrar_sesion {
             get {
-                object obj = ResourceManager.GetObject("cerrar sesion", resourceCulture);
+                object obj = ResourceManager.GetObject("cerrar_sesion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -165,7 +165,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap crear_respaldo {
             get {
-                object obj = ResourceManager.GetObject("crear respaldo", resourceCulture);
+                object obj = ResourceManager.GetObject("crear_respaldo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap documentacion_con_codigo {
+        internal static System.Drawing.Bitmap documentacion_codigo {
             get {
-                object obj = ResourceManager.GetObject("documentacion con codigo", resourceCulture);
+                object obj = ResourceManager.GetObject("documentacion_codigo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -215,7 +215,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap eliminar_categoria {
             get {
-                object obj = ResourceManager.GetObject("eliminar categoria", resourceCulture);
+                object obj = ResourceManager.GetObject("eliminar_categoria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap errores_del_sistema {
+        internal static System.Drawing.Bitmap errores_sistema {
             get {
-                object obj = ResourceManager.GetObject("errores del sistema", resourceCulture);
+                object obj = ResourceManager.GetObject("errores_sistema", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -255,7 +255,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap inicio_sesion {
             get {
-                object obj = ResourceManager.GetObject("inicio sesion", resourceCulture);
+                object obj = ResourceManager.GetObject("inicio_sesion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -265,7 +265,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap mirar_respaldos {
             get {
-                object obj = ResourceManager.GetObject("mirar respaldos", resourceCulture);
+                object obj = ResourceManager.GetObject("mirar_respaldos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -275,7 +275,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Mis_archivos {
             get {
-                object obj = ResourceManager.GetObject("Mis archivos", resourceCulture);
+                object obj = ResourceManager.GetObject("Mis_archivos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -305,7 +305,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap realizar_respaldos {
             get {
-                object obj = ResourceManager.GetObject("realizar respaldos", resourceCulture);
+                object obj = ResourceManager.GetObject("realizar_respaldos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -335,7 +335,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap seleccionar_archivo {
             get {
-                object obj = ResourceManager.GetObject("seleccionar archivo", resourceCulture);
+                object obj = ResourceManager.GetObject("seleccionar_archivo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -345,7 +345,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap subir_documento {
             get {
-                object obj = ResourceManager.GetObject("subir documento", resourceCulture);
+                object obj = ResourceManager.GetObject("subir_documento", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -365,7 +365,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ver_scripts {
             get {
-                object obj = ResourceManager.GetObject("ver scripts", resourceCulture);
+                object obj = ResourceManager.GetObject("ver_scripts", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -375,7 +375,7 @@ namespace FilePilot1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ver_usuarios {
             get {
-                object obj = ResourceManager.GetObject("ver usuarios", resourceCulture);
+                object obj = ResourceManager.GetObject("ver_usuarios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
