@@ -46,16 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="fmr_OrgDeArchi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="fmr_OrgDeArchi.Designer.cs">
+      <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmr_principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmr_principal.Designer.cs">
+      <DependentUpon>fmr_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmr_Subir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmr_Subir.Designer.cs">
+      <DependentUpon>fmr_Subir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="fmr_OrgDeArchi.resx">
+      <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmr_principal.resx">
+      <DependentUpon>fmr_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmr_Subir.resx">
+      <DependentUpon>fmr_Subir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -172,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\ver usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\subir documento.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

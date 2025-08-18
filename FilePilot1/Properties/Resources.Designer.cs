@@ -343,6 +343,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap subir_documento {
+            get {
+                object obj = ResourceManager.GetObject("subir documento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Subir_documentos {
             get {
                 object obj = ResourceManager.GetObject("Subir documentos", resourceCulture);

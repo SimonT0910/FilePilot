@@ -1,6 +1,6 @@
 ﻿namespace FilePilot1
 {
-    partial class PantallaInicio
+    partial class fmr_PantallaInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -136,6 +136,7 @@
             this.btn_iniciar.Size = new System.Drawing.Size(63, 57);
             this.btn_iniciar.TabIndex = 8;
             this.btn_iniciar.UseVisualStyleBackColor = false;
+            this.btn_iniciar.Click += new System.EventHandler(this.btn_iniciar_Click);
             // 
             // lbl_contra
             // 
@@ -149,7 +150,7 @@
             this.lbl_contra.TabIndex = 10;
             this.lbl_contra.Text = "Contraseña:";
             // 
-            // PantallaInicio
+            // fmr_PantallaInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,9 +169,9 @@
             this.Controls.Add(this.Lbl_orga);
             this.Controls.Add(this.FiletPilot);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "PantallaInicio";
+            this.Name = "fmr_PantallaInicio";
             this.Text = "Pantalla inicio";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
