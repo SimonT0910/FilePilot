@@ -21,6 +21,13 @@ namespace FilePilot1
             fmrOrg.Show();
             this.Hide();
         }
+
+        private void btn_registrarse_Click(object sender, EventArgs e)
+        {
+            registroUsuario registro = new registroUsuario();
+            registro.Show();
+            this.Hide();
+        }
     }
 
 }

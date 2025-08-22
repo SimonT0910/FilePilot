@@ -66,5 +66,10 @@ namespace FilePilot1
         {
             FilePilot1.Forms.FormUtils.LimpiarCampos(this);
         }
+
+        private void fmr_subir_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

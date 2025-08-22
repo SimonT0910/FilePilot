@@ -163,6 +163,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap continuar1 {
+            get {
+                object obj = ResourceManager.GetObject("continuar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crear_respaldo {
             get {
                 object obj = ResourceManager.GetObject("crear_respaldo", resourceCulture);
@@ -316,6 +326,16 @@ namespace FilePilot1.Properties {
         internal static System.Drawing.Bitmap registrarse {
             get {
                 object obj = ResourceManager.GetObject("registrarse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap registrarse1 {
+            get {
+                object obj = ResourceManager.GetObject("registrarse1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
