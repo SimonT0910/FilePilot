@@ -94,6 +94,7 @@
             this.btn_Mis_documentos.TabIndex = 0;
             this.btn_Mis_documentos.Text = "Mis documentos";
             this.btn_Mis_documentos.UseVisualStyleBackColor = true;
+            this.btn_Mis_documentos.Click += new System.EventHandler(this.btn_Mis_documentos_Click);
             // 
             // lbl_recientes
             // 

@@ -71,5 +71,12 @@ namespace FilePilot1
         {
 
         }
+
+        private void btn_Mis_documentos_Click(object sender, EventArgs e)
+        {
+            misdocumentos docu = new misdocumentos();
+            docu.Show();
+            this.Hide();
+        }
     }
 }

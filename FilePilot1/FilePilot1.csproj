@@ -66,6 +66,12 @@
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms.cs" />
+    <Compile Include="misdocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="misdocumentos.Designer.cs">
+      <DependentUpon>misdocumentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="registroUsuario.cs">
@@ -82,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmr_Subir.resx">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="misdocumentos.resx">
+      <DependentUpon>misdocumentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

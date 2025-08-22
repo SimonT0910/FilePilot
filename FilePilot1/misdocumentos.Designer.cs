@@ -1,0 +1,300 @@
+﻿namespace FilePilot1
+{
+    partial class misdocumentos
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.pnl_botones = new System.Windows.Forms.Panel();
+            this.ptb_inicio = new System.Windows.Forms.PictureBox();
+            this.btn_inico = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pi = new System.Windows.Forms.PictureBox();
+            this.btnSubirDocumentos = new System.Windows.Forms.Button();
+            this.btnRealizarRespaldos = new System.Windows.Forms.Button();
+            this.pcb_subir = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnAbrirDocu = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.dgv_recientes = new System.Windows.Forms.DataGridView();
+            this.dgv_nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnl_botones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_recientes)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnl_botones
+            // 
+            this.pnl_botones.BackColor = System.Drawing.Color.DarkCyan;
+            this.pnl_botones.Controls.Add(this.btnRealizarRespaldos);
+            this.pnl_botones.Controls.Add(this.btnSubirDocumentos);
+            this.pnl_botones.Controls.Add(this.pictureBox1);
+            this.pnl_botones.Controls.Add(this.pi);
+            this.pnl_botones.Controls.Add(this.ptb_inicio);
+            this.pnl_botones.Controls.Add(this.btn_inico);
+            this.pnl_botones.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_botones.Location = new System.Drawing.Point(0, 0);
+            this.pnl_botones.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_botones.Name = "pnl_botones";
+            this.pnl_botones.Size = new System.Drawing.Size(267, 554);
+            this.pnl_botones.TabIndex = 21;
+            // 
+            // ptb_inicio
+            // 
+            this.ptb_inicio.BackColor = System.Drawing.Color.White;
+            this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
+            this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptb_inicio.Location = new System.Drawing.Point(4, 13);
+            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_inicio.Name = "ptb_inicio";
+            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
+            this.ptb_inicio.TabIndex = 7;
+            this.ptb_inicio.TabStop = false;
+            // 
+            // btn_inico
+            // 
+            this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_inico.Location = new System.Drawing.Point(83, 13);
+            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_inico.Name = "btn_inico";
+            this.btn_inico.Size = new System.Drawing.Size(167, 59);
+            this.btn_inico.TabIndex = 3;
+            this.btn_inico.Text = "Inicio";
+            this.btn_inico.UseVisualStyleBackColor = true;
+            this.btn_inico.Click += new System.EventHandler(this.btn_inico_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.Subir_documentos;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 222);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pi
+            // 
+            this.pi.BackColor = System.Drawing.Color.White;
+            this.pi.BackgroundImage = global::FilePilot1.Properties.Resources.realizar_respaldos;
+            this.pi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pi.Location = new System.Drawing.Point(4, 442);
+            this.pi.Margin = new System.Windows.Forms.Padding(4);
+            this.pi.Name = "pi";
+            this.pi.Size = new System.Drawing.Size(71, 59);
+            this.pi.TabIndex = 9;
+            this.pi.TabStop = false;
+            // 
+            // btnSubirDocumentos
+            // 
+            this.btnSubirDocumentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubirDocumentos.Location = new System.Drawing.Point(83, 222);
+            this.btnSubirDocumentos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubirDocumentos.Name = "btnSubirDocumentos";
+            this.btnSubirDocumentos.Size = new System.Drawing.Size(167, 59);
+            this.btnSubirDocumentos.TabIndex = 9;
+            this.btnSubirDocumentos.Text = "Subir documentos";
+            this.btnSubirDocumentos.UseVisualStyleBackColor = true;
+            this.btnSubirDocumentos.Click += new System.EventHandler(this.btnSubirDocumentos_Click);
+            // 
+            // btnRealizarRespaldos
+            // 
+            this.btnRealizarRespaldos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRealizarRespaldos.Location = new System.Drawing.Point(83, 442);
+            this.btnRealizarRespaldos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRealizarRespaldos.Name = "btnRealizarRespaldos";
+            this.btnRealizarRespaldos.Size = new System.Drawing.Size(167, 59);
+            this.btnRealizarRespaldos.TabIndex = 11;
+            this.btnRealizarRespaldos.Text = "Realizar respaldos";
+            this.btnRealizarRespaldos.UseVisualStyleBackColor = true;
+            // 
+            // pcb_subir
+            // 
+            this.pcb_subir.BackColor = System.Drawing.Color.Transparent;
+            this.pcb_subir.BackgroundImage = global::FilePilot1.Properties.Resources.Mis_archivos;
+            this.pcb_subir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcb_subir.ErrorImage = null;
+            this.pcb_subir.Location = new System.Drawing.Point(972, 0);
+            this.pcb_subir.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_subir.Name = "pcb_subir";
+            this.pcb_subir.Size = new System.Drawing.Size(95, 78);
+            this.pcb_subir.TabIndex = 27;
+            this.pcb_subir.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(437, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(424, 65);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Mis documentos";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.buscar;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(518, 109);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Location = new System.Drawing.Point(597, 109);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(167, 59);
+            this.btnBuscar.TabIndex = 37;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // btnAbrirDocu
+            // 
+            this.btnAbrirDocu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrirDocu.Location = new System.Drawing.Point(448, 470);
+            this.btnAbrirDocu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbrirDocu.Name = "btnAbrirDocu";
+            this.btnAbrirDocu.Size = new System.Drawing.Size(167, 59);
+            this.btnAbrirDocu.TabIndex = 44;
+            this.btnAbrirDocu.Text = "Abrir documento";
+            this.btnAbrirDocu.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.BackgroundImage = global::FilePilot1.Properties.Resources.abrir_archivo;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(369, 470);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox5.TabIndex = 43;
+            this.pictureBox5.TabStop = false;
+            // 
+            // dgv_recientes
+            // 
+            this.dgv_recientes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_recientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_recientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_recientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_nombre,
+            this.dgv_fecha});
+            this.dgv_recientes.Location = new System.Drawing.Point(319, 176);
+            this.dgv_recientes.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_recientes.Name = "dgv_recientes";
+            this.dgv_recientes.ReadOnly = true;
+            this.dgv_recientes.RowHeadersWidth = 51;
+            this.dgv_recientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_recientes.Size = new System.Drawing.Size(668, 272);
+            this.dgv_recientes.TabIndex = 45;
+            this.dgv_recientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_recientes_CellContentClick);
+            // 
+            // dgv_nombre
+            // 
+            this.dgv_nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_nombre.FillWeight = 150F;
+            this.dgv_nombre.HeaderText = "Nombre";
+            this.dgv_nombre.MinimumWidth = 6;
+            this.dgv_nombre.Name = "dgv_nombre";
+            this.dgv_nombre.ReadOnly = true;
+            // 
+            // dgv_fecha
+            // 
+            this.dgv_fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_fecha.FillWeight = 50F;
+            this.dgv_fecha.HeaderText = "Categoria";
+            this.dgv_fecha.MinimumWidth = 6;
+            this.dgv_fecha.Name = "dgv_fecha";
+            this.dgv_fecha.ReadOnly = true;
+            // 
+            // misdocumentos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.dgv_recientes);
+            this.Controls.Add(this.btnAbrirDocu);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pcb_subir);
+            this.Controls.Add(this.pnl_botones);
+            this.Name = "misdocumentos";
+            this.Text = "misdocumentos";
+            this.pnl_botones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_recientes)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnl_botones;
+        private System.Windows.Forms.PictureBox ptb_inicio;
+        private System.Windows.Forms.Button btn_inico;
+        private System.Windows.Forms.Button btnSubirDocumentos;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pi;
+        private System.Windows.Forms.Button btnRealizarRespaldos;
+        private System.Windows.Forms.PictureBox pcb_subir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnAbrirDocu;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.DataGridView dgv_recientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_fecha;
+    }
+}
