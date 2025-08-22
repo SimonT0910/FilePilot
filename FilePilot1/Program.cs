@@ -1,5 +1,4 @@
-﻿using FilePilot1.Usuarios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace FilePilot1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Categorias());
+            Application.Run(new fmr_PantallaInicio());
         }
     }
 }
