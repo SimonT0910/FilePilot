@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,16 +104,7 @@
     <None Include="imagenes\principal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imagenes\abrir archivo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imagenes\administrador.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\agregar una categoria.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\area trabajador.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\buscar.png" />
@@ -127,25 +119,13 @@
     <None Include="imagenes\categoria.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imagenes\cerrar sesion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imagenes\continuar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\crear respaldo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\desarrollador.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imagenes\documentacion con codigo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imagenes\editar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\eliminar categoria.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\eliminar.png" />
@@ -154,46 +134,16 @@
     <None Include="imagenes\entrar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imagenes\errores del sistema.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\inicio sesion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imagenes\inicio.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imagenes\mirar respaldos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\Mis archivos.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imagenes\movimientos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\realizar respaldos.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\registrarse.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\scripts.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\seleccionar archivo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\Subir documentos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\ver scripts.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\ver usuarios.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imagenes\subir documento.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
