@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -47,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmr_OrgDeArchi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,9 @@
     <Compile Include="registroUsuario.Designer.cs">
       <DependentUpon>registroUsuario.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmr_OrgDeArchi.resx">
       <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>
     </EmbeddedResource>

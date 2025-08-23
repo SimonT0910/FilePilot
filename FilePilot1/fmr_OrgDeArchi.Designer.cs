@@ -207,6 +207,7 @@
             this.Btn_categorias.TabIndex = 1;
             this.Btn_categorias.Text = "Categorias";
             this.Btn_categorias.UseVisualStyleBackColor = true;
+            this.Btn_categorias.Click += new System.EventHandler(this.Btn_categorias_Click);
             // 
             // btn_Mis_documentos
             // 

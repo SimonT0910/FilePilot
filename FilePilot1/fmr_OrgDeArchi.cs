@@ -71,5 +71,12 @@ namespace FilePilot1
             docu.Show();
             this.Hide();
         }
+
+        private void Btn_categorias_Click(object sender, EventArgs e)
+        {
+            Categorias categorias = new Categorias();
+            categorias.Show();
+            this.Hide();
+        }
     }
 }
