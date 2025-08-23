@@ -14,7 +14,6 @@ namespace FilePilot1
 {
     public partial class Categorias : Form
     {
-        private List<string> categorias = new List<string>();
 
         private Forms resizer;
 
@@ -39,27 +38,11 @@ namespace FilePilot1
 
         private void Categorias_Load(object sender, EventArgs e)
         {
-            foreach (string categoria in categorias)
-            {
-                AgregarCategoria(categoria);
-            }
 
-            if (!categorias.Contains("Otros"))
-            {
-                AgregarCategoria("Otros");
-            }
         }
 
         private void AgregarCategoria(String nombre)
         {
-            if(categorias.Contains(nombre))
-            {
-                MessageBox.Show("La categoría ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            categorias.Add(nombre);
-
             Panel contenedor = new Panel();
             contenedor.Margin = new Padding(10);
             contenedor.Width = 150;
@@ -109,11 +92,6 @@ namespace FilePilot1
             else
             {
                 MessageBox.Show("No se encontró la categoría a eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if(categorias.Contains(nombre))
-            {
-                categorias.Remove(nombre);
             }
         }
 

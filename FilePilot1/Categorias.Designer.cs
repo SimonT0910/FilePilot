@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.pnl_botones = new System.Windows.Forms.Panel();
-            this.btn_inico = new System.Windows.Forms.Button();
-            this.ptb_inicio = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnAgregarCate = new System.Windows.Forms.Button();
             this.btnEliminarCate = new System.Windows.Forms.Button();
+            this.btnAgregarCate = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ptb_inicio = new System.Windows.Forms.PictureBox();
+            this.btn_inico = new System.Windows.Forms.Button();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_botones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,53 +61,17 @@
             this.pnl_botones.Size = new System.Drawing.Size(267, 554);
             this.pnl_botones.TabIndex = 21;
             // 
-            // btn_inico
+            // btnEliminarCate
             // 
-            this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_inico.Location = new System.Drawing.Point(83, 24);
-            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_inico.Name = "btn_inico";
-            this.btn_inico.Size = new System.Drawing.Size(167, 59);
-            this.btn_inico.TabIndex = 3;
-            this.btn_inico.Text = "Inicio";
-            this.btn_inico.UseVisualStyleBackColor = true;
-            this.btn_inico.Click += new System.EventHandler(this.btn_inico_Click);
-            // 
-            // ptb_inicio
-            // 
-            this.ptb_inicio.BackColor = System.Drawing.Color.White;
-            this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
-            this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptb_inicio.Location = new System.Drawing.Point(4, 24);
-            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
-            this.ptb_inicio.Name = "ptb_inicio";
-            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
-            this.ptb_inicio.TabIndex = 7;
-            this.ptb_inicio.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.agregar_categoria;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 240);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 59);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.eliminar_categoria;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 461);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
+            this.btnEliminarCate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarCate.Location = new System.Drawing.Point(83, 461);
+            this.btnEliminarCate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminarCate.Name = "btnEliminarCate";
+            this.btnEliminarCate.Size = new System.Drawing.Size(167, 59);
+            this.btnEliminarCate.TabIndex = 10;
+            this.btnEliminarCate.Text = "Eliminar Categoria";
+            this.btnEliminarCate.UseVisualStyleBackColor = true;
+            this.btnEliminarCate.Click += new System.EventHandler(this.btnEliminarCate_Click);
             // 
             // btnAgregarCate
             // 
@@ -121,17 +85,53 @@
             this.btnAgregarCate.UseVisualStyleBackColor = true;
             this.btnAgregarCate.Click += new System.EventHandler(this.btnAgregarCate_Click);
             // 
-            // btnEliminarCate
+            // pictureBox2
             // 
-            this.btnEliminarCate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarCate.Location = new System.Drawing.Point(83, 461);
-            this.btnEliminarCate.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEliminarCate.Name = "btnEliminarCate";
-            this.btnEliminarCate.Size = new System.Drawing.Size(167, 59);
-            this.btnEliminarCate.TabIndex = 10;
-            this.btnEliminarCate.Text = "Eliminar Categoria";
-            this.btnEliminarCate.UseVisualStyleBackColor = true;
-            this.btnEliminarCate.Click += new System.EventHandler(this.btnEliminarCate_Click);
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.eliminar_categoria;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(4, 461);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.agregar_categoria;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 240);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ptb_inicio
+            // 
+            this.ptb_inicio.BackColor = System.Drawing.Color.White;
+            this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
+            this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptb_inicio.Location = new System.Drawing.Point(4, 24);
+            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_inicio.Name = "ptb_inicio";
+            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
+            this.ptb_inicio.TabIndex = 7;
+            this.ptb_inicio.TabStop = false;
+            // 
+            // btn_inico
+            // 
+            this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_inico.Location = new System.Drawing.Point(83, 24);
+            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_inico.Name = "btn_inico";
+            this.btn_inico.Size = new System.Drawing.Size(167, 59);
+            this.btn_inico.TabIndex = 3;
+            this.btn_inico.Text = "Inicio";
+            this.btn_inico.UseVisualStyleBackColor = true;
+            this.btn_inico.Click += new System.EventHandler(this.btn_inico_Click);
             // 
             // pcb_subir
             // 
@@ -160,6 +160,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(302, 95);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(753, 447);
@@ -179,9 +180,9 @@
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.Categorias_Load);
             this.pnl_botones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
