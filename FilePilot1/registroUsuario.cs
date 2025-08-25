@@ -45,6 +45,14 @@ namespace FilePilot1
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
+            string nombre = txtNombreUsuario.Text;
+            string correo = txtCorreoElectronico.Text;
+            string contrasena = txtContrasena.Text;
+
+            ClsTablas.Usuario nuevoUsuario = new ClsTablas.Usuario();
+            string registrar = nuevoUsuario.registroUsuario(nombre, correo, contrasena);
+            MessageBox.Show(registrar);
+
             fmr_OrgDeArchi inicio = new fmr_OrgDeArchi();
             inicio.Show();
             this.Hide();
