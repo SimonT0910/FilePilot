@@ -14,12 +14,44 @@ namespace FilePilot1
             
             InitializeComponent();
             formsHelper = new Forms(this); // Esto adapta y amplía la pantalla automáticamente
+
+            // Habilitar doble buffer y estilos para reducir flickering
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
         }
+
+        // Sobrescribir CreateParams para aplicar WS_EX_COMPOSITED
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         private void btn_iniciar_Click(object sender, EventArgs e)
         {
-            fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi();
-            fmrOrg.Show();
-            this.Hide();
+            ClsTablas.Usuario validar = new ClsTablas.Usuario();
+            string usuario = txt_usuario.Text;
+            string contrasena = txt_contra.Text;
+
+            string validarUsuario = validar.validarUsuario(usuario, contrasena);
+
+            if (validarUsuario.Equals("Correcto"))
+            {
+                MessageBox.Show("Inicio de sesión exitoso");
+                fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi();
+                fmrOrg.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(validarUsuario);
+            }
         }
 
         private void btn_registrarse_Click(object sender, EventArgs e)
@@ -27,6 +59,11 @@ namespace FilePilot1
             registroUsuario registro = new registroUsuario();
             registro.Show();
             this.Hide();
+        }
+
+        private void fmr_PantallaInicio_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
