@@ -18,7 +18,7 @@ namespace FilePilot1
 
         public class Usuario
         {
-            SqlConnection conexion = new SqlConnection("server=LAPTOP_BRY3;Initial Catalog=FilePilot;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection("server=DESKTOP-D6A13IA;Initial Catalog=FilePilot;Integrated Security=True");
 
             private int idUsuario;
             private string nombre;
