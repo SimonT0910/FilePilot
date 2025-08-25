@@ -54,6 +54,7 @@
     <Compile Include="Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClsTablas.cs" />
     <Compile Include="fmr_OrgDeArchi.cs">
       <SubType>Form</SubType>
     </Compile>
