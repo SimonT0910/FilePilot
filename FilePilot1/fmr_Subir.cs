@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace FilePilot1
 {
@@ -77,6 +81,11 @@ namespace FilePilot1
             misdocumentos docu = new misdocumentos();
             docu.Show();
             this.Hide();
+        }
+
+        private void cmb_categoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Categorias.Inclusion(cmb_categoria, idUsuario);
         }
     }
 }

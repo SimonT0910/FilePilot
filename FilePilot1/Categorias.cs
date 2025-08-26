@@ -47,7 +47,7 @@ namespace FilePilot1
 
         private void Categorias_Load(object sender, EventArgs e)
         {
-            //CargarCategorias();
+            CargarCategorias();
         }
 
         private SqlConnection ObtenerConexion()
@@ -121,13 +121,13 @@ namespace FilePilot1
             contenedor.Controls.Add(lbl);
             contenedor.Tag = nombre;
 
-            flowLayoutPanel1.Controls.Add(contenedor);
+            flpCategorias.Controls.Add(contenedor);
         }
         
 
         private void EliminarCategoria(String nombre)
         {
-           // try
+            try
             {
                 using (SqlConnection conexion = ObtenerConexion())
                 {
@@ -142,29 +142,107 @@ namespace FilePilot1
 
                         if (result == 0)
                         {
-                           // MessageBox.Show("No se encontro la categoría a eliminar")
+                            MessageBox.Show("No se encontro la categoría a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+
+                string rutaCarpeta = Path.Combine(rutaBaseCategorias, nombre);
+                if(Directory.Exists(rutaCarpeta))
+                    Directory.Delete(rutaCarpeta, true);
+
+                Control eliminar = null;
+                foreach(Control c in flpCategorias.Controls)
+                {
+                    if (c.Tag != null && c.Tag.ToString() == nombre)
+                    {
+                        eliminar = c;
+                        break;
+                    }
+                }
+
+                if (eliminar != null)
+                {
+                    flpCategorias.Controls.Remove(eliminar);
+                    eliminar.Dispose();
+                    MessageBox.Show("Categoria eliminada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar categoria: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarCategorias()
+        {
+            try
+            {
+                flpCategorias.Controls.Clear();
+
+                using (SqlConnection conexion = ObtenerConexion())
+                {
+                    conexion.Open();
+                    String query = "SELECT nombre FROM Categoria WHERE idUsuario = @idUsuario ORDER BY nombre";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@idUsuario", usuarioId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string nombre = reader["nombre"].ToString();
+                                AgregarCategoriaVisual(nombre);
+                            }
                         }
                     }
                 }
             }
-            Control eliminar = null;
 
-            foreach(Control c in flowLayoutPanel1.Controls)
+            catch (Exception ex)
             {
-                if(c.Tag != null && c.Tag.ToString() == nombre)
+                MessageBox.Show($"Error al cargar categorias {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void Inclusion(ComboBox comboBox, int idUsuario)
+        {
+            try
+            {
+                comboBox.Items.Clear();
+
+                using (SqlConnection conexion = new SqlConnection("server=DESKTOP-D6A13IA;Initial Catalog=FilePilot;Integrated Security=True"))
                 {
-                    eliminar = c;
-                    break;
+                    conexion.Open();
+                    string query = "SELECT nombre FROM Categoria WHERE idUsuario = @idUsuario ORDER BY nombre";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                comboBox.Items.Add(reader["nombre"].ToString());
+                            }
+                        }
+                    }
                 }
+
+                if (comboBox.Items.Count > 0)
+                    comboBox.SelectedIndex = 0;
+                else
+                    comboBox.Items.Add("Sin categorías");
             }
-            if(eliminar != null)
+
+            catch(Exception ex)
             {
-                flowLayoutPanel1.Controls.Remove(eliminar);
-                eliminar.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("No se encontró la categoría a eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al cargar categorias: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

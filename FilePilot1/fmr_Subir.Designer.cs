@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnl_botones = new System.Windows.Forms.Panel();
+            this.ptb_inicio = new System.Windows.Forms.PictureBox();
+            this.pcb_documentos = new System.Windows.Forms.PictureBox();
             this.btn_inico = new System.Windows.Forms.Button();
             this.btn_Mis_documentos = new System.Windows.Forms.Button();
             this.lbl_recientes = new System.Windows.Forms.Label();
@@ -47,15 +49,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
-            this.ptb_inicio = new System.Windows.Forms.PictureBox();
-            this.pcb_documentos = new System.Windows.Forms.PictureBox();
             this.pnl_botones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_botones
@@ -67,16 +67,41 @@
             this.pnl_botones.Controls.Add(this.btn_Mis_documentos);
             this.pnl_botones.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_botones.Location = new System.Drawing.Point(0, 0);
-            this.pnl_botones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnl_botones.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_botones.Name = "pnl_botones";
             this.pnl_botones.Size = new System.Drawing.Size(267, 554);
             this.pnl_botones.TabIndex = 20;
+            // 
+            // ptb_inicio
+            // 
+            this.ptb_inicio.BackColor = System.Drawing.Color.White;
+            this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
+            this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptb_inicio.Location = new System.Drawing.Point(5, 466);
+            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_inicio.Name = "ptb_inicio";
+            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
+            this.ptb_inicio.TabIndex = 7;
+            this.ptb_inicio.TabStop = false;
+            // 
+            // pcb_documentos
+            // 
+            this.pcb_documentos.BackColor = System.Drawing.Color.White;
+            this.pcb_documentos.BackgroundImage = global::FilePilot1.Properties.Resources.Mis_archivos;
+            this.pcb_documentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcb_documentos.ErrorImage = null;
+            this.pcb_documentos.Location = new System.Drawing.Point(5, 30);
+            this.pcb_documentos.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_documentos.Name = "pcb_documentos";
+            this.pcb_documentos.Size = new System.Drawing.Size(71, 59);
+            this.pcb_documentos.TabIndex = 5;
+            this.pcb_documentos.TabStop = false;
             // 
             // btn_inico
             // 
             this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_inico.Location = new System.Drawing.Point(84, 466);
-            this.btn_inico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
             this.btn_inico.Name = "btn_inico";
             this.btn_inico.Size = new System.Drawing.Size(167, 59);
             this.btn_inico.TabIndex = 3;
@@ -88,7 +113,7 @@
             // 
             this.btn_Mis_documentos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Mis_documentos.Location = new System.Drawing.Point(84, 30);
-            this.btn_Mis_documentos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Mis_documentos.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Mis_documentos.Name = "btn_Mis_documentos";
             this.btn_Mis_documentos.Size = new System.Drawing.Size(167, 59);
             this.btn_Mis_documentos.TabIndex = 0;
@@ -124,7 +149,7 @@
             // 
             this.txt_nombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre.Location = new System.Drawing.Point(393, 197);
-            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(285, 30);
             this.txt_nombre.TabIndex = 31;
@@ -147,11 +172,12 @@
             this.cmb_categoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_categoria.FormattingEnabled = true;
             this.cmb_categoria.Location = new System.Drawing.Point(832, 197);
-            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_categoria.Name = "cmb_categoria";
             this.cmb_categoria.Size = new System.Drawing.Size(232, 30);
             this.cmb_categoria.TabIndex = 33;
             this.cmb_categoria.Text = "Selecione una categoria";
+            this.cmb_categoria.SelectedIndexChanged += new System.EventHandler(this.cmb_categoria_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -172,7 +198,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_descripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_descripcion.Location = new System.Drawing.Point(435, 274);
-            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descripcion.Multiline = true;
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -183,7 +209,7 @@
             // 
             this.btn_cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_cancelar.Location = new System.Drawing.Point(435, 454);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(167, 59);
             this.btn_cancelar.TabIndex = 36;
@@ -195,7 +221,7 @@
             // 
             this.btn_subir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_subir.Location = new System.Drawing.Point(796, 454);
-            this.btn_subir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_subir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_subir.Name = "btn_subir";
             this.btn_subir.Size = new System.Drawing.Size(167, 59);
             this.btn_subir.TabIndex = 37;
@@ -208,7 +234,7 @@
             this.btn_examinar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_examinar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_examinar.Location = new System.Drawing.Point(357, 112);
-            this.btn_examinar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_examinar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_examinar.Name = "btn_examinar";
             this.btn_examinar.Size = new System.Drawing.Size(167, 59);
             this.btn_examinar.TabIndex = 40;
@@ -220,7 +246,7 @@
             // 
             this.txt_ruta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ruta.Location = new System.Drawing.Point(532, 139);
-            this.txt_ruta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_ruta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ruta.Name = "txt_ruta";
             this.txt_ruta.ReadOnly = true;
             this.txt_ruta.Size = new System.Drawing.Size(517, 30);
@@ -288,31 +314,6 @@
             this.pcb_subir.TabIndex = 26;
             this.pcb_subir.TabStop = false;
             // 
-            // ptb_inicio
-            // 
-            this.ptb_inicio.BackColor = System.Drawing.Color.White;
-            this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
-            this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptb_inicio.Location = new System.Drawing.Point(5, 466);
-            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
-            this.ptb_inicio.Name = "ptb_inicio";
-            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
-            this.ptb_inicio.TabIndex = 7;
-            this.ptb_inicio.TabStop = false;
-            // 
-            // pcb_documentos
-            // 
-            this.pcb_documentos.BackColor = System.Drawing.Color.White;
-            this.pcb_documentos.BackgroundImage = global::FilePilot1.Properties.Resources.Mis_archivos;
-            this.pcb_documentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcb_documentos.ErrorImage = null;
-            this.pcb_documentos.Location = new System.Drawing.Point(5, 30);
-            this.pcb_documentos.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_documentos.Name = "pcb_documentos";
-            this.pcb_documentos.Size = new System.Drawing.Size(71, 59);
-            this.pcb_documentos.TabIndex = 5;
-            this.pcb_documentos.TabStop = false;
-            // 
             // fmr_subir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -336,17 +337,17 @@
             this.Controls.Add(this.pcb_subir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnl_botones);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fmr_subir";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.fmr_subir_Load);
             this.pnl_botones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

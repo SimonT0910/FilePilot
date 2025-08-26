@@ -37,7 +37,7 @@
             this.btn_inico = new System.Windows.Forms.Button();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpCategorias = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_botones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -158,13 +158,13 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "Categorias";
             // 
-            // flowLayoutPanel1
+            // flpCategorias
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(302, 95);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(753, 447);
-            this.flowLayoutPanel1.TabIndex = 43;
+            this.flpCategorias.AutoScroll = true;
+            this.flpCategorias.Location = new System.Drawing.Point(302, 95);
+            this.flpCategorias.Name = "flpCategorias";
+            this.flpCategorias.Size = new System.Drawing.Size(753, 447);
+            this.flpCategorias.TabIndex = 43;
             // 
             // Categorias
             // 
@@ -175,7 +175,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pcb_subir);
             this.Controls.Add(this.pnl_botones);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpCategorias);
             this.Name = "Categorias";
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.Categorias_Load);
@@ -200,6 +200,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pcb_subir;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpCategorias;
     }
 }
