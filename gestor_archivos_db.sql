@@ -65,6 +65,13 @@ CREATE TABLE Migracion (
     FOREIGN KEY (usuarioResponsable) REFERENCES Usuario(idUsuario)
 );
 
+CREATE TABLE Categoria (
+    idCategoria INT PRIMARY KEY IDENTITY(1,1),
+    nombre VARCHAR(100) NOT NULL UNIQUE,
+    idUsuario INT NOT NULL,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+);
+
 select * from Usuario;
-delete from Usuario;
+drop table Categoria;
 DBCC CHECKIDENT ('Usuario', RESEED, 0)
