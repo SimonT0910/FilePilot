@@ -31,8 +31,6 @@ namespace FilePilot1
 
             if (!Directory.Exists(rutaBaseCategorias))
                 Directory.CreateDirectory(rutaBaseCategorias);
-
-            MessageBox.Show($"Categorias - usuarioId recibido: {usuarioId}", "DEBUG");
         }
 
         private void btn_inico_Click(object sender, EventArgs e)
@@ -62,9 +60,6 @@ namespace FilePilot1
         {
             try
             {
-                // ✅ AGREGA ESTO PARA VERIFICAR
-                MessageBox.Show($"Intentando agregar categoría para usuarioId: {usuarioId}", "DEBUG - usuarioId");
-
                 using (SqlConnection conexion = ObtenerConexion())
                 {
                     conexion.Open();
@@ -80,12 +75,10 @@ namespace FilePilot1
 
                         if (result > 0)
                         {
-                            MessageBox.Show("Categoría agregada en BD");
+                            MessageBox.Show("Categoría agregada");
                         }
                     }
                 }
-
-                // ... resto del código para la interfaz
             }
             catch (Exception ex)
             {

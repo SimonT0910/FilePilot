@@ -15,9 +15,6 @@ namespace FilePilot1
             InitializeComponent();
             resizer = new Forms(this);
             usuarioId = idUsuario;
-
-            // ✅ DEBUG: Verificar que recibió el ID
-            MessageBox.Show($"FormPrincipal - usuarioId recibido: {usuarioId}", "DEBUG");
         }
 
         private void button5_Click(object sender, EventArgs e) { }

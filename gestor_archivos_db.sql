@@ -73,5 +73,5 @@ CREATE TABLE Categoria (
 );
 
 select * from Usuario;
-drop table Categoria;
+drop table Usuario;
 DBCC CHECKIDENT ('Usuario', RESEED, 0)

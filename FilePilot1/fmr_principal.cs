@@ -44,14 +44,13 @@ namespace FilePilot1
             {
                 int usuarioId = obtenerId(usuario);
 
-                // ✅ VALIDAR QUE EL ID SEA VÁLIDO (mayor a 0)
                 if (usuarioId <= 0)
                 {
                     MessageBox.Show("No se pudo obtener el ID del usuario. Contacte al administrador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Detener el proceso
+                    return; 
                 }
 
-                MessageBox.Show($"🎉 Login exitoso! ID: {usuarioId}", "Bienvenido");
+                MessageBox.Show($"Login exitoso ID: {usuarioId}", "Bienvenido");
                 fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi(usuarioId);
                 fmrOrg.Show();
                 this.Hide();
@@ -62,7 +61,7 @@ namespace FilePilot1
             }
         }
 
-        private int obtenerId(string usuarioInput)
+        private int obtenerId(string usuario)
         {
             try
             {
@@ -70,13 +69,12 @@ namespace FilePilot1
                 {
                     conexion.Open();
 
-                    // ✅ INTENTAR PRIMERO BUSCAR POR ID (si el input es numérico)
-                    if (int.TryParse(usuarioInput, out int posibleId))
+                    if (int.TryParse(usuario, out int Id))
                     {
                         string query = "SELECT idUsuario FROM Usuario WHERE idUsuario = @id";
                         using (SqlCommand cmd = new SqlCommand(query, conexion))
                         {
-                            cmd.Parameters.AddWithValue("@id", posibleId);
+                            cmd.Parameters.AddWithValue("@id", Id);
                             object result = cmd.ExecuteScalar();
 
                             if (result != null)
@@ -86,26 +84,13 @@ namespace FilePilot1
                         }
                     }
 
-                    // ✅ SI NO ENCUENTRA POR ID, BUSCAR POR NOMBRE
-                    string queryNombre = "SELECT idUsuario FROM Usuario WHERE nombre = @usuario";
-                    using (SqlCommand cmd = new SqlCommand(queryNombre, conexion))
-                    {
-                        cmd.Parameters.AddWithValue("@usuario", usuarioInput);
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null)
-                        {
-                            return Convert.ToInt32(result);
-                        }
-                    }
-
-                    MessageBox.Show($"❌ Usuario '{usuarioInput}' no existe", "Error");
+                    MessageBox.Show($"Usuario '{usuario}' no existe", "Error");
                     return -1;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"❌ Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}");
                 return -1;
             }
         }
