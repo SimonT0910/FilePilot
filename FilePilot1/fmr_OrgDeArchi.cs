@@ -8,15 +8,17 @@ namespace FilePilot1
     public partial class fmr_OrgDeArchi : System.Windows.Forms.Form
     {
         private Forms resizer;
+        private int usuarioId;
 
-        public fmr_OrgDeArchi()
+        public fmr_OrgDeArchi(int idUsuario)
         {
             InitializeComponent();
             resizer = new Forms(this);
-            
-        }
+            usuarioId = idUsuario;
 
-       
+            // ✅ DEBUG: Verificar que recibió el ID
+            MessageBox.Show($"FormPrincipal - usuarioId recibido: {usuarioId}", "DEBUG");
+        }
 
         private void button5_Click(object sender, EventArgs e) { }
         private void button2_Click(object sender, EventArgs e) { }
@@ -30,7 +32,7 @@ namespace FilePilot1
 
         private void btn__subir_docum_Click(object sender, EventArgs e)
         {
-            fmr_subir subir = new fmr_subir();
+            fmr_subir subir = new fmr_subir(usuarioId);
             subir.Show();
             this.Hide();
         }
@@ -67,14 +69,14 @@ namespace FilePilot1
 
         private void btn_Mis_documentos_Click(object sender, EventArgs e)
         {
-           misdocumentos docu = new misdocumentos();
+            misdocumentos docu = new misdocumentos(usuarioId);
             docu.Show();
             this.Hide();
         }
 
         private void Btn_categorias_Click(object sender, EventArgs e)
         {
-            Categorias categorias = new Categorias();
+            Categorias categorias = new Categorias(usuarioId);
             categorias.Show();
             this.Hide();
         }

@@ -31,11 +31,13 @@ namespace FilePilot1
 
             if (!Directory.Exists(rutaBaseCategorias))
                 Directory.CreateDirectory(rutaBaseCategorias);
+
+            MessageBox.Show($"Categorias - usuarioId recibido: {usuarioId}", "DEBUG");
         }
 
         private void btn_inico_Click(object sender, EventArgs e)
         {
-            fmr_OrgDeArchi fmr_OrgDeArchi = new fmr_OrgDeArchi();
+            fmr_OrgDeArchi fmr_OrgDeArchi = new fmr_OrgDeArchi(usuarioId);
             fmr_OrgDeArchi.Show();
             this.Hide();
         }
@@ -56,38 +58,38 @@ namespace FilePilot1
             return new SqlConnection(connectionString);
         }
 
-        private void AgregarCategoria(String nombre)
+        private void AgregarCategoria(string nombre)
         {
             try
             {
+                // ✅ AGREGA ESTO PARA VERIFICAR
+                MessageBox.Show($"Intentando agregar categoría para usuarioId: {usuarioId}", "DEBUG - usuarioId");
+
                 using (SqlConnection conexion = ObtenerConexion())
                 {
                     conexion.Open();
 
                     string query = "INSERT INTO Categoria (nombre, idUsuario) VALUES (@nombre, @idUsuario)";
+
                     using (SqlCommand cmd = new SqlCommand(query, conexion))
                     {
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@idUsuario", usuarioId);
-                        cmd.ExecuteNonQuery();
+
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Categoría agregada en BD");
+                        }
                     }
                 }
 
-                string rutaCarpeta = Path.Combine(rutaBaseCategorias, nombre);
-                if (!Directory.Exists(rutaCarpeta))
-                    Directory.CreateDirectory(rutaCarpeta);
-
-                AgregarCategoriaVisual(nombre);
-
-                MessageBox.Show("Categoria agregada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException ex) when (ex.Number == 2627)
-            {
-                MessageBox.Show("Ya tienes una categoría con ese nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ... resto del código para la interfaz
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al agregar categoria: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al agregar categoría: {ex.Message}");
             }
         }
 

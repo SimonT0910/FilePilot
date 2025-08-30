@@ -18,7 +18,6 @@ namespace FilePilot1
         {
             InitializeComponent();
             resizer = new Forms(this);
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -53,7 +52,7 @@ namespace FilePilot1
             string registrar = nuevoUsuario.registroUsuario(nombre, correo, contrasena);
             MessageBox.Show(registrar);
 
-            fmr_OrgDeArchi inicio = new fmr_OrgDeArchi();
+            fmr_PantallaInicio inicio = new fmr_PantallaInicio();
             inicio.Show();
             this.Hide();
         }
