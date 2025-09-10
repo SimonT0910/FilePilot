@@ -11,7 +11,7 @@ namespace FilePilot1
     internal class cConexion
     {
         public SqlConnection Conexion = new SqlConnection(cadena);
-        static private string cadena = @"Data Source=.;Initial Catalog=FilePilot;Integrated Security=True; Connection Timeout=30";
+        static private string cadena = @"Data Source=.;Initial Catalog=FilePilot;Integrated Security=True;Encrypt=False; Connection Timeout=30";
 
 
         public SqlConnection AbrirConexion()
