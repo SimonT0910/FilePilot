@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FilePilot1.ClsTablas;
 
 namespace FilePilot1
 {
@@ -217,7 +218,7 @@ namespace FilePilot1
             }
 
             private DataGridView miDatagrid;//solucionar problema de racargar la pantalla para volvar a actualizar el txt
-            
+
             public void menu(DataGridView midatagrid, MouseEventArgs e)
             {
                 this.miDatagrid = midatagrid;
@@ -307,7 +308,6 @@ namespace FilePilot1
 
                     try
                     {
-
                         cmd = new SqlCommand("Select idDocumento from Documento where nombre = @nombre and usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
                         cmd.Parameters.AddWithValue("@nombre", miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
                         cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
@@ -317,8 +317,15 @@ namespace FilePilot1
                         {
                             int id = Convert.ToInt32(reader[0]);
                             reader.Close();
-                            eliminar(id);
 
+                            if (eliminar(id)) 
+                            {
+                                Form activeForm = Application.OpenForms["fmr_OrgDeArchi"];
+                                if (activeForm != null)
+                                {
+                                    ((fmr_OrgDeArchi)activeForm).refrescar();
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -329,8 +336,8 @@ namespace FilePilot1
                     {
                         conexion.CerrarConexion();
                     }
-
                 }
+
 
 
 
@@ -343,38 +350,55 @@ namespace FilePilot1
                 Process.Start(ruta);
             }
 
-            private void eliminar(int id)
+            private bool eliminar(int id)
             {
-
-
-
                 SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento;", conexion.AbrirConexion());
                 comando.Parameters.AddWithValue("@idDocumento", id);
 
                 try
                 {
-                    comando.ExecuteNonQuery();
-                    miDatagrid.Rows.Clear();
-                    miDatagrid.Refresh();
-                    ClsTablas.Documento documento = new ClsTablas.Documento();
-                    documento.llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
-                    
+                    int filasAfectadas = comando.ExecuteNonQuery();
 
-                    
-
-
-
+                    if (filasAfectadas > 0)
+                    {
+                        miDatagrid.Rows.Clear();
+                        miDatagrid.Refresh();
+                        llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
+                        return true; 
+                    }
+                    return false;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    return false;
                 }
-
-
-
             }
 
+
             public static int total {  get; set; }
+
+
+            public int contador(int usuarioPropietario)
+            {
+                try
+                {
+                    cmd = new SqlCommand("SELECT COUNT (*) FROM Documento WHERE usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+
+                    int total = Convert.ToInt32(cmd.ExecuteScalar());
+                    return total;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al contar documentos: " + ex.Message);
+                    return 0;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
 
 
 
@@ -438,6 +462,8 @@ namespace FilePilot1
 
             }
         }
+
+
     }
 
 

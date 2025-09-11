@@ -65,7 +65,7 @@
             this.txt_total.ReadOnly = true;
             this.txt_total.Size = new System.Drawing.Size(132, 22);
             this.txt_total.TabIndex = 24;
-            
+            this.txt_total.TextChanged += new System.EventHandler(this.txt_total_TextChanged);
             // 
             // lbl_total
             // 
@@ -78,7 +78,6 @@
             this.lbl_total.Size = new System.Drawing.Size(202, 29);
             this.lbl_total.TabIndex = 23;
             this.lbl_total.Text = "Total de archivos:";
-            
             // 
             // lbl_recientes
             // 
@@ -91,7 +90,6 @@
             this.lbl_recientes.Size = new System.Drawing.Size(213, 29);
             this.lbl_recientes.TabIndex = 22;
             this.lbl_recientes.Text = "archivos recientes:";
-          
             // 
             // dgv_recientes
             // 
@@ -110,7 +108,6 @@
             this.dgv_recientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_recientes.Size = new System.Drawing.Size(536, 298);
             this.dgv_recientes.TabIndex = 21;
-            
             this.dgv_recientes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgv_recientes_MouseClick);
             // 
             // dgv_nombre

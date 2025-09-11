@@ -77,18 +77,17 @@ namespace FilePilot1
 
             if (this.Visible)
             {
-                ClsTablas.Documento documento = new ClsTablas.Documento();
-                documento.llenarGrid(dgv_recientes, int.Parse(fmr_PantallaInicio.UsuarioActual));
-
-                //cmd = new SqlCommand("SELECT COUNT(*) FROM Documento WHERE usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
-                //cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
-
-                //int total = Convert.ToInt32(cmd.ExecuteScalar());
-                //txt_total.Text = total.ToString();
-                conexion.CerrarConexion();
-
-                txt_total.Text = ((misdocumentos.total_documentos)).ToString();        
+                refrescar();
             }
+
+        }
+
+        public void refrescar()
+        {
+            ClsTablas.Documento documento = new ClsTablas.Documento();
+            documento.llenarGrid(dgv_recientes, int.Parse(fmr_PantallaInicio.UsuarioActual));
+            int total = documento.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
+            txt_total.Text = total.ToString();
 
         }
 
@@ -102,8 +101,8 @@ namespace FilePilot1
                 documento.menu(dgv_recientes,e);
             }
         }
-        
-        
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -112,7 +111,14 @@ namespace FilePilot1
 
         private void fmr_OrgDeArchi_Load(object sender, EventArgs e)
         {
-            
+            ClsTablas.Documento docu = new ClsTablas.Documento();
+            int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
+            txt_total.Text = total.ToString();
+        }
+
+        private void txt_total_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

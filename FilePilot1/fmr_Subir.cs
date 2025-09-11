@@ -14,8 +14,8 @@ namespace FilePilot1
     public partial class fmr_subir : System.Windows.Forms.Form
     {
 
-        private Forms resizer; 
-        
+        private Forms resizer;
+
         public fmr_subir()
         {
             InitializeComponent();
@@ -99,6 +99,7 @@ namespace FilePilot1
 
             //string usuario = fmr_PantallaInicio.UsuarioActual;
             //MessageBox.Show(usuario);
+
         }
 
         private void txt_ruta_TextChanged(object sender, EventArgs e)
