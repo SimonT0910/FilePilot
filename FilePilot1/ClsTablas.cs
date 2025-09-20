@@ -416,6 +416,48 @@ namespace FilePilot1
                 }
             }
 
+            public void llenarCategoria(DataGridView midatagrid, int usuarioPropietario, string categoria)
+            {
+                try
+                {
+                    string query = "SELECT nombre, fechaSubida, categoria FROM Documento " + "WHERE usuarioPropietario = @usuarioPropietario " + "AND categoria = @categoria " + "ORDER BY nombre";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    midatagrid.Rows.Clear();
+
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        int nuevaFila = midatagrid.Rows.Add();
+
+                        for (int i = 0; i < midatagrid.Columns.Count; i++)
+                        {
+                            string titulo = midatagrid.Columns[i].HeaderText;
+                            if (titulo.Equals("Nombre", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = fila["nombre"].ToString();
+                            else if (titulo.Equals("Fecha", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = Convert.ToDateTime(fila["fechaSubida"]).ToShortDateString();
+                            else if (titulo.Equals("Categoria", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = fila["categoria"].ToString();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al llenar el grid por categoría: " + ex.Message);
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
 
 
 

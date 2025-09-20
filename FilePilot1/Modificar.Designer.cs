@@ -74,7 +74,7 @@
             // 
             this.txt_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre.Location = new System.Drawing.Point(419, 204);
-            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(409, 34);
             this.txt_nombre.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.cmb_categoria.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_categoria.FormattingEnabled = true;
             this.cmb_categoria.Location = new System.Drawing.Point(419, 318);
-            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_categoria.Name = "cmb_categoria";
             this.cmb_categoria.Size = new System.Drawing.Size(409, 37);
             this.cmb_categoria.TabIndex = 4;
@@ -93,7 +93,7 @@
             // 
             this.btn_cancelar.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancelar.Location = new System.Drawing.Point(368, 459);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(137, 43);
             this.btn_cancelar.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             this.btn_confimar.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_confimar.Location = new System.Drawing.Point(621, 459);
-            this.btn_confimar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_confimar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_confimar.Name = "btn_confimar";
             this.btn_confimar.Size = new System.Drawing.Size(164, 43);
             this.btn_confimar.TabIndex = 6;
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btn_confimar);
             this.Controls.Add(this.btn_cancelar);
@@ -126,7 +126,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_Modificar";
             this.Text = "Modificar";
             this.Load += new System.EventHandler(this.frm_Modificar_Load);

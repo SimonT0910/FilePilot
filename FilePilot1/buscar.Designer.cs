@@ -36,7 +36,6 @@
             this.dgv_nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_regresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +103,7 @@
             this.dgvBuscar.ReadOnly = true;
             this.dgvBuscar.RowHeadersWidth = 51;
             this.dgvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBuscar.Size = new System.Drawing.Size(799, 385);
+            this.dgvBuscar.Size = new System.Drawing.Size(799, 426);
             this.dgvBuscar.TabIndex = 46;
             this.dgvBuscar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_buscar_CellContentClick);
             this.dgvBuscar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvbuscar_MouseClick);
@@ -135,25 +134,12 @@
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
             // 
-            // btn_regresar
-            // 
-            this.btn_regresar.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_regresar.Location = new System.Drawing.Point(796, 596);
-            this.btn_regresar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_regresar.Name = "btn_regresar";
-            this.btn_regresar.Size = new System.Drawing.Size(137, 43);
-            this.btn_regresar.TabIndex = 50;
-            this.btn_regresar.Text = "Regresar";
-            this.btn_regresar.UseVisualStyleBackColor = true;
-            this.btn_regresar.Click += new System.EventHandler(this.btn_regresar_Click);
-            // 
             // buscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.ClientSize = new System.Drawing.Size(1095, 681);
-            this.Controls.Add(this.btn_regresar);
+            this.ClientSize = new System.Drawing.Size(1095, 640);
             this.Controls.Add(this.dgvBuscar);
             this.Controls.Add(this.txt_busqueda);
             this.Controls.Add(this.label2);
@@ -179,6 +165,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.Button btn_regresar;
     }
 }

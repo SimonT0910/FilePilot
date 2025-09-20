@@ -14,11 +14,6 @@ namespace FilePilot1
 {
     public partial class buscar : System.Windows.Forms.Form
     {
-        cConexion conexion;
-        SqlCommand cmd;
-        SqlDataAdapter da;
-        DataTable dt;
-
         public buscar()
         {
             InitializeComponent();
@@ -36,11 +31,6 @@ namespace FilePilot1
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void btn_regresar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
 
         public static int total_documentos { get; set; }

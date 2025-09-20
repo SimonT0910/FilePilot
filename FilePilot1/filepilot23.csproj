@@ -60,6 +60,12 @@
     <Compile Include="Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="categoriaSeparada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="categoriaSeparada.Designer.cs">
+      <DependentUpon>categoriaSeparada.cs</DependentUpon>
+    </Compile>
     <Compile Include="cConexion.cs" />
     <Compile Include="ClsTablas.cs" />
     <Compile Include="fmr_OrgDeArchi.cs">
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="categoriaSeparada.resx">
+      <DependentUpon>categoriaSeparada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmr_OrgDeArchi.resx">
       <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>

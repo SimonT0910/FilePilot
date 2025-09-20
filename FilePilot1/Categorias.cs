@@ -101,6 +101,7 @@ namespace FilePilot1
             pb.Height = 100;
             pb.Location = new Point((contenedor.Width - pb.Width) / 2, 10);
             pb.Cursor = Cursors.Hand;
+            pb.Click += (sender, e) => abrirCategoria(nombre);
 
             Label lbl = new Label();
             lbl.Text = nombre;
@@ -110,6 +111,7 @@ namespace FilePilot1
             lbl.Font = new Font("Times New Roman", 10, FontStyle.Bold);
             lbl.MaximumSize = new Size(contenedor.Width - 10, 0);
             lbl.AutoSize = true;
+            lbl.Click += (sender, e) => abrirCategoria(nombre);
 
             contenedor.Controls.Add(pb);
             contenedor.Controls.Add(lbl);
@@ -118,6 +120,13 @@ namespace FilePilot1
             flpCategorias.Controls.Add(contenedor);
         }
 
+        private void abrirCategoria(string nombre)
+        {
+            categoriaSeparada formCategoria = new categoriaSeparada();
+            formCategoria.CategoriaSeleccionada = nombre;
+            formCategoria.Show();
+            this.Hide();
+        }
 
         private void EliminarCategoria(string nombre)
         {
