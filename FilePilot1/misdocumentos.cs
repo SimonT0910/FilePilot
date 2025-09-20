@@ -35,11 +35,6 @@ namespace FilePilot1
             this.Hide();
         }
 
-        private void dgv_recientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void misdocumentos_Load(object sender, EventArgs e)
         {
             ClsTablas.Documento documento = new ClsTablas.Documento();
@@ -58,6 +53,17 @@ namespace FilePilot1
                 ClsTablas.Documento documento = new ClsTablas.Documento();
                 documento.menu(dgvMisDocumentos, e);
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar busqueda = new buscar();
+            busqueda.Show();
+        }
+
+        private void dgvMisDocumentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

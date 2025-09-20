@@ -173,18 +173,34 @@ namespace FilePilot1
 
             }
 
-            public void llenarGrid(DataGridView midatagrid, int usuarioPropietario)
+            public void llenarGrid(DataGridView midatagrid, int usuarioPropietario, String texto = "")
             {
                 try
                 {
-                    cmd = new SqlCommand("SELECT nombre, fechaSubida, categoria FROM Documento WHERE usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
+                    //Implementacion de busqueda
+                    string query = "SELECT nombre, fechasubida, categoria FROM Documento WHERE usuarioPropietario = @usuarioPropietario";
+
+                    if (!string.IsNullOrEmpty(texto))
+                    {
+                        query += @" AND (nombre LIKE @busqueda OR categoria LIKE @busqueda OR CONVERT(VARCHAR, fechasubida, 103) LIKE @busqueda)";
+                    }
+
+                    query += " ORDER BY nombre";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
                     cmd.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+
+                    if (!string.IsNullOrEmpty(texto))
+                    {
+                        cmd.Parameters.AddWithValue("@busqueda", "%" + texto + "%");
+                    }
+
                     da = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     da.Fill(dt);
 
-                    midatagrid.Rows.Add(dt.Rows.Count);
                     midatagrid.Rows.Clear();
+
                 }
                 catch (Exception ex)
                 {

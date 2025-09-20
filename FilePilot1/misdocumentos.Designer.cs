@@ -31,25 +31,25 @@
             this.pnl_botones = new System.Windows.Forms.Panel();
             this.btnRealizarRespaldos = new System.Windows.Forms.Button();
             this.btnSubirDocumentos = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pi = new System.Windows.Forms.PictureBox();
-            this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.btn_inico = new System.Windows.Forms.Button();
-            this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvMisDocumentos = new System.Windows.Forms.DataGridView();
             this.dgv_nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pcb_subir = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pi = new System.Windows.Forms.PictureBox();
+            this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.pnl_botones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMisDocumentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMisDocumentos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_botones
@@ -91,6 +91,114 @@
             this.btnSubirDocumentos.UseVisualStyleBackColor = true;
             this.btnSubirDocumentos.Click += new System.EventHandler(this.btnSubirDocumentos_Click);
             // 
+            // btn_inico
+            // 
+            this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_inico.Location = new System.Drawing.Point(83, 13);
+            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_inico.Name = "btn_inico";
+            this.btn_inico.Size = new System.Drawing.Size(167, 59);
+            this.btn_inico.TabIndex = 3;
+            this.btn_inico.Text = "Inicio";
+            this.btn_inico.UseVisualStyleBackColor = true;
+            this.btn_inico.Click += new System.EventHandler(this.btn_inico_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(437, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(424, 65);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Mis documentos";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Location = new System.Drawing.Point(597, 109);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(167, 59);
+            this.btnBuscar.TabIndex = 37;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // dgvMisDocumentos
+            // 
+            this.dgvMisDocumentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMisDocumentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMisDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMisDocumentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_nombre,
+            this.dgv_fecha,
+            this.Fecha});
+            this.dgvMisDocumentos.Location = new System.Drawing.Point(319, 176);
+            this.dgvMisDocumentos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvMisDocumentos.Name = "dgvMisDocumentos";
+            this.dgvMisDocumentos.ReadOnly = true;
+            this.dgvMisDocumentos.RowHeadersWidth = 51;
+            this.dgvMisDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMisDocumentos.Size = new System.Drawing.Size(668, 272);
+            this.dgvMisDocumentos.TabIndex = 45;
+            this.dgvMisDocumentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMisDocumentos_CellContentClick);
+            this.dgvMisDocumentos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMisDocumentos_MouseClick);
+            // 
+            // dgv_nombre
+            // 
+            this.dgv_nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_nombre.FillWeight = 120F;
+            this.dgv_nombre.HeaderText = "Nombre";
+            this.dgv_nombre.MinimumWidth = 6;
+            this.dgv_nombre.Name = "dgv_nombre";
+            this.dgv_nombre.ReadOnly = true;
+            // 
+            // dgv_fecha
+            // 
+            this.dgv_fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_fecha.FillWeight = 80F;
+            this.dgv_fecha.HeaderText = "Categoria";
+            this.dgv_fecha.MinimumWidth = 6;
+            this.dgv_fecha.Name = "dgv_fecha";
+            this.dgv_fecha.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.FillWeight = 60F;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.buscar;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(518, 109);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pcb_subir
+            // 
+            this.pcb_subir.BackColor = System.Drawing.Color.Transparent;
+            this.pcb_subir.BackgroundImage = global::FilePilot1.Properties.Resources.Mis_archivos;
+            this.pcb_subir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcb_subir.ErrorImage = null;
+            this.pcb_subir.Location = new System.Drawing.Point(972, 0);
+            this.pcb_subir.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_subir.Name = "pcb_subir";
+            this.pcb_subir.Size = new System.Drawing.Size(95, 78);
+            this.pcb_subir.TabIndex = 27;
+            this.pcb_subir.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -127,112 +235,6 @@
             this.ptb_inicio.TabIndex = 7;
             this.ptb_inicio.TabStop = false;
             // 
-            // btn_inico
-            // 
-            this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_inico.Location = new System.Drawing.Point(83, 13);
-            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_inico.Name = "btn_inico";
-            this.btn_inico.Size = new System.Drawing.Size(167, 59);
-            this.btn_inico.TabIndex = 3;
-            this.btn_inico.Text = "Inicio";
-            this.btn_inico.UseVisualStyleBackColor = true;
-            this.btn_inico.Click += new System.EventHandler(this.btn_inico_Click);
-            // 
-            // pcb_subir
-            // 
-            this.pcb_subir.BackColor = System.Drawing.Color.Transparent;
-            this.pcb_subir.BackgroundImage = global::FilePilot1.Properties.Resources.Mis_archivos;
-            this.pcb_subir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcb_subir.ErrorImage = null;
-            this.pcb_subir.Location = new System.Drawing.Point(972, 0);
-            this.pcb_subir.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_subir.Name = "pcb_subir";
-            this.pcb_subir.Size = new System.Drawing.Size(95, 78);
-            this.pcb_subir.TabIndex = 27;
-            this.pcb_subir.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(437, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 52);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Mis documentos";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.buscar;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(518, 109);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.Location = new System.Drawing.Point(597, 109);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(167, 59);
-            this.btnBuscar.TabIndex = 37;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // dgvMisDocumentos
-            // 
-            this.dgvMisDocumentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMisDocumentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMisDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMisDocumentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_nombre,
-            this.dgv_fecha,
-            this.Fecha});
-            this.dgvMisDocumentos.Location = new System.Drawing.Point(319, 176);
-            this.dgvMisDocumentos.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvMisDocumentos.Name = "dgvMisDocumentos";
-            this.dgvMisDocumentos.ReadOnly = true;
-            this.dgvMisDocumentos.RowHeadersWidth = 51;
-            this.dgvMisDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMisDocumentos.Size = new System.Drawing.Size(668, 272);
-            this.dgvMisDocumentos.TabIndex = 45;
-            this.dgvMisDocumentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_recientes_CellContentClick);
-            this.dgvMisDocumentos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMisDocumentos_MouseClick);
-            // 
-            // dgv_nombre
-            // 
-            this.dgv_nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_nombre.FillWeight = 120F;
-            this.dgv_nombre.HeaderText = "Nombre";
-            this.dgv_nombre.MinimumWidth = 6;
-            this.dgv_nombre.Name = "dgv_nombre";
-            this.dgv_nombre.ReadOnly = true;
-            // 
-            // dgv_fecha
-            // 
-            this.dgv_fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_fecha.FillWeight = 80F;
-            this.dgv_fecha.HeaderText = "Categoria";
-            this.dgv_fecha.MinimumWidth = 6;
-            this.dgv_fecha.Name = "dgv_fecha";
-            this.dgv_fecha.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.FillWeight = 60F;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
             // misdocumentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,12 +251,12 @@
             this.Text = "misdocumentos";
             this.Load += new System.EventHandler(this.misdocumentos_Load);
             this.pnl_botones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMisDocumentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMisDocumentos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
