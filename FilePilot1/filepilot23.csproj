@@ -87,6 +87,12 @@
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms.cs" />
+    <Compile Include="mirarResplados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mirarResplados.Designer.cs">
+      <DependentUpon>mirarResplados.cs</DependentUpon>
+    </Compile>
     <Compile Include="misdocumentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="realizarRespaldos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="realizarRespaldos.Designer.cs">
+      <DependentUpon>realizarRespaldos.cs</DependentUpon>
+    </Compile>
     <Compile Include="registroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +137,9 @@
     <EmbeddedResource Include="fmr_Subir.resx">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="mirarResplados.resx">
+      <DependentUpon>mirarResplados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="misdocumentos.resx">
       <DependentUpon>misdocumentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +156,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="realizarRespaldos.resx">
+      <DependentUpon>realizarRespaldos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="registroUsuario.resx">
       <DependentUpon>registroUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +220,20 @@
   <ItemGroup>
     <None Include="imagenes\scripts.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="imagenes\mirar_respaldos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\restaurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\realizar_respaldos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\respaldar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\respaldar_todo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

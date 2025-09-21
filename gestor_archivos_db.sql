@@ -49,12 +49,18 @@ CREATE TABLE ErrorSistema (
 
 CREATE TABLE Respaldo (
     idRespaldo INT PRIMARY KEY IDENTITY(1,1),
-    fecha DATE DEFAULT GETDATE(),
+    fecha DATETIME DEFAULT GETDATE(),
     tipo VARCHAR(20) CHECK (tipo IN ('Automático', 'Manual')),
-    rutaArchivo VARCHAR(255),
-    usuarioResponsable INT,
-    FOREIGN KEY (usuarioResponsable) REFERENCES Usuario(idUsuario)
+    usuarioResponsable INT NOT NULL,
+    nombreArchivo VARCHAR(255) NOT NULL,
+    tipoArchivo VARCHAR(50),
+    contenido VARBINARY(MAX) NOT NULL,
+    categoria VARCHAR(100),
+    idDocumentoOriginal INT,
+    FOREIGN KEY (idDocumentoOriginal) REFERENCES Documento(idDocumento),
+    FOREIGN KEY (usuarioResponsable) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
+
 
 CREATE TABLE Migracion (
     idMigracion INT PRIMARY KEY IDENTITY(1,1),
@@ -72,6 +78,6 @@ CREATE TABLE Categoria (
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-select * from Usuario;
+select * from Respaldo;
 drop table Usuario;
 DBCC CHECKIDENT ('Usuario', RESEED, 0)

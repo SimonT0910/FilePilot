@@ -36,25 +36,25 @@
             this.dgv_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_botones = new System.Windows.Forms.Panel();
-            this.pcb_categorias = new System.Windows.Forms.PictureBox();
-            this.pcb_respaldos = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pcb_Subir = new System.Windows.Forms.PictureBox();
-            this.pcb_documentos = new System.Windows.Forms.PictureBox();
             this.btn__subir_docum = new System.Windows.Forms.Button();
             this.btn_cerrar = new System.Windows.Forms.Button();
             this.btn_mirar_respaldos = new System.Windows.Forms.Button();
             this.Btn_categorias = new System.Windows.Forms.Button();
             this.btn_Mis_documentos = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pcb_categorias = new System.Windows.Forms.PictureBox();
+            this.pcb_respaldos = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pcb_Subir = new System.Windows.Forms.PictureBox();
+            this.pcb_documentos = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_recientes)).BeginInit();
             this.pnl_botones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_categorias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_respaldos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_total
@@ -161,6 +161,80 @@
             this.pnl_botones.Size = new System.Drawing.Size(267, 554);
             this.pnl_botones.TabIndex = 18;
             // 
+            // btn__subir_docum
+            // 
+            this.btn__subir_docum.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn__subir_docum.Location = new System.Drawing.Point(84, 130);
+            this.btn__subir_docum.Margin = new System.Windows.Forms.Padding(4);
+            this.btn__subir_docum.Name = "btn__subir_docum";
+            this.btn__subir_docum.Size = new System.Drawing.Size(167, 59);
+            this.btn__subir_docum.TabIndex = 4;
+            this.btn__subir_docum.Text = "Subir documentos";
+            this.btn__subir_docum.UseVisualStyleBackColor = true;
+            this.btn__subir_docum.Click += new System.EventHandler(this.btn__subir_docum_Click);
+            // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_cerrar.Location = new System.Drawing.Point(84, 466);
+            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(167, 59);
+            this.btn_cerrar.TabIndex = 3;
+            this.btn_cerrar.Text = "Cerrar sesion";
+            this.btn_cerrar.UseVisualStyleBackColor = true;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
+            // btn_mirar_respaldos
+            // 
+            this.btn_mirar_respaldos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_mirar_respaldos.Location = new System.Drawing.Point(84, 350);
+            this.btn_mirar_respaldos.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_mirar_respaldos.Name = "btn_mirar_respaldos";
+            this.btn_mirar_respaldos.Size = new System.Drawing.Size(167, 59);
+            this.btn_mirar_respaldos.TabIndex = 2;
+            this.btn_mirar_respaldos.Text = "Mirar respaldos";
+            this.btn_mirar_respaldos.UseVisualStyleBackColor = true;
+            this.btn_mirar_respaldos.Click += new System.EventHandler(this.btn_mirar_respaldos_Click);
+            // 
+            // Btn_categorias
+            // 
+            this.Btn_categorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_categorias.Location = new System.Drawing.Point(84, 240);
+            this.Btn_categorias.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_categorias.Name = "Btn_categorias";
+            this.Btn_categorias.Size = new System.Drawing.Size(167, 59);
+            this.Btn_categorias.TabIndex = 1;
+            this.Btn_categorias.Text = "Categorias";
+            this.Btn_categorias.UseVisualStyleBackColor = true;
+            this.Btn_categorias.Click += new System.EventHandler(this.Btn_categorias_Click);
+            // 
+            // btn_Mis_documentos
+            // 
+            this.btn_Mis_documentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Mis_documentos.Location = new System.Drawing.Point(84, 30);
+            this.btn_Mis_documentos.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Mis_documentos.Name = "btn_Mis_documentos";
+            this.btn_Mis_documentos.Size = new System.Drawing.Size(167, 59);
+            this.btn_Mis_documentos.TabIndex = 0;
+            this.btn_Mis_documentos.Text = "Mis documentos";
+            this.btn_Mis_documentos.UseVisualStyleBackColor = true;
+            this.btn_Mis_documentos.Click += new System.EventHandler(this.btn_Mis_documentos_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(972, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(95, 78);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // pcb_categorias
             // 
             this.pcb_categorias.BackColor = System.Drawing.Color.White;
@@ -222,79 +296,6 @@
             this.pcb_documentos.TabIndex = 5;
             this.pcb_documentos.TabStop = false;
             // 
-            // btn__subir_docum
-            // 
-            this.btn__subir_docum.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn__subir_docum.Location = new System.Drawing.Point(84, 130);
-            this.btn__subir_docum.Margin = new System.Windows.Forms.Padding(4);
-            this.btn__subir_docum.Name = "btn__subir_docum";
-            this.btn__subir_docum.Size = new System.Drawing.Size(167, 59);
-            this.btn__subir_docum.TabIndex = 4;
-            this.btn__subir_docum.Text = "Subir documentos";
-            this.btn__subir_docum.UseVisualStyleBackColor = true;
-            this.btn__subir_docum.Click += new System.EventHandler(this.btn__subir_docum_Click);
-            // 
-            // btn_cerrar
-            // 
-            this.btn_cerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_cerrar.Location = new System.Drawing.Point(84, 466);
-            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(167, 59);
-            this.btn_cerrar.TabIndex = 3;
-            this.btn_cerrar.Text = "Cerrar sesion";
-            this.btn_cerrar.UseVisualStyleBackColor = true;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
-            // 
-            // btn_mirar_respaldos
-            // 
-            this.btn_mirar_respaldos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_mirar_respaldos.Location = new System.Drawing.Point(84, 350);
-            this.btn_mirar_respaldos.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_mirar_respaldos.Name = "btn_mirar_respaldos";
-            this.btn_mirar_respaldos.Size = new System.Drawing.Size(167, 59);
-            this.btn_mirar_respaldos.TabIndex = 2;
-            this.btn_mirar_respaldos.Text = "Mirar respaldos";
-            this.btn_mirar_respaldos.UseVisualStyleBackColor = true;
-            // 
-            // Btn_categorias
-            // 
-            this.Btn_categorias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_categorias.Location = new System.Drawing.Point(84, 240);
-            this.Btn_categorias.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_categorias.Name = "Btn_categorias";
-            this.Btn_categorias.Size = new System.Drawing.Size(167, 59);
-            this.Btn_categorias.TabIndex = 1;
-            this.Btn_categorias.Text = "Categorias";
-            this.Btn_categorias.UseVisualStyleBackColor = true;
-            this.Btn_categorias.Click += new System.EventHandler(this.Btn_categorias_Click);
-            // 
-            // btn_Mis_documentos
-            // 
-            this.btn_Mis_documentos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Mis_documentos.Location = new System.Drawing.Point(84, 30);
-            this.btn_Mis_documentos.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Mis_documentos.Name = "btn_Mis_documentos";
-            this.btn_Mis_documentos.Size = new System.Drawing.Size(167, 59);
-            this.btn_Mis_documentos.TabIndex = 0;
-            this.btn_Mis_documentos.Text = "Mis documentos";
-            this.btn_Mis_documentos.UseVisualStyleBackColor = true;
-            this.btn_Mis_documentos.Click += new System.EventHandler(this.btn_Mis_documentos_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.inicio;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(972, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(95, 78);
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // fmr_OrgDeArchi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -315,12 +316,12 @@
             this.Shown += new System.EventHandler(this.fmr_OrgDeArchi_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_recientes)).EndInit();
             this.pnl_botones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_categorias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_respaldos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Subir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_documentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

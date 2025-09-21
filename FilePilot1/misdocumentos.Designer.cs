@@ -78,6 +78,7 @@
             this.btnRealizarRespaldos.TabIndex = 11;
             this.btnRealizarRespaldos.Text = "Realizar respaldos";
             this.btnRealizarRespaldos.UseVisualStyleBackColor = true;
+            this.btnRealizarRespaldos.Click += new System.EventHandler(this.btnRealizarRespaldos_Click);
             // 
             // btnSubirDocumentos
             // 
@@ -234,6 +235,7 @@
             this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
             this.ptb_inicio.TabIndex = 7;
             this.ptb_inicio.TabStop = false;
+            this.ptb_inicio.Click += new System.EventHandler(this.ptb_inicio_Click);
             // 
             // misdocumentos
             // 

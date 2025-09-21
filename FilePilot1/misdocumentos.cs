@@ -65,5 +65,17 @@ namespace FilePilot1
         {
 
         }
+
+        private void ptb_inicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRealizarRespaldos_Click(object sender, EventArgs e)
+        {
+            realizarRespaldos respaldos = new realizarRespaldos();
+            respaldos.Show();
+            this.Hide();
+        }
     }
 }

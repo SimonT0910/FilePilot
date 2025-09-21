@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FilePilot1.ClsTablas;
+using System.IO;
 
 namespace FilePilot1
 {
@@ -178,7 +179,7 @@ namespace FilePilot1
                 try
                 {
                     //Implementacion de busqueda
-                    string query = "SELECT nombre, fechasubida, categoria FROM Documento WHERE usuarioPropietario = @usuarioPropietario";
+                    string query = "SELECT idDocumento, nombre, fechaSubida, Categoria FROM Documento WHERE usuarioPropietario = @usuarioPropietario";
 
                     if (!string.IsNullOrEmpty(texto))
                     {
@@ -518,6 +519,173 @@ namespace FilePilot1
                     MessageBox.Show($"Error al cargar categorías: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        public class Respaldo
+        {
+            cConexion conexion = new cConexion();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            private string nombre;
+            private string tipo;
+            private string categoria;
+            private string rutaArchivo;
+            private int usuarioPropietario;
+
+            public string Nombre { get => nombre; set => nombre = value; }
+            public string Tipo { get => tipo; set => tipo = value; }
+            public string Categoria { get => categoria; set => categoria = value; }
+            public string RutaArchivo { get => rutaArchivo; set => rutaArchivo = value; }
+            public int UsuarioPropietario { get => usuarioPropietario; set => usuarioPropietario = value; }
+
+            public string CrearRespaldo(int Documento, int usuario, string tipoRespaldo = "Manual")
+            {
+                try
+                {
+                    //Verifica que el documento pertenece al usuario
+                    string queryVerificar = @"SELECT COUNT(*) FROM Documento WHERE idDocumento = @Documento AND usuarioPropietario = @usuario";
+
+                    cmd = new SqlCommand(queryVerificar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@Documento", Documento);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    int existe = (int)cmd.ExecuteScalar();
+                    if (existe == 0)
+                    {
+                        return "Error: El documento no existe o  no pertenece al usuario.";
+                    }
+
+                    conexion.CerrarConexion();
+
+                    //Obtener informacion del documento
+                    string queryInfo = @"SELECT nombre, tipo, categoria, rutaArchivo FROM Documento WHERE idDocumento = @Documento";
+
+                    cmd = new SqlCommand(queryInfo, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@Documento", Documento);
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count == 0) return "Error: No se pudo leer el documento";
+
+                    string nombreArchivo = dt.Rows[0]["nombre"].ToString();
+                    string tipoArchivo = dt.Rows[0]["tipo"].ToString();
+                    string categoria = dt.Rows[0]["categoria"].ToString();
+                    string rutaArchivo = dt.Rows[0]["rutaArchivo"].ToString();
+
+                    //Leer el contenido del archivo
+                    if (!File.Exists(rutaArchivo))
+                    {
+                        return "Error: El archivo no existe en la ruta especificada";
+                    }
+
+                    byte[] contenido = File.ReadAllBytes(rutaArchivo);
+
+                    //Insertar en la tabla Respaldo
+                    string queryInsert = @"INSERT INTO Respaldo (fecha, tipo, nombreArchivo, tipoArchivo, contenido, categoria, usuarioResponsable, idDocumentoOriginal) VALUES(GETDATE(), @tipo, @nombreArchivo, @tipoArchivo, @contenido, @categoria, @usuario, @idDocumento)";
+
+                    cmd = new SqlCommand(queryInsert, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@tipo", tipoRespaldo);
+                    cmd.Parameters.AddWithValue("@nombreArchivo", nombreArchivo);
+                    cmd.Parameters.AddWithValue("@tipoArchivo", tipoArchivo);
+                    cmd.Parameters.AddWithValue("@contenido", contenido);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+                    cmd.Parameters.AddWithValue("@idDocumento", Documento);
+                    cmd.ExecuteNonQuery();
+
+                    return "Respaldo creado exitosamente";
+                }
+                catch (Exception ex)
+                {
+                    return "Error al crear el respaldo: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public DataTable obtenerRespaldo(int usuario)
+            {
+                try
+                {
+                    string query = @"SELECT idRespaldo, nombreArchivo, categoria, fecha, tipo FROM Respaldo WHERE usuarioResponsable = @usuario ORDER BY fecha DESC";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener los respaldos: " + ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public string restaurarRespaldo(int idRespaldo, int usuario, string nuevaRuta = "")
+            {
+                try
+                {
+                    //Verificar que el respaldo pertenece al usuario
+                    string queryVeriificar = @"SELECT COUNT(*) FROM Respaldo WHERE  idRespaldo = @idRespaldo AND usuarioResponsable = @usuario";
+
+                    cmd = new SqlCommand(queryVeriificar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    int existe = (int)cmd.ExecuteScalar();
+                    if (existe == 0)
+                    {
+                        return "Error: El respaldo no existe o no pertenece al usuario.";
+                    }
+
+                    //Obtener el contenido del respaldo
+                    string queryContenido = @"SELECT nombreArchivo, tipoArchivo, contenido FROM Respaldo WHERE idRespaldo = @idRespaldo";
+
+                    cmd = new SqlCommand(queryContenido, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (!reader.Read())
+                    {
+                        return "Error: No se pudo leer el respaldo.";
+                    }
+
+                    string nombreArchivo = reader["nombreArchivo"].ToString();
+                    string tipoArchivo = reader["tipoArchivo"].ToString();
+                    byte[] contenido = (byte[])reader["contenido"];
+
+                    reader.Close();
+
+                    //Guardar el archivo en disco
+                    string rutaDestino = string.IsNullOrEmpty(nuevaRuta) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), nombreArchivo) : Path.Combine(nuevaRuta, nombreArchivo);
+
+                    File.WriteAllBytes(rutaDestino, contenido);
+
+                    return $"Archivo restaurado correctamento en: {rutaDestino}"; 
+                }
+                catch (Exception ex)
+                {
+                    return "Error al restaurar el respaldo: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
             }
         }
 

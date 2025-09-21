@@ -293,6 +293,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mirar_respaldos1 {
+            get {
+                object obj = ResourceManager.GetObject("mirar_respaldos1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mis_archivos {
             get {
                 object obj = ResourceManager.GetObject("Mis_archivos", resourceCulture);
@@ -333,6 +343,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap realizar_respaldos1 {
+            get {
+                object obj = ResourceManager.GetObject("realizar_respaldos1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap registrarse {
             get {
                 object obj = ResourceManager.GetObject("registrarse", resourceCulture);
@@ -346,6 +366,36 @@ namespace FilePilot1.Properties {
         internal static System.Drawing.Bitmap registrarse1 {
             get {
                 object obj = ResourceManager.GetObject("registrarse1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap respaldar {
+            get {
+                object obj = ResourceManager.GetObject("respaldar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap respaldar_todo {
+            get {
+                object obj = ResourceManager.GetObject("respaldar_todo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap restaurar {
+            get {
+                object obj = ResourceManager.GetObject("restaurar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -120,5 +120,12 @@ namespace FilePilot1
         {
 
         }
+
+        private void btn_mirar_respaldos_Click(object sender, EventArgs e)
+        {
+            mirarResplados resp = new mirarResplados();
+            resp.Show();
+            this.Hide();
+        }
     }
 }
