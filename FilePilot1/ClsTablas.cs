@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FilePilot1.ClsTablas;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FilePilot1
 {
@@ -202,6 +203,38 @@ namespace FilePilot1
 
                     midatagrid.Rows.Clear();
 
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        int nuevaFila = midatagrid.Rows.Add();
+
+                        for (int i = 0; i < midatagrid.Columns.Count; i++)
+                        {
+                            string titulo = midatagrid.Columns[i].HeaderText;
+                            string nombreColumna = midatagrid.Columns[i].Name;
+
+                            // BUSCAR POR HeaderText O Name
+                            if (titulo.Equals("idDocumento", StringComparison.OrdinalIgnoreCase) ||
+                                nombreColumna.Equals("idDocumento", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = fila["idDocumento"];
+
+                            else if (titulo.Equals("Nombre", StringComparison.OrdinalIgnoreCase) ||
+                                     nombreColumna.Equals("Nombre", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = fila["nombre"].ToString();
+
+                            else if (titulo.Equals("Fecha", StringComparison.OrdinalIgnoreCase) ||
+                                     nombreColumna.Equals("Fecha", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = Convert.ToDateTime(fila["fechaSubida"]).ToShortDateString();
+
+                            else if (titulo.Equals("Categoria", StringComparison.OrdinalIgnoreCase) ||
+                                     nombreColumna.Equals("Categoria", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = fila["categoria"].ToString();
+
+                            else if ((titulo.Equals("Seleccion", StringComparison.OrdinalIgnoreCase) ||
+                                     nombreColumna.Equals("Seleccion", StringComparison.OrdinalIgnoreCase)) &&
+                                     midatagrid.Columns[i] is DataGridViewCheckBoxColumn)
+                                midatagrid.Rows[nuevaFila].Cells[i].Value = false;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -211,26 +244,57 @@ namespace FilePilot1
                 {
                     conexion.CerrarConexion();
                 }
+            }
 
-                foreach (DataRow fila in dt.Rows)//recore cada fila del datatable que se lleno con los documentos del usuario
+            public void eliminarRespaldos(DataGridView midatagrid, int usuarioPropietario)
+            {
+                try
                 {
-                    int nuevaFila = midatagrid.Rows.Add(); // Agrega una nueva fila vacía y guarda su índice para llenarlo después
+                    string query = @"SELECT d.idDocumento, d.nombre, d.fechaSubida, d.categoria FROM Documento d LEFT JOIN Respaldo r ON d.idDocumento = r.idDocumentoOriginal WHERE d.usuarioPropietario = @usuarioPropietario AND r.idRespaldo IS NULL ORDER BY d.nombre";
 
-                    // Recorrer cada columna del DataGridView
-                    for (int i = 0; i < midatagrid.Columns.Count; i++)
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    midatagrid.Rows.Clear();
+
+                    foreach(DataRow fila in dt.Rows)
                     {
+                        int nueva = midatagrid.Rows.Add();
 
-                        string titulo = midatagrid.Columns[i].HeaderText;// Obtener el título de la columna actual
+                        for (int i = 0; i < midatagrid.Columns.Count; i++)
+                        {
+                            string titulo = midatagrid.Columns[i].HeaderText;
+                            string nombreColumna = midatagrid.Columns[i].Name;
 
-                        if (titulo.Equals("Nombre", StringComparison.OrdinalIgnoreCase))
-                            midatagrid.Rows[nuevaFila].Cells[i].Value = fila["nombre"].ToString();//nuevaFila es la fila que se acaba de agregar y i es la columna actual
+                            //Asignar valores a las columnas que existan
+                            if ((titulo.Equals("idDocumento", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("idDocumento", StringComparison.OrdinalIgnoreCase)))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["idDocumento"];
 
-                        else if (titulo.Equals("Fecha", StringComparison.OrdinalIgnoreCase))
-                            midatagrid.Rows[nuevaFila].Cells[i].Value = Convert.ToDateTime(fila["fechaSubida"]).ToShortDateString();//cells[i] es la celda actual en la fila nueva
+                            else if (titulo.Equals("Nombre", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("idDocumento", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["nombre"].ToString();
 
-                        else if (titulo.Equals("Categoria", StringComparison.OrdinalIgnoreCase))
-                            midatagrid.Rows[nuevaFila].Cells[i].Value = fila["categoria"].ToString();//fila["categoria"] es el valor de la columna "categoria" en la fila actual del DataTable
+                            else if (titulo.Equals("Fecha", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Fecha", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = Convert.ToDateTime(fila["fechaSubida"]).ToShortDateString();
+
+                            else if (titulo.Equals("Categoria", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Categoria", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["categoria"].ToString();
+
+                            else if ((titulo.Equals("Seleccion", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Seleccion", StringComparison.OrdinalIgnoreCase)) && midatagrid.Columns[i] is DataGridViewCheckBoxColumn)
+                                midatagrid.Rows[nueva].Cells[i].Value = false;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al llenar el grid de eliminación: " + ex.Message);
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
                 }
             }
 
@@ -286,7 +350,7 @@ namespace FilePilot1
                         conexion.CerrarConexion();
                     }
 
-
+                    
 
 
                 }
@@ -369,26 +433,37 @@ namespace FilePilot1
 
             private bool eliminar(int id)
             {
-                SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento;", conexion.AbrirConexion());
-                comando.Parameters.AddWithValue("@idDocumento", id);
-
                 try
                 {
+                    // PRIMERO eliminar los respaldos asociados
+                    string eliminarRespaldos = "DELETE FROM Respaldo WHERE idDocumentoOriginal = @idDocumento";
+                    SqlCommand cmdRespaldos = new SqlCommand(eliminarRespaldos, conexion.AbrirConexion());
+                    cmdRespaldos.Parameters.AddWithValue("@idDocumento", id);
+                    cmdRespaldos.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    // LUEGO eliminar el documento
+                    SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
+                    comando.Parameters.AddWithValue("@idDocumento", id);
+
                     int filasAfectadas = comando.ExecuteNonQuery();
 
                     if (filasAfectadas > 0)
                     {
                         miDatagrid.Rows.Clear();
-                        miDatagrid.Refresh();
                         llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
-                        return true; 
+                        return true;
                     }
                     return false;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error al eliminar: " + ex.Message + "\n\nAsegúrate de eliminar primero los respaldos asociados.");
                     return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
                 }
             }
 
@@ -687,7 +762,98 @@ namespace FilePilot1
                     conexion.CerrarConexion();
                 }
             }
+
+            public string restaurarDocumento(int idRespaldo, int usuario)
+            {
+                try
+                {
+                    //Verificar que el respaldo pertenece al usuario
+                    string queryVerificar = @"SELECT COUNT(*) FROM Respaldo WHERE idRespaldo = @idRespaldo AND usuarioResponsable = @usuario";
+
+                    cmd = new SqlCommand(queryVerificar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    int existe = (int)cmd.ExecuteScalar();
+                    if (existe == 0)
+                    {
+                        return "Error: El respaldo no existe o no pertenece al usuario.";
+                    }
+
+                    //Obtener informacion del respaldo 
+                    string queryInfo = @"SELECT nombreArchivo, tipoArchivo, contenido, categoria FROM Respaldo WHERE idRespaldo = @idRespaldo";
+
+                    cmd = new SqlCommand(queryInfo, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (!reader.Read())
+                    {
+                        return "Error: No se pudo leer la informacion del respaldo";
+                    }
+
+                    string nombreArchivo = reader["nombreArchivo"].ToString();
+                    string tipoArchivo = reader["tipoArchivo"].ToString();
+                    byte[] contenido = (byte[])reader["contenido"];
+                    string categoria = reader["categoria"].ToString();
+
+                    reader.Close();
+                    conexion.CerrarConexion();
+
+                    //Guardar el archivo en la carpeta del sistema
+                    string carpetaSistema = Path.Combine(Application.StartupPath, "ArchivosSubidos");
+                    if (!Directory.Exists(carpetaSistema))
+                    {
+                        Directory.CreateDirectory(carpetaSistema);
+                    }
+
+                    //Generar un nombre unico para el archivo
+                    string rutaArchivo = Path.Combine(carpetaSistema, nombreArchivo);
+                    int contador = 1;
+                    while (File.Exists(rutaArchivo))
+                    {
+                        string nombre = Path.GetFileNameWithoutExtension(nombreArchivo);
+                        string extension = Path.GetExtension(nombreArchivo);
+                        rutaArchivo = Path.Combine(carpetaSistema, $"{nombre}({contador}){extension}");
+                        contador++;
+                    }
+
+                    //Guardar el archivo en disco
+                    File.WriteAllBytes(rutaArchivo, contenido);
+
+                    //Insertar en la tabla Documento
+                    string queryInsert = @"INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario, fechaSubida) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario, GETDATE())";
+
+                    cmd = new SqlCommand(queryInsert, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@nombre", nombreArchivo);
+                    cmd.Parameters.AddWithValue("@tipo", tipoArchivo);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+                    cmd.Parameters.AddWithValue("@rutaArchivo", rutaArchivo);
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", usuario);
+
+                    int filas = cmd.ExecuteNonQuery();
+
+                    if (filas > 0)
+                    {
+                        return "Documento restauradoexitosamente al sistema";
+                    }
+                    else
+                    {
+                        return "Error: No se puso insertar el documento en la base de datos";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "Error al restaurar el documento: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
         }
+
+        
 
 
     }

@@ -1,6 +1,6 @@
 ﻿namespace FilePilot1
 {
-    partial class mirarResplados
+    partial class respaldos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvMirarRespaldos = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRestauracion = new System.Windows.Forms.DataGridView();
             this.btnRestaurar = new System.Windows.Forms.Button();
             this.btn_inico = new System.Windows.Forms.Button();
             this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMirarRespaldos)).BeginInit();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idRespaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRestauracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
@@ -57,49 +58,22 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Mirar respaldos";
             // 
-            // dgvMirarRespaldos
+            // dgvRestauracion
             // 
-            this.dgvMirarRespaldos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMirarRespaldos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRestauracion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRestauracion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
+            this.idRespaldo,
             this.Nombre,
             this.Categoria,
             this.Fecha});
-            this.dgvMirarRespaldos.Location = new System.Drawing.Point(51, 104);
-            this.dgvMirarRespaldos.Name = "dgvMirarRespaldos";
-            this.dgvMirarRespaldos.RowHeadersWidth = 51;
-            this.dgvMirarRespaldos.RowTemplate.Height = 24;
-            this.dgvMirarRespaldos.Size = new System.Drawing.Size(758, 351);
-            this.dgvMirarRespaldos.TabIndex = 32;
-            this.dgvMirarRespaldos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "Seleccion";
-            this.Seleccion.MinimumWidth = 6;
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 125;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre del archivo";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 150;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.MinimumWidth = 6;
-            this.Categoria.Name = "Categoria";
-            this.Categoria.Width = 150;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha del respaldo";
-            this.Fecha.MinimumWidth = 6;
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 150;
+            this.dgvRestauracion.Location = new System.Drawing.Point(51, 104);
+            this.dgvRestauracion.Name = "dgvRestauracion";
+            this.dgvRestauracion.RowHeadersWidth = 51;
+            this.dgvRestauracion.RowTemplate.Height = 24;
+            this.dgvRestauracion.Size = new System.Drawing.Size(758, 351);
+            this.dgvRestauracion.TabIndex = 32;
+            this.dgvRestauracion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnRestaurar
             // 
@@ -111,6 +85,7 @@
             this.btnRestaurar.TabIndex = 38;
             this.btnRestaurar.Text = "Restaurar";
             this.btnRestaurar.UseVisualStyleBackColor = true;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
             // btn_inico
             // 
@@ -161,7 +136,43 @@
             this.pcb_subir.TabIndex = 31;
             this.pcb_subir.TabStop = false;
             // 
-            // mirarResplados
+            // Seleccion
+            // 
+            this.Seleccion.HeaderText = "Seleccion";
+            this.Seleccion.MinimumWidth = 6;
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 125;
+            // 
+            // idRespaldo
+            // 
+            this.idRespaldo.HeaderText = "ID";
+            this.idRespaldo.MinimumWidth = 6;
+            this.idRespaldo.Name = "idRespaldo";
+            this.idRespaldo.Visible = false;
+            this.idRespaldo.Width = 125;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre del archivo";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 150;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.MinimumWidth = 6;
+            this.Categoria.Name = "Categoria";
+            this.Categoria.Width = 150;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha del respaldo";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 150;
+            // 
+            // respaldos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,13 +182,13 @@
             this.Controls.Add(this.btn_inico);
             this.Controls.Add(this.btnRestaurar);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.dgvMirarRespaldos);
+            this.Controls.Add(this.dgvRestauracion);
             this.Controls.Add(this.pcb_subir);
             this.Controls.Add(this.label1);
-            this.Name = "mirarResplados";
+            this.Name = "respaldos";
             this.Text = "mirarResplados";
             this.Load += new System.EventHandler(this.mirarResplados_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMirarRespaldos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRestauracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
@@ -190,14 +201,15 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pcb_subir;
-        private System.Windows.Forms.DataGridView dgvMirarRespaldos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridView dgvRestauracion;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnRestaurar;
         private System.Windows.Forms.PictureBox ptb_inicio;
         private System.Windows.Forms.Button btn_inico;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idRespaldo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
     }
 }

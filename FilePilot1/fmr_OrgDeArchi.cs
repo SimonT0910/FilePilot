@@ -123,7 +123,7 @@ namespace FilePilot1
 
         private void btn_mirar_respaldos_Click(object sender, EventArgs e)
         {
-            mirarResplados resp = new mirarResplados();
+            respaldos resp = new respaldos();
             resp.Show();
             this.Hide();
         }

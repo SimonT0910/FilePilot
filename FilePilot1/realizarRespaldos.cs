@@ -34,6 +34,7 @@ namespace FilePilot1
         {
             CargarDocumentos();
             dgvMirarRespaldos.AllowUserToAddRows = false;
+            dgvMirarRespaldos.ReadOnly = false;
         }
 
         private void CargarDocumentos()
@@ -41,7 +42,7 @@ namespace FilePilot1
             try
             {
                 ClsTablas.Documento documento = new ClsTablas.Documento();
-                documento.llenarGrid(dgvMirarRespaldos, usuarioId);
+                documento.eliminarRespaldos(dgvMirarRespaldos, usuarioId);
             }
             catch (Exception ex)
             {
@@ -57,19 +58,57 @@ namespace FilePilot1
 
             foreach (DataGridViewRow row in dgvMirarRespaldos.Rows)
             {
-                if (!row.IsNewRow && row.Cells["CheckBoxColumn"].Value != null && Convert.ToBoolean(row.Cells["CheckBoxColumn"].Value))
+                if (!row.IsNewRow)
                 {
-                    int idDocumento = Convert.ToInt32(row.Cells["idDocumento"].Value);
-
-                    ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
-                    string resultado = respaldo.CrearRespaldo(idDocumento, usuarioId);
-
-                    if (resultado.Contains("correctamente"))
-                        exitoso++;
-                    else
+                    bool estaSeleccionado = false;
+                    foreach (DataGridViewCell cell in row.Cells)
                     {
-                        fallido++;
-                        errores.Add($"{row.Cells["Nombre"].Value}: {resultado}");
+                        if (cell.OwningColumn is DataGridViewCheckBoxColumn && cell.Value != null)
+                        {
+                            estaSeleccionado = Convert.ToBoolean(cell.Value);
+                            break;
+                        }
+                    }
+
+                    if (estaSeleccionado)
+                    {
+                        int? idDocumento = null;
+                        string nombreArchivo = "";
+
+                        for (int i = 0; i < row.Cells.Count; i++)
+                        {
+                            var cell = row.Cells[i];
+                            if (cell.OwningColumn.HeaderText.Equals("idDocumento", StringComparison.OrdinalIgnoreCase) ||
+                                cell.OwningColumn.Name == "idDocumento")
+                            {
+                                if (cell.Value != null)
+                                    idDocumento = Convert.ToInt32(cell.Value);
+                            }
+                            else if (cell.OwningColumn.HeaderText.Equals("Nombre", StringComparison.OrdinalIgnoreCase) ||
+                                     cell.OwningColumn.Name == "Nombre")
+                            {
+                                nombreArchivo = cell.Value?.ToString() ?? "";
+                            }
+                        }
+
+                        if (idDocumento.HasValue)
+                        {
+                            ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
+                            string resultado = respaldo.CrearRespaldo(idDocumento.Value, usuarioId);
+
+                            if (resultado.Contains("exitosamente"))
+                                exitoso++;
+                            else
+                            {
+                                fallido++;
+                                errores.Add($"{nombreArchivo}: {resultado}");
+                            }
+                        }
+                        else
+                        {
+                            fallido++;
+                            errores.Add("No se pudo obtener el ID del documento");
+                        }
                     }
                 }
             }
@@ -87,7 +126,7 @@ namespace FilePilot1
             foreach(DataGridViewRow row in dgvMirarRespaldos.Rows)
             {
                 if (!row.IsNewRow)
-                    row.Cells["CheckBoxColumn"].Value = true;
+                    row.Cells["seleccion"].Value = true;
             }
 
             btnRespaldar_Click(sender, e);
@@ -96,6 +135,21 @@ namespace FilePilot1
         private void dvgCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvMirarRespaldos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvMirarRespaldos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+        
+        }
+
+        private void dgvMirarRespaldos_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+        
         }
     }
 }

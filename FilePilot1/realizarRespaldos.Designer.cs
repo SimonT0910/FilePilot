@@ -38,8 +38,9 @@
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.dgvMirarRespaldos = new System.Windows.Forms.DataGridView();
             this.seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgv_nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
@@ -75,7 +76,6 @@
             // btnRespaldar
             // 
             this.btnRespaldar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRespaldar.Enabled = false;
             this.btnRespaldar.Location = new System.Drawing.Point(920, 409);
             this.btnRespaldar.Margin = new System.Windows.Forms.Padding(4);
             this.btnRespaldar.Name = "btnRespaldar";
@@ -154,18 +154,21 @@
             this.dgvMirarRespaldos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMirarRespaldos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.seleccion,
-            this.dgv_nombre,
-            this.dgv_fecha,
+            this.idDocumento,
+            this.Nombre,
+            this.Categoria,
             this.Fecha});
-            this.dgvMirarRespaldos.Location = new System.Drawing.Point(34, 78);
+            this.dgvMirarRespaldos.Location = new System.Drawing.Point(37, 96);
             this.dgvMirarRespaldos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMirarRespaldos.Name = "dgvMirarRespaldos";
             this.dgvMirarRespaldos.ReadOnly = true;
             this.dgvMirarRespaldos.RowHeadersWidth = 51;
             this.dgvMirarRespaldos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMirarRespaldos.Size = new System.Drawing.Size(769, 384);
-            this.dgvMirarRespaldos.TabIndex = 48;
-            this.dgvMirarRespaldos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgCategorias_CellContentClick);
+            this.dgvMirarRespaldos.Size = new System.Drawing.Size(766, 383);
+            this.dgvMirarRespaldos.TabIndex = 47;
+            this.dgvMirarRespaldos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMirarRespaldos_CellContentClick);
+            this.dgvMirarRespaldos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMirarRespaldos_CellValueChanged);
+            this.dgvMirarRespaldos.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvMirarRespaldos_CurrentCellDirtyStateChanged);
             // 
             // seleccion
             // 
@@ -173,24 +176,33 @@
             this.seleccion.MinimumWidth = 6;
             this.seleccion.Name = "seleccion";
             this.seleccion.ReadOnly = true;
+            this.seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // dgv_nombre
+            // idDocumento
             // 
-            this.dgv_nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_nombre.FillWeight = 120F;
-            this.dgv_nombre.HeaderText = "Nombre";
-            this.dgv_nombre.MinimumWidth = 6;
-            this.dgv_nombre.Name = "dgv_nombre";
-            this.dgv_nombre.ReadOnly = true;
+            this.idDocumento.HeaderText = "ID";
+            this.idDocumento.MinimumWidth = 6;
+            this.idDocumento.Name = "idDocumento";
+            this.idDocumento.ReadOnly = true;
+            this.idDocumento.Visible = false;
             // 
-            // dgv_fecha
+            // Nombre
             // 
-            this.dgv_fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_fecha.FillWeight = 80F;
-            this.dgv_fecha.HeaderText = "Categoria";
-            this.dgv_fecha.MinimumWidth = 6;
-            this.dgv_fecha.Name = "dgv_fecha";
-            this.dgv_fecha.ReadOnly = true;
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.FillWeight = 120F;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.FillWeight = 80F;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.MinimumWidth = 6;
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
             // 
             // Fecha
             // 
@@ -239,8 +251,9 @@
         private System.Windows.Forms.Button btnRegreso;
         private System.Windows.Forms.DataGridView dgvMirarRespaldos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
     }
 }
