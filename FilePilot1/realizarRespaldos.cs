@@ -42,7 +42,7 @@ namespace FilePilot1
             try
             {
                 ClsTablas.Documento documento = new ClsTablas.Documento();
-                documento.eliminarRespaldos(dgvMirarRespaldos, usuarioId);
+                documento.sinRespaldos(dgvMirarRespaldos, usuarioId);
             }
             catch (Exception ex)
             {

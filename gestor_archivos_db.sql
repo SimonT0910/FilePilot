@@ -78,6 +78,7 @@ CREATE TABLE Categoria (
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
+
 select * from Respaldo;
 drop table Usuario;
 DBCC CHECKIDENT ('Usuario', RESEED, 0)

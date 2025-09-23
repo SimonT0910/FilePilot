@@ -246,7 +246,7 @@ namespace FilePilot1
                 }
             }
 
-            public void eliminarRespaldos(DataGridView midatagrid, int usuarioPropietario)
+            public void sinRespaldos(DataGridView midatagrid, int usuarioPropietario)
             {
                 try
                 {
@@ -435,14 +435,7 @@ namespace FilePilot1
             {
                 try
                 {
-                    // PRIMERO eliminar los respaldos asociados
-                    string eliminarRespaldos = "DELETE FROM Respaldo WHERE idDocumentoOriginal = @idDocumento";
-                    SqlCommand cmdRespaldos = new SqlCommand(eliminarRespaldos, conexion.AbrirConexion());
-                    cmdRespaldos.Parameters.AddWithValue("@idDocumento", id);
-                    cmdRespaldos.ExecuteNonQuery();
-                    conexion.CerrarConexion();
-
-                    // LUEGO eliminar el documento
+                    //eliminar el documento
                     SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
                     comando.Parameters.AddWithValue("@idDocumento", id);
 
@@ -458,7 +451,7 @@ namespace FilePilot1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al eliminar: " + ex.Message + "\n\nAsegúrate de eliminar primero los respaldos asociados.");
+                    MessageBox.Show("Error al eliminar documento: " + ex.Message);
                     return false;
                 }
                 finally
