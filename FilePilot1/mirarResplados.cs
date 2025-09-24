@@ -35,7 +35,7 @@ namespace FilePilot1
 
         private void mirarResplados_Load(object sender, EventArgs e)
         {
-           CargarRespaldos();
+            CargarRespaldos();
             dgvRestauracion.AllowUserToAddRows = false;
             dgvRestauracion.ReadOnly = false;
         }
@@ -50,7 +50,7 @@ namespace FilePilot1
                 dgvRestauracion.Rows.Clear();
 
                 //Llenar el DataGridView
-                foreach(DataRow fila in dt.Rows)
+                foreach (DataRow fila in dt.Rows)
                 {
                     int nueva = dgvRestauracion.Rows.Add();
                     dgvRestauracion.Rows[nueva].Cells[0].Value = false;
@@ -71,6 +71,7 @@ namespace FilePilot1
             int exitoso = 0;
             int fallido = 0;
             List<string> errores = new List<string>();
+            List<int> restaurados = new List<int>();
 
             foreach (DataGridViewRow row in dgvRestauracion.Rows)
             {
@@ -82,7 +83,10 @@ namespace FilePilot1
                     string resultado = respaldo.restaurarDocumento(idRespaldo, usuarioId);
 
                     if (resultado.Contains("exitosamente"))
+                    {
                         exitoso++;
+                        restaurados.Add(idRespaldo);
+                    }
                     else
                     {
                         fallido++;
@@ -96,8 +100,30 @@ namespace FilePilot1
                 mensaje += "\n\nErrores:\n" + string.Join("\n", errores);
 
             MessageBox.Show(mensaje);
-            CargarRespaldos(); 
-            btnRestaurar.Enabled = false; 
+
+            if (restaurados.Count > 0)
+            {
+                eliminarRestaurados(restaurados);
+            }
+            CargarRespaldos();
+            btnRestaurar.Enabled = false;
+        }
+
+        private void eliminarRestaurados(List<int> id)
+        {
+            try
+            {
+                ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
+
+                foreach (int idRespaldo in id)
+                {
+                    respaldo.eliminarRespaldo(idRespaldo, usuarioId);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar los documentos restaurados: " + ex.Message);
+            }
         }
     }
 }

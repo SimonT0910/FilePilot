@@ -21,13 +21,6 @@ CREATE TABLE Documento (
     FOREIGN KEY (usuarioPropietario) REFERENCES Usuario(idUsuario)
 );
 
-CREATE TABLE Autenticacion (
-    idAutenticacion INT PRIMARY KEY IDENTITY(1,1),
-    idUsuario INT,
-    tokenSesion VARCHAR(255) UNIQUE NOT NULL,
-    fechaExpiracion DATE,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
-);
 
 CREATE TABLE LogSistema (
     idLog INT PRIMARY KEY IDENTITY(1,1),

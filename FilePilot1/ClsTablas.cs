@@ -261,7 +261,7 @@ namespace FilePilot1
 
                     midatagrid.Rows.Clear();
 
-                    foreach(DataRow fila in dt.Rows)
+                    foreach (DataRow fila in dt.Rows)
                     {
                         int nueva = midatagrid.Rows.Add();
 
@@ -303,7 +303,7 @@ namespace FilePilot1
             public void menu(DataGridView midatagrid, MouseEventArgs e)
             {
                 this.miDatagrid = midatagrid;
-                
+
                 ContextMenuStrip menu = new System.Windows.Forms.ContextMenuStrip();
                 int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;//obtine las cordenadas de  donde se dio clic y con vase a esas cordenadas obtiene la fila a la que le dio clic
                 if (posicion > -1)
@@ -350,7 +350,7 @@ namespace FilePilot1
                         conexion.CerrarConexion();
                     }
 
-                    
+
 
 
                 }
@@ -399,7 +399,7 @@ namespace FilePilot1
                             int id = Convert.ToInt32(reader[0]);
                             reader.Close();
 
-                            if (eliminar(id)) 
+                            if (eliminar(id))
                             {
                                 Form activeForm = Application.OpenForms["fmr_OrgDeArchi"];
                                 if (activeForm != null)
@@ -461,7 +461,7 @@ namespace FilePilot1
             }
 
 
-            public static int total {  get; set; }
+            public static int total { get; set; }
 
 
             public int contador(int usuarioPropietario)
@@ -744,7 +744,7 @@ namespace FilePilot1
 
                     File.WriteAllBytes(rutaDestino, contenido);
 
-                    return $"Archivo restaurado correctamento en: {rutaDestino}"; 
+                    return $"Archivo restaurado correctamento en: {rutaDestino}";
                 }
                 catch (Exception ex)
                 {
@@ -844,12 +844,51 @@ namespace FilePilot1
                     conexion.CerrarConexion();
                 }
             }
+
+            public bool eliminarRespaldo(int idRespaldo, int usuario)
+            {
+                try
+                {
+                    //Verificar que el respaldo pertenece al usuario
+                    string queryVerificar = @"SELECT COUNT(*) FROM Respaldo WHERE idRespaldo = @idRespaldo AND usuarioResponsable =@usuario";
+
+                    cmd = new SqlCommand(queryVerificar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    int existe = (int)cmd.ExecuteScalar();
+                    if (existe == 0)
+                    {
+                        MessageBox.Show("Error: El respaldo no existe o no pertenece al usuario.");
+                        return false;
+                    }
+
+                    conexion.CerrarConexion();
+
+                    //Eliminar el respaldo
+                    string queryEliminar = @"DELETE FROM Respaldo WHERE idRespaldo =  @idRespaldo";
+
+                    cmd = new SqlCommand(queryEliminar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    return filas > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el respaldo: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+
+
+
         }
 
-        
-
-
     }
-
-
 }
