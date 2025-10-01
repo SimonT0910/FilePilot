@@ -61,21 +61,27 @@ namespace FilePilot1
                     {
                         return "Este correo ya esta registrado.";
                     }
+                    else
+                    {
 
-                    SqlCommand comando = new SqlCommand("INSERT INTO Usuario (nombre, correo, rol, contraseña) VALUES (@nombre, @correo, @rol, @contraseña)", conexion.AbrirConexion());
-                    comando.CommandType = CommandType.Text;
-                    comando.Parameters.AddWithValue("@nombre", nombre);
-                    comando.Parameters.AddWithValue("@correo", correo);
-                    comando.Parameters.AddWithValue("@rol", "General");
-                    comando.Parameters.AddWithValue("@contraseña", contrasena);
-                    comando.ExecuteNonQuery();
-                    return "Usuario registrado correctamente";
-
+                        SqlCommand comando = new SqlCommand("INSERT INTO Usuario (nombre, correo, rol, contraseña) VALUES (@nombre, @correo, @rol, @contraseña)", conexion.AbrirConexion());
+                        comando.CommandType = CommandType.Text;
+                        comando.Parameters.AddWithValue("@nombre", nombre);
+                        comando.Parameters.AddWithValue("@correo", correo);
+                        comando.Parameters.AddWithValue("@rol", "General");
+                        comando.Parameters.AddWithValue("@contraseña", contrasena);
+                        comando.ExecuteNonQuery();
+                        return "Usuario registrado correctamente";
+                    }
 
                 }
                 catch (Exception ex)
                 {
                     return "Error al registrar usuario: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
                 }
 
 
@@ -298,7 +304,7 @@ namespace FilePilot1
                 }
             }
 
-            private DataGridView miDatagrid;//solucionar problema de racargar la pantalla para volvar a actualizar el txt
+            private DataGridView miDatagrid;//solucionar problema de racargar la pantalla para volar a actualizar el txt
 
             public void menu(DataGridView midatagrid, MouseEventArgs e)
             {
@@ -435,16 +441,29 @@ namespace FilePilot1
             {
                 try
                 {
-                    //eliminar el documento
-                    SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
-                    comando.Parameters.AddWithValue("@idDocumento", id);
+                    // Eliminar documentos asociados
+                    SqlCommand com = new SqlCommand("DELETE FROM Documento WHERE usuarioPropietario = @idUsuario", conexion.AbrirConexion());
+                    com.Parameters.AddWithValue("@idUsuario", id);
+                    com.ExecuteNonQuery();
+                    conexion.CerrarConexion();
 
+                    // Eliminar categorías asociadas (si aplica)
+                    SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
+                    com2.Parameters.AddWithValue("@idUsuario", id);
+                    com2.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    // Eliminar usuario
+                    SqlCommand comando = new SqlCommand("DELETE FROM Usuario WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
+                    comando.Parameters.AddWithValue("@idUsuario", id);
                     int filasAfectadas = comando.ExecuteNonQuery();
+                    conexion.CerrarConexion();
 
                     if (filasAfectadas > 0)
                     {
                         miDatagrid.Rows.Clear();
-                        llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
+                        llenarGrid
+                            (miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
                         return true;
                     }
                     return false;
@@ -890,5 +909,264 @@ namespace FilePilot1
 
         }
 
+        public class usuarios
+        {
+            cConexion conexion = new cConexion();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            public void verUsuarios(DataGridView midatagrid)
+            {
+                cmd = new SqlCommand("SELECT idUsuario, nombre, correo, fechaRegistro FROM Usuario", conexion.AbrirConexion());
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                midatagrid.Rows.Clear();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    midatagrid.Rows.Add();
+                    midatagrid.Rows[i].Cells[0].Value = dt.Rows[i][0].ToString();
+                    midatagrid.Rows[i].Cells[1].Value = dt.Rows[i][1].ToString();
+                    midatagrid.Rows[i].Cells[2].Value = dt.Rows[i][2].ToString();
+                    midatagrid.Rows[i].Cells[3].Value = Convert.ToDateTime(dt.Rows[i][3]).ToShortDateString();
+
+                }
+            }
+
+            private DataGridView miDatagrid;
+            public void menu(DataGridView midatagrid, MouseEventArgs e)
+            {
+                this.miDatagrid = midatagrid;
+
+                ContextMenuStrip menu = new System.Windows.Forms.ContextMenuStrip();
+                int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;//obtine las cordenadas de  donde se dio clic y con vase a esas cordenadas obtiene la fila a la que le dio clic
+                if (posicion > -1)
+                {
+                    menu.Items.Add("Abrir").Name = "Abrir" + posicion;
+                    menu.Items.Add("Modificar").Name = "Modificar" + posicion;
+                    menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
+                }
+                menu.Show(midatagrid, new Point(e.X, e.Y));
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick);
+            }
+
+            private void menuClick(object sender, ToolStripItemClickedEventArgs e)
+            {
+
+
+                string click = e.ClickedItem.Name.ToString();
+
+                if (click.Contains("Movimientos"))
+                {
+                    click = click.Replace("Movimientos", "");
+
+                    //try
+                    //{
+
+                    //    cmd = new SqlCommand("Select rutaArchivo from Documento where nombre = @nombre and usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
+                    //    cmd.Parameters.AddWithValue("@nombre", miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
+                    //    cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
+                    //    SqlDataReader reader = cmd.ExecuteReader();
+
+                    //    if (reader.Read())
+                    //    {
+                    //        string rutaArchivo = reader.GetString(0);
+                    //        abrir(rutaArchivo);
+
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    MessageBox.Show("Error: " + ex.Message);
+                    //}
+                    //finally
+                    //{
+                    //    conexion.CerrarConexion();
+                    //}
+
+
+
+
+                }
+                if (click.Contains("Modificar"))
+                {
+                    click = click.Replace("Modificar", "");
+                    try
+                    {
+                        int id = Convert.ToInt32(miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
+
+                        Frm_modificarUsuario modificar = new Frm_modificarUsuario(id, miDatagrid);
+                            modificar.Show();
+
+
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.CerrarConexion();
+                    }
+
+                }
+                if (click.Contains("Eliminar"))
+                {
+                    click = click.Replace("Eliminar", "");
+
+                    try
+                    {
+                        int id = Convert.ToInt32(miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
+                        eliminar(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.CerrarConexion();
+                    }
+                }
+
+            }
+
+            private bool eliminar(int id)
+            {
+                try
+                {
+                    // Eliminar documentos asociados
+                    SqlCommand com = new SqlCommand("DELETE FROM Documento WHERE usuarioPropietario = @idUsuario", conexion.AbrirConexion());
+                    com.Parameters.AddWithValue("@idUsuario", id);
+                    com.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    // Eliminar categorías asociadas (si aplica)
+                    SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
+                    com2.Parameters.AddWithValue("@idUsuario", id);
+                    com2.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    // Eliminar usuario
+                    SqlCommand comando = new SqlCommand("DELETE FROM Usuario WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
+                    comando.Parameters.AddWithValue("@idUsuario", id);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    if (filasAfectadas > 0)
+                    {
+                        miDatagrid.Rows.Clear();
+                        verUsuarios(miDatagrid);
+                        return true;
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar usuario: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public string registroAdministrado(string nombre, string correo, string contrasena, string verificar)
+            {
+                try
+                {
+                    cmd = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE correo = @correo", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@Correo", correo);
+
+                    int count = (int)cmd.ExecuteScalar(); //.ExecuteScalar();  Ejecuta la consulta y obtiene el número de filas que coinciden
+
+                    if (count > 0)
+                    {
+                        return "Este correo ya esta registrado.";
+                    }
+                    else
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE contraseña = @contra AND rol = 'Administrador'", conexion.AbrirConexion());
+                        cmd.Parameters.AddWithValue("@Contra", contrasena);
+
+                        int count2 = (int)cmd.ExecuteScalar(); //.ExecuteScalar();  Ejecuta la consulta y obtiene el número de filas que coinciden
+
+                        if (count2 > 0)
+                        {
+                            return "Esta contraseña ya esta registrada.";
+                        }
+                        else
+                        {
+                            if (contrasena != verificar)
+                            {
+                                return "Las contraseñas no coinciden.";
+                            }
+
+                            else
+                            {
+
+
+                                SqlCommand comando = new SqlCommand("INSERT INTO Usuario (nombre, correo, rol, contraseña) VALUES (@nombre, @correo, @rol, @contraseña)", conexion.AbrirConexion());
+                                comando.CommandType = CommandType.Text;
+                                comando.Parameters.AddWithValue("@nombre", nombre);
+                                comando.Parameters.AddWithValue("@correo", correo);
+                                comando.Parameters.AddWithValue("@rol", "Administrador");
+                                comando.Parameters.AddWithValue("@contraseña", contrasena);
+                                comando.ExecuteNonQuery();
+                                return "Usuario registrado correctamente";
+                            }
+                        }
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    return "Error al registrar administrador: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+
+
+                }
+
+                
+            }
+
+            public bool ValidarAdministrador(string usuario, string contrasena)
+            {
+                try
+                {
+                    cmd = new SqlCommand("SELECT COUNT(*) FROM Usuario WHERE nombre = @usuario AND contraseña = @contrasena AND rol = 'Administrador'", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                    int count = (int)cmd.ExecuteScalar(); //.ExecuteScalar();  Ejecuta la consulta y obtiene el número de filas que coinciden
+
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al validar administrador: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+        }
     }
 }

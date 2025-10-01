@@ -87,6 +87,30 @@
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms.cs" />
+    <Compile Include="frmVerUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVerUs.Designer.cs">
+      <DependentUpon>frmVerUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Administrador.Designer.cs">
+      <DependentUpon>frm_Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_modificarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_modificarUsuario.Designer.cs">
+      <DependentUpon>Frm_modificarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FtmRgsAdm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FtmRgsAdm.Designer.cs">
+      <DependentUpon>FtmRgsAdm.cs</DependentUpon>
+    </Compile>
     <Compile Include="mirarResplados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +160,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmr_Subir.resx">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerUs.resx">
+      <DependentUpon>frmVerUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Administrador.resx">
+      <DependentUpon>frm_Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_modificarUsuario.resx">
+      <DependentUpon>Frm_modificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FtmRgsAdm.resx">
+      <DependentUpon>FtmRgsAdm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mirarResplados.resx">
       <DependentUpon>mirarResplados.cs</DependentUpon>

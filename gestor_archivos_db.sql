@@ -5,7 +5,7 @@ CREATE TABLE Usuario (
     idUsuario INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
     correo VARCHAR(100) UNIQUE NOT NULL,
-    rol VARCHAR(20) NOT NULL CHECK (rol IN ('General', 'Administrador', 'Desarrollador')),
+    rol VARCHAR(20) NOT NULL CHECK (rol IN ('General', 'Administrador')),
     contraseña VARCHAR(255) NOT NULL,
     fechaRegistro DATE DEFAULT GETDATE()
 );
@@ -75,3 +75,15 @@ CREATE TABLE Categoria (
 select * from Respaldo;
 drop table Usuario;
 DBCC CHECKIDENT ('Usuario', RESEED, 0)
+
+SELECT name 
+FROM sys.foreign_keys 
+WHERE referenced_object_id = object_id('Documento');
+
+ALTER TABLE Respaldo DROP CONSTRAINT [FK__Respaldo__idDocu__4BAC3F29];
+
+-- Crear la nueva constraint con SET NULL
+ALTER TABLE Respaldo 
+ADD CONSTRAINT FK_Respaldo_Documento 
+FOREIGN KEY (idDocumentoOriginal) REFERENCES Documento(idDocumento) 
+ON DELETE SET NULL;

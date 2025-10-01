@@ -127,5 +127,10 @@ namespace FilePilot1
             resp.Show();
             this.Hide();
         }
+
+        private void dgv_recientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
