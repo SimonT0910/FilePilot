@@ -135,7 +135,7 @@
     <Compile Include="FtmRgsAdm.Designer.cs">
       <DependentUpon>FtmRgsAdm.cs</DependentUpon>
     </Compile>
-    <Compile Include="mirarResplados.cs">
+    <Compile Include="Usuarios\mirarResplados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuarios\mirarResplados.Designer.cs">
@@ -209,7 +209,7 @@
     <EmbeddedResource Include="FtmRgsAdm.resx">
       <DependentUpon>FtmRgsAdm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mirarResplados.resx">
+    <EmbeddedResource Include="Usuarios\mirarResplados.resx">
       <DependentUpon>mirarResplados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\misdocumentos.resx">
