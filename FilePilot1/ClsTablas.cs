@@ -553,7 +553,7 @@ namespace FilePilot1
                 {
                     micombo.Items.Clear();
 
-                    cConexion conexion = new cConexion(); // ✅ Usamos tu clase personalizada
+g                    cConexion conexion = new cConexion(); // ✅ Usamos tu clase personalizada
 
                     SqlCommand cmd = new SqlCommand(
                         "SELECT nombre FROM Categoria WHERE idUsuario = @idUsuario ORDER BY nombre",
