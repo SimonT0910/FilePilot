@@ -83,23 +83,29 @@ namespace FilePilot1
 
         private void btn_subir_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txt_ruta.Text))
+            {
+                MessageBox.Show("Debes seleccionar un archivo antes de subir. ", "Archivo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(txt_nombre.Text))
+            {
+                MessageBox.Show("Debes ingresar un nombre para el documento.", "Nombre requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            string nombre = txt_nombre.Text;
-            string tipo = System.IO.Path.GetExtension(txt_ruta.Text).TrimStart('.'); // con esto se optiene el tipo del archivo
+            string nombre = txt_nombre.Text.Trim();
+            string tipo = System.IO.Path.GetExtension(txt_ruta.Text).TrimStart('.');
             string categoria = cmb_categoria.Text;
-            string rutaArchivo = txt_ruta.Text;
-            int usuarioPropietario = int.Parse(fmr_PantallaInicio.UsuarioActual);
+            string ruta = txt_ruta.Text;
+            int idUsuario = int.Parse(fmr_PantallaInicio.UsuarioActual);
 
-            ClsTablas.Documento docu = new ClsTablas.Documento();
-            string subir = docu.subirDocumento(nombre, tipo, categoria, rutaArchivo, usuarioPropietario);
+            ClsTablas.Documento documento = new ClsTablas.Documento();
+            string subir = documento.subirDocumento(nombre, tipo, categoria, ruta, idUsuario);
             MessageBox.Show(subir);
 
             FilePilot1.Forms.FormUtils.LimpiarCampos(this);
-
-            //string usuario = fmr_PantallaInicio.UsuarioActual;
-            //MessageBox.Show(usuario);
-
         }
 
         private void txt_ruta_TextChanged(object sender, EventArgs e)

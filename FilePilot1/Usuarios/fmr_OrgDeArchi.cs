@@ -45,9 +45,43 @@ namespace FilePilot1
 
         private void btn__subir_docum_Click(object sender, EventArgs e)
         {
-            fmr_subir subir = new fmr_subir();
-            subir.Show();
-            this.Hide();
+            bool hayCategorias = Verificar();
+
+            if (hayCategorias)
+            {
+                fmr_subir subir = new fmr_subir();
+                subir.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("No tienes categorías creadas. Ve a 'Categorías' para crear algunas.");
+                Categorias categorias = new Categorias();
+                categorias.Show();
+                this.Hide();
+            }
+        }
+
+        private bool Verificar()
+        {
+            try
+            {
+                cConexion conexion = new cConexion();
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT COUNT(*) FROM Categoria WHERE idUsuario = @idUsuario",
+                    conexion.AbrirConexion());
+
+                cmd.Parameters.AddWithValue("@idUsuario", int.Parse(fmr_PantallaInicio.UsuarioActual));
+
+                int cantidad = (int)cmd.ExecuteScalar();
+                conexion.CerrarConexion();
+
+                return cantidad > 0; 
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
         }
 
 

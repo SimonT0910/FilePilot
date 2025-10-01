@@ -141,7 +141,7 @@
             this.Seleccion.HeaderText = "Seleccion";
             this.Seleccion.MinimumWidth = 6;
             this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 125;
+            this.Seleccion.Width = 80;
             // 
             // idRespaldo
             // 
@@ -156,21 +156,21 @@
             this.Nombre.HeaderText = "Nombre del archivo";
             this.Nombre.MinimumWidth = 6;
             this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 150;
+            this.Nombre.Width = 200;
             // 
             // Categoria
             // 
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.MinimumWidth = 6;
             this.Categoria.Name = "Categoria";
-            this.Categoria.Width = 150;
+            this.Categoria.Width = 200;
             // 
             // Fecha
             // 
             this.Fecha.HeaderText = "Fecha del respaldo";
             this.Fecha.MinimumWidth = 6;
             this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 150;
+            this.Fecha.Width = 200;
             // 
             // respaldos
             // 

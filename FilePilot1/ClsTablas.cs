@@ -547,11 +547,12 @@ namespace FilePilot1
             public string Nombre { get => nombre; set => nombre = value; }
             public string IdUsuario { get => idUsuario; set => idUsuario = value; }
 
-            public void CargarCategorias(ComboBox micombo)
+            public bool CargarCategorias(ComboBox micombo)
             {
                 try
                 {
                     micombo.Items.Clear();
+                    micombo.Enabled = true;
 
                     cConexion conexion = new cConexion(); // ✅ Usamos tu clase personalizada
 
@@ -563,28 +564,33 @@ namespace FilePilot1
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
+                    bool existente = false;
+
                     while (reader.Read())
                     {
                         micombo.Items.Add(reader["nombre"].ToString());
+                        existente = true;
                     }
 
                     reader.Close(); // ✅ Cerramos el lector
                     conexion.CerrarConexion(); // ✅ Cerramos la conexión
 
-                    if (micombo.Items.Count > 0)
+                    if (!existente)
                     {
+                        micombo.Items.Add("No hay categorias");
                         micombo.SelectedIndex = 0;
+                        micombo.Enabled = false;
                     }
                     else
                     {
-                        micombo.Items.Add("No hay categorías");
                         micombo.SelectedIndex = 0;
-                        MessageBox.Show("No tienes categorías creadas. Ve a 'Categorías' para crear algunas.");
                     }
+                    return existente;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error al cargar categorías: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
 
             }

@@ -132,51 +132,100 @@ namespace FilePilot1
         {
             try
             {
-                cConexion conexion = new cConexion(); // Usamos tu clase personalizada
+                if (categoriaLlena(nombre))
+                {
+                    int cantidad = obtenerDocu(nombre);
+                    MessageBox.Show($"No se puede eliminar la categoria '{nombre}'\n\n" + $"Esta categoria tiene {cantidad} documento(s) asociado(s).\n\n" + "Debe eliminar primero los documentos antes de eliminar la categoria.", "No se puede eliminar la categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                SqlCommand cmd = new SqlCommand(
-                    "DELETE FROM Categoria WHERE nombre = @nombre AND idUsuario = @idUsuario",
-                    conexion.AbrirConexion()); // Abrimos la conexión desde tu clase
+                cConexion conexion = new cConexion();
+                SqlCommand cmd = new SqlCommand("DELETE FROM Categoria WHERE nombre = @nombre AND idUsuario = @idUsuario",
+                    conexion.AbrirConexion());
 
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 cmd.Parameters.AddWithValue("@idUsuario", usuarioId);
 
-                int result = cmd.ExecuteNonQuery();
+                int resultado = cmd.ExecuteNonQuery();
+                conexion.CerrarConexion();
 
-                conexion.CerrarConexion(); // Cerramos la conexión
-
-                if (result == 0)
+                if(resultado == 0)
                 {
-                    MessageBox.Show("No se encontró la categoría a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se encontro la categoria a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // ✅ Eliminar carpeta física
+                //Eliminar la carpeta fisica
                 string rutaCarpeta = Path.Combine(rutaBaseCategorias, nombre);
                 if (Directory.Exists(rutaCarpeta))
                     Directory.Delete(rutaCarpeta, true);
 
-                // ✅ Eliminar control visual
+                //Eliminar control visual
                 Control eliminar = null;
-                foreach (Control c in flpCategorias.Controls)
+                foreach(Control c in flpCategorias.Controls)
                 {
-                    if (c.Tag != null && c.Tag.ToString() == nombre)
+                    if(c.Tag != null && c.Tag.ToString() == nombre)
                     {
                         eliminar = c;
                         break;
                     }
                 }
 
-                if (eliminar != null)
+                if(eliminar != null)
                 {
                     flpCategorias.Controls.Remove(eliminar);
                     eliminar.Dispose();
-                    MessageBox.Show("Categoría eliminada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Categoria eliminada correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show($"Error al eliminar categoría: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al eliminar categoria: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool categoriaLlena(string nombre)
+        {
+            try
+            {
+                cConexion conexion = new cConexion();
+
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM documento WHERE categoria = @categoria AND usuarioPropietario = @usuario", conexion.AbrirConexion());
+
+                cmd.Parameters.AddWithValue("@categoria", nombre);
+                cmd.Parameters.AddWithValue("@usuario", usuarioId);
+
+                int cantidad = (int)cmd.ExecuteScalar();
+                conexion.CerrarConexion();
+
+                return cantidad > 0;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error al verificar documentos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+        }
+
+        private int obtenerDocu(string nombre)
+        {
+            try
+            {
+                cConexion conexion = new cConexion();
+
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Documento WHERE categoria = @categoria AND usuarioPropietario = @usuario", conexion.AbrirConexion());
+
+                cmd.Parameters.AddWithValue("@categoria", nombre);
+                cmd.Parameters.AddWithValue("@usuario", usuarioId);
+
+                int cantidad = (int)cmd.ExecuteScalar();
+                conexion.CerrarConexion();
+
+                return cantidad;
+            }
+            catch (Exception)
+            {
+                return 0;
             }
         }
 

@@ -48,102 +48,138 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="buscar.cs">
+    <Compile Include="frm_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="buscar.Designer.cs">
+    <Compile Include="frm_Admin.Designer.cs">
+      <DependentUpon>frm_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="movimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="movimientos.Designer.cs">
+      <DependentUpon>movimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="respaldoGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="respaldoGeneral.Designer.cs">
+      <DependentUpon>respaldoGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="restaurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="restaurar.Designer.cs">
+      <DependentUpon>restaurar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\buscar.Designer.cs">
       <DependentUpon>buscar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categorias.cs">
+    <Compile Include="Usuarios\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categorias.Designer.cs">
+    <Compile Include="Usuarios\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="categoriaSeparada.cs">
+    <Compile Include="Usuarios\categoriaSeparada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="categoriaSeparada.Designer.cs">
+    <Compile Include="Usuarios\categoriaSeparada.Designer.cs">
       <DependentUpon>categoriaSeparada.cs</DependentUpon>
     </Compile>
     <Compile Include="cConexion.cs" />
     <Compile Include="ClsTablas.cs" />
-    <Compile Include="fmr_OrgDeArchi.cs">
+    <Compile Include="Usuarios\fmr_OrgDeArchi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmr_OrgDeArchi.Designer.cs">
+    <Compile Include="Usuarios\fmr_OrgDeArchi.Designer.cs">
       <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>
     </Compile>
-    <Compile Include="fmr_principal.cs">
+    <Compile Include="Usuarios\fmr_principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmr_principal.Designer.cs">
+    <Compile Include="Usuarios\fmr_principal.Designer.cs">
       <DependentUpon>fmr_principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="fmr_Subir.cs">
+    <Compile Include="Usuarios\fmr_Subir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmr_Subir.Designer.cs">
+    <Compile Include="Usuarios\fmr_Subir.Designer.cs">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms.cs" />
-    <Compile Include="mirarResplados.cs">
+    <Compile Include="Usuarios\mirarResplados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mirarResplados.Designer.cs">
+    <Compile Include="Usuarios\mirarResplados.Designer.cs">
       <DependentUpon>mirarResplados.cs</DependentUpon>
     </Compile>
-    <Compile Include="misdocumentos.cs">
+    <Compile Include="Usuarios\misdocumentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="misdocumentos.Designer.cs">
+    <Compile Include="Usuarios\misdocumentos.Designer.cs">
       <DependentUpon>misdocumentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modificar.cs">
+    <Compile Include="Usuarios\Modificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modificar.Designer.cs">
+    <Compile Include="Usuarios\Modificar.Designer.cs">
       <DependentUpon>Modificar.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="realizarRespaldos.cs">
+    <Compile Include="Usuarios\realizarRespaldos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="realizarRespaldos.Designer.cs">
+    <Compile Include="Usuarios\realizarRespaldos.Designer.cs">
       <DependentUpon>realizarRespaldos.cs</DependentUpon>
     </Compile>
-    <Compile Include="registroUsuario.cs">
+    <Compile Include="Usuarios\registroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registroUsuario.Designer.cs">
+    <Compile Include="Usuarios\registroUsuario.Designer.cs">
       <DependentUpon>registroUsuario.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="buscar.resx">
+    <EmbeddedResource Include="frm_Admin.resx">
+      <DependentUpon>frm_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="movimientos.resx">
+      <DependentUpon>movimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="respaldoGeneral.resx">
+      <DependentUpon>respaldoGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="restaurar.resx">
+      <DependentUpon>restaurar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\buscar.resx">
       <DependentUpon>buscar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categorias.resx">
+    <EmbeddedResource Include="Usuarios\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="categoriaSeparada.resx">
+    <EmbeddedResource Include="Usuarios\categoriaSeparada.resx">
       <DependentUpon>categoriaSeparada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fmr_OrgDeArchi.resx">
+    <EmbeddedResource Include="Usuarios\fmr_OrgDeArchi.resx">
       <DependentUpon>fmr_OrgDeArchi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fmr_principal.resx">
+    <EmbeddedResource Include="Usuarios\fmr_principal.resx">
       <DependentUpon>fmr_principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fmr_Subir.resx">
+    <EmbeddedResource Include="Usuarios\fmr_Subir.resx">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mirarResplados.resx">
+    <EmbeddedResource Include="Usuarios\mirarResplados.resx">
       <DependentUpon>mirarResplados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="misdocumentos.resx">
+    <EmbeddedResource Include="Usuarios\misdocumentos.resx">
       <DependentUpon>misdocumentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modificar.resx">
+    <EmbeddedResource Include="Usuarios\Modificar.resx">
       <DependentUpon>Modificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -156,10 +192,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="realizarRespaldos.resx">
+    <EmbeddedResource Include="Usuarios\realizarRespaldos.resx">
       <DependentUpon>realizarRespaldos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registroUsuario.resx">
+    <EmbeddedResource Include="Usuarios\registroUsuario.resx">
       <DependentUpon>registroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -234,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imagenes\respaldar_todo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\crear_respaldo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
