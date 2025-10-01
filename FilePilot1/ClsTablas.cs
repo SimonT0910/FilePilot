@@ -60,6 +60,8 @@ namespace FilePilot1
                     if (count > 0)
                     {
                         return "Este correo ya esta registrado.";
+                        registroUsuario resgistro = new registroUsuario();
+                        resgistro.Show();
                     }
                     else
                     {
@@ -145,7 +147,7 @@ namespace FilePilot1
             public string RutaArchivo { get => rutaArchivo; set => rutaArchivo = value; }
             public int UsuarioPropietario { get => usuarioPropietario; set => usuarioPropietario = value; }
 
-            public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario)
+            public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario, string descripcion)
             {
 
                 try
@@ -162,13 +164,14 @@ namespace FilePilot1
                     }
                     else
                     {
-                        SqlCommand comando = new SqlCommand("INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario)", conexion.AbrirConexion());
+                        SqlCommand comando = new SqlCommand("INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario, descripcion) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario, @descripcion)", conexion.AbrirConexion());
                         comando.CommandType = CommandType.Text;
                         comando.Parameters.AddWithValue("@nombre", nombre);
                         comando.Parameters.AddWithValue("@Tipo", tipo);
                         comando.Parameters.AddWithValue("@categoria", categoria);
                         comando.Parameters.AddWithValue("@rutaArchivo", rutaArchivo);
                         comando.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+                        comando.Parameters.AddWithValue("@descripcion", descripcion);
                         comando.ExecuteNonQuery();
                         return ("el archivo fue subido exitosamente");
                     }
@@ -317,16 +320,38 @@ namespace FilePilot1
                     menu.Items.Add("Abrir").Name = "Abrir" + posicion;
                     menu.Items.Add("Modificar").Name = "Modificar" + posicion;
                     menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
+                    menu.Items.Add("Ver descripcion").Name = "Ver descripcion" + posicion;
                 }
                 menu.Show(midatagrid, new Point(e.X, e.Y));
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick);
+                menu.ItemClicked += (sender2, e2) => menuClick(sender2, e2);
             }
 
             private void menuClick(object sender, ToolStripItemClickedEventArgs e)
             {
-
-
                 string click = e.ClickedItem.Name.ToString();
+
+                
+
+                if (click.Contains("Ver descripcion"))
+                {
+
+                    click = click.Replace("Ver descripcion", "");
+                    cmd = new SqlCommand("SELECT descripcion FROM Documento WHERE nombre = @nombre AND usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@nombre", miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    string descripcion = "";
+                    if (reader.Read())
+                    {
+                        descripcion = reader["descripcion"].ToString();
+                    }
+                    reader.Close();
+
+                    MessageBox.Show(descripcion, "Descripción del documento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
 
                 if (click.Contains("Abrir"))
                 {
@@ -441,29 +466,16 @@ namespace FilePilot1
             {
                 try
                 {
-                    // Eliminar documentos asociados
-                    SqlCommand com = new SqlCommand("DELETE FROM Documento WHERE usuarioPropietario = @idUsuario", conexion.AbrirConexion());
-                    com.Parameters.AddWithValue("@idUsuario", id);
-                    com.ExecuteNonQuery();
-                    conexion.CerrarConexion();
+                    //eliminar el documento
+                    SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
+                    comando.Parameters.AddWithValue("@idDocumento", id);
 
-                    // Eliminar categorías asociadas (si aplica)
-                    SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
-                    com2.Parameters.AddWithValue("@idUsuario", id);
-                    com2.ExecuteNonQuery();
-                    conexion.CerrarConexion();
-
-                    // Eliminar usuario
-                    SqlCommand comando = new SqlCommand("DELETE FROM Usuario WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
-                    comando.Parameters.AddWithValue("@idUsuario", id);
                     int filasAfectadas = comando.ExecuteNonQuery();
-                    conexion.CerrarConexion();
 
                     if (filasAfectadas > 0)
                     {
                         miDatagrid.Rows.Clear();
-                        llenarGrid
-                            (miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
+                        llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
                         return true;
                     }
                     return false;
@@ -473,6 +485,7 @@ namespace FilePilot1
                     MessageBox.Show("Error al eliminar documento: " + ex.Message);
                     return false;
                 }
+
                 finally
                 {
                     conexion.CerrarConexion();
@@ -950,7 +963,7 @@ namespace FilePilot1
                 int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;//obtine las cordenadas de  donde se dio clic y con vase a esas cordenadas obtiene la fila a la que le dio clic
                 if (posicion > -1)
                 {
-                    menu.Items.Add("Abrir").Name = "Abrir" + posicion;
+                    menu.Items.Add("Movimientos").Name = "Movimientos" + posicion;
                     menu.Items.Add("Modificar").Name = "Modificar" + posicion;
                     menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
                 }
@@ -1026,7 +1039,7 @@ namespace FilePilot1
                     try
                     {
                         int id = Convert.ToInt32(miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
-                        eliminar(id);
+                        eliminarAdmin(id);
                     }
                     catch (Exception ex)
                     {
@@ -1040,7 +1053,7 @@ namespace FilePilot1
 
             }
 
-            private bool eliminar(int id)
+            private bool eliminarAdmin(int id)
             {
                 try
                 {
@@ -1054,6 +1067,11 @@ namespace FilePilot1
                     SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
                     com2.Parameters.AddWithValue("@idUsuario", id);
                     com2.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    SqlCommand com3 = new SqlCommand("DELETE FROM Respaldo WHERE usuarioResponsable = @idUsuario", conexion.AbrirConexion());
+                    com3.Parameters.AddWithValue("@idUsuario", id);
+                    com3.ExecuteNonQuery();
                     conexion.CerrarConexion();
 
                     // Eliminar usuario
@@ -1093,6 +1111,8 @@ namespace FilePilot1
                     if (count > 0)
                     {
                         return "Este correo ya esta registrado.";
+                        frm_Administrador administrador = new frm_Administrador();
+                        administrador.Show();
                     }
                     else
                     {
@@ -1104,12 +1124,16 @@ namespace FilePilot1
                         if (count2 > 0)
                         {
                             return "Esta contraseña ya esta registrada.";
+                            frm_Administrador administrador = new frm_Administrador();
+                            administrador.Show();
                         }
                         else
                         {
                             if (contrasena != verificar)
                             {
                                 return "Las contraseñas no coinciden.";
+                                frm_Administrador administrador = new frm_Administrador();
+                                administrador.Show();
                             }
 
                             else

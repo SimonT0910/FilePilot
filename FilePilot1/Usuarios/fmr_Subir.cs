@@ -99,10 +99,11 @@ namespace FilePilot1
             string tipo = System.IO.Path.GetExtension(txt_ruta.Text).TrimStart('.');
             string categoria = cmb_categoria.Text;
             string ruta = txt_ruta.Text;
+            string descripcion = txt_descripcion.Text.Trim();
             int idUsuario = int.Parse(fmr_PantallaInicio.UsuarioActual);
 
             ClsTablas.Documento documento = new ClsTablas.Documento();
-            string subir = documento.subirDocumento(nombre, tipo, categoria, ruta, idUsuario);
+            string subir = documento.subirDocumento(nombre, tipo, categoria, ruta, idUsuario, descripcion);
             MessageBox.Show(subir);
 
             FilePilot1.Forms.FormUtils.LimpiarCampos(this);

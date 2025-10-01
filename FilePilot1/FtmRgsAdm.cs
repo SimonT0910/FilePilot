@@ -36,23 +36,33 @@ namespace FilePilot1
             string contrasena = txtContrasena.Text;
             string verificar = txtverificar.Text;
 
+            string registrar = ""; // Declarar la variable aquí
+
             if (nombre != "" && correo != "" && contrasena != "" && verificar != "")
             {
                 ClsTablas.usuarios nuevoadm = new ClsTablas.usuarios();
-                string registrar = nuevoadm.registroAdministrado(nombre, correo, contrasena, verificar);
+                registrar = nuevoadm.registroAdministrado(nombre, correo, contrasena, verificar);
                 MessageBox.Show(registrar);
             }
-
             else
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
-
             }
 
-            
+            if (registrar == "Administrador registrado con exito")
+            {
+                frm_Admin admin = new frm_Admin();
+                admin.Show();
+                this.Hide();
 
+            }
+        }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frm_Admin cancel = new frm_Admin();
+            cancel.Show();
             this.Hide();
         }
     }

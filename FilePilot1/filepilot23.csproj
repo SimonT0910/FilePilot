@@ -310,5 +310,8 @@
   <ItemGroup>
     <None Include="imagenes\crear_respaldo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\crearAdministrador.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

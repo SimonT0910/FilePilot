@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FilePilot1.ClsTablas;
 
 namespace FilePilot1
 {
     public partial class misdocumentos : Form
     {
         private Forms resizer;
+        cConexion conexion;
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataTable dt;
 
         public misdocumentos()
         {
@@ -47,6 +53,8 @@ namespace FilePilot1
 
         private void dgvMisDocumentos_MouseClick(object sender, MouseEventArgs e)
         {
+            cmd = new SqlCommand("SELECT descripcion FROM Documento WHERE idDocumento = @idDocumento");
+
             if (e.Button == MouseButtons.Right)
             {
 

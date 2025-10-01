@@ -213,6 +213,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crearAdministrador {
+            get {
+                object obj = ResourceManager.GetObject("crearAdministrador", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap desarrollador {
             get {
                 object obj = ResourceManager.GetObject("desarrollador", resourceCulture);

@@ -139,11 +139,8 @@
   <data name="crear_respaldo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\crear_respaldo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="continuar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\continuar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inicio_sesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\inicio_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="movimientos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\movimientos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,14 +166,14 @@
   <data name="ver_scripts" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\ver_scripts.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mirar_respaldos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\mirar_respaldos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="area_trabajador" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\area_trabajador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="restaurar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\restaurar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inicio_sesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\inicio_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="carpetas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\carpetas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,8 +190,11 @@
   <data name="categoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\categoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="movimientos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\movimientos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="abrir_archivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\abrir_archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="continuar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\continuar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="subir_documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\subir_documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,6 +205,9 @@
   <data name="registrarse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\registrarse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="scripts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\scripts.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ver_usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\ver_usuarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -213,9 +216,6 @@
   </data>
   <data name="Mis_archivos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\Mis_archivos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="abrir_archivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\abrir_archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="continuar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\continuar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +226,8 @@
   <data name="entrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\entrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="scripts" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\scripts.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mirar_respaldos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\mirar_respaldos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="realizar_respaldos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\realizar_respaldos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,13 +238,16 @@
   <data name="agregar_categoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\agregar_categoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="crear_respaldo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\crear_respaldo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="respaldar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\respaldar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="movimientos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\movimientos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crear_respaldo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\crear_respaldo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="crearAdministrador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\crearAdministrador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
