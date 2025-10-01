@@ -12,9 +12,11 @@ namespace FilePilot1
 {
     public partial class restaurar : Form
     {
+        private Forms reziser;
         public restaurar()
         {
             InitializeComponent();
+            reziser = new Forms(this);
         }
 
         private void btn_inico_Click(object sender, EventArgs e)
@@ -22,6 +24,11 @@ namespace FilePilot1
             frm_Admin admin = new frm_Admin();
             admin.Show();
             this.Hide();
+        }
+
+        private void restaurar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

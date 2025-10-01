@@ -52,20 +52,18 @@
             this.ptb_inicio.BackColor = System.Drawing.Color.White;
             this.ptb_inicio.BackgroundImage = global::FilePilot1.Properties.Resources.administrador;
             this.ptb_inicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptb_inicio.Location = new System.Drawing.Point(842, 369);
-            this.ptb_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_inicio.Location = new System.Drawing.Point(632, 300);
             this.ptb_inicio.Name = "ptb_inicio";
-            this.ptb_inicio.Size = new System.Drawing.Size(71, 59);
+            this.ptb_inicio.Size = new System.Drawing.Size(53, 48);
             this.ptb_inicio.TabIndex = 47;
             this.ptb_inicio.TabStop = false;
             // 
             // btn_inico
             // 
             this.btn_inico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_inico.Location = new System.Drawing.Point(921, 369);
-            this.btn_inico.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_inico.Location = new System.Drawing.Point(691, 300);
             this.btn_inico.Name = "btn_inico";
-            this.btn_inico.Size = new System.Drawing.Size(167, 59);
+            this.btn_inico.Size = new System.Drawing.Size(125, 48);
             this.btn_inico.TabIndex = 46;
             this.btn_inico.Text = "Inicio";
             this.btn_inico.UseVisualStyleBackColor = true;
@@ -74,10 +72,9 @@
             // btnRestaurar
             // 
             this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestaurar.Location = new System.Drawing.Point(923, 469);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestaurar.Location = new System.Drawing.Point(692, 381);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(167, 59);
+            this.btnRestaurar.Size = new System.Drawing.Size(125, 48);
             this.btnRestaurar.TabIndex = 45;
             this.btnRestaurar.Text = "Restaurar";
             this.btnRestaurar.UseVisualStyleBackColor = true;
@@ -87,10 +84,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.restaurar;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(844, 469);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(633, 381);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 48);
             this.pictureBox2.TabIndex = 44;
             this.pictureBox2.TabStop = false;
             // 
@@ -102,11 +98,12 @@
             this.idRespaldo,
             this.Nombre,
             this.Fecha});
-            this.dgvAdminRestaura.Location = new System.Drawing.Point(27, 180);
+            this.dgvAdminRestaura.Location = new System.Drawing.Point(20, 146);
+            this.dgvAdminRestaura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvAdminRestaura.Name = "dgvAdminRestaura";
             this.dgvAdminRestaura.RowHeadersWidth = 51;
             this.dgvAdminRestaura.RowTemplate.Height = 24;
-            this.dgvAdminRestaura.Size = new System.Drawing.Size(758, 351);
+            this.dgvAdminRestaura.Size = new System.Drawing.Size(568, 285);
             this.dgvAdminRestaura.TabIndex = 43;
             // 
             // Seleccion
@@ -144,10 +141,9 @@
             this.pcb_subir.BackgroundImage = global::FilePilot1.Properties.Resources.restaurar;
             this.pcb_subir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcb_subir.ErrorImage = null;
-            this.pcb_subir.Location = new System.Drawing.Point(1005, 2);
-            this.pcb_subir.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_subir.Location = new System.Drawing.Point(754, 2);
             this.pcb_subir.Name = "pcb_subir";
-            this.pcb_subir.Size = new System.Drawing.Size(95, 78);
+            this.pcb_subir.Size = new System.Drawing.Size(71, 63);
             this.pcb_subir.TabIndex = 42;
             this.pcb_subir.TabStop = false;
             // 
@@ -156,10 +152,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(375, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(281, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(421, 65);
+            this.label1.Size = new System.Drawing.Size(332, 52);
             this.label1.TabIndex = 41;
             this.label1.Text = "Mirar respaldos";
             // 
@@ -167,10 +162,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(299, 109);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(224, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 38);
+            this.label3.Size = new System.Drawing.Size(103, 31);
             this.label3.TabIndex = 49;
             this.label3.Text = "Filtrar:";
             // 
@@ -178,17 +172,18 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(431, 114);
+            this.comboBox1.Location = new System.Drawing.Point(323, 93);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(354, 37);
+            this.comboBox1.Size = new System.Drawing.Size(266, 32);
             this.comboBox1.TabIndex = 48;
             // 
             // restaurar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.ClientSize = new System.Drawing.Size(1101, 543);
+            this.ClientSize = new System.Drawing.Size(826, 441);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ptb_inicio);
@@ -198,8 +193,10 @@
             this.Controls.Add(this.dgvAdminRestaura);
             this.Controls.Add(this.pcb_subir);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "restaurar";
             this.Text = "restaurar";
+            this.Load += new System.EventHandler(this.restaurar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminRestaura)).EndInit();
