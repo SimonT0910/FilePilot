@@ -36,9 +36,21 @@ namespace FilePilot1
             string contrasena = txtContrasena.Text;
             string verificar = txtverificar.Text;
 
-            ClsTablas.usuarios nuevoadm = new ClsTablas.usuarios();
-            string registrar = nuevoadm.registroAdministrado(nombre, correo, contrasena, verificar);
-            MessageBox.Show(registrar);
+            if (nombre != "" && correo != "" && contrasena != "" && verificar != "")
+            {
+                ClsTablas.usuarios nuevoadm = new ClsTablas.usuarios();
+                string registrar = nuevoadm.registroAdministrado(nombre, correo, contrasena, verificar);
+                MessageBox.Show(registrar);
+            }
+
+            else
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return;
+
+            }
+
+            
 
 
             this.Hide();

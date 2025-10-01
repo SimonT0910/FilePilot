@@ -1115,7 +1115,7 @@ namespace FilePilot1
                             else
                             {
 
-
+                                
                                 SqlCommand comando = new SqlCommand("INSERT INTO Usuario (nombre, correo, rol, contraseña) VALUES (@nombre, @correo, @rol, @contraseña)", conexion.AbrirConexion());
                                 comando.CommandType = CommandType.Text;
                                 comando.Parameters.AddWithValue("@nombre", nombre);
