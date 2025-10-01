@@ -40,7 +40,18 @@ namespace FilePilot1
             string registrar = nuevoadm.registroAdministrado(nombre, correo, contrasena, verificar);
             MessageBox.Show(registrar);
 
+            if (registrar == "Administrador registrado con exito")
+            {
+                frm_Admin admin = new frm_Admin();
+                admin.Show();
+            }
+            this.Hide();
+        }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frm_Admin cancel = new frm_Admin();
+            cancel.Show();
             this.Hide();
         }
     }

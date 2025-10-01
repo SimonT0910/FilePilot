@@ -38,9 +38,9 @@ namespace FilePilot1
             {
                 MessageBox.Show("Acceso concedido. Bienvenido, Administrador.");
                 // Aquí puedes abrir el formulario principal de la aplicación o realizar otras acciones necesarias.
+                frm_Admin a = new frm_Admin();
+                a.Show();
                 this.Hide();
-                fmr_PantallaInicio pantallaInicio = new fmr_PantallaInicio();
-                pantallaInicio.Show();
             }
             else
             {

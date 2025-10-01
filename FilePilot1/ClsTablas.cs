@@ -441,29 +441,16 @@ namespace FilePilot1
             {
                 try
                 {
-                    // Eliminar documentos asociados
-                    SqlCommand com = new SqlCommand("DELETE FROM Documento WHERE usuarioPropietario = @idUsuario", conexion.AbrirConexion());
-                    com.Parameters.AddWithValue("@idUsuario", id);
-                    com.ExecuteNonQuery();
-                    conexion.CerrarConexion();
+                    //eliminar el documento
+                    SqlCommand comando = new SqlCommand("DELETE FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
+                    comando.Parameters.AddWithValue("@idDocumento", id);
 
-                    // Eliminar categorías asociadas (si aplica)
-                    SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
-                    com2.Parameters.AddWithValue("@idUsuario", id);
-                    com2.ExecuteNonQuery();
-                    conexion.CerrarConexion();
-
-                    // Eliminar usuario
-                    SqlCommand comando = new SqlCommand("DELETE FROM Usuario WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
-                    comando.Parameters.AddWithValue("@idUsuario", id);
                     int filasAfectadas = comando.ExecuteNonQuery();
-                    conexion.CerrarConexion();
 
                     if (filasAfectadas > 0)
                     {
                         miDatagrid.Rows.Clear();
-                        llenarGrid
-                            (miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
+                        llenarGrid(miDatagrid, int.Parse(fmr_PantallaInicio.UsuarioActual));
                         return true;
                     }
                     return false;
@@ -473,6 +460,7 @@ namespace FilePilot1
                     MessageBox.Show("Error al eliminar documento: " + ex.Message);
                     return false;
                 }
+
                 finally
                 {
                     conexion.CerrarConexion();
@@ -950,7 +938,7 @@ namespace FilePilot1
                 int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;//obtine las cordenadas de  donde se dio clic y con vase a esas cordenadas obtiene la fila a la que le dio clic
                 if (posicion > -1)
                 {
-                    menu.Items.Add("Abrir").Name = "Abrir" + posicion;
+                    menu.Items.Add("Movimientos").Name = "Movimientos" + posicion;
                     menu.Items.Add("Modificar").Name = "Modificar" + posicion;
                     menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
                 }
@@ -1026,7 +1014,7 @@ namespace FilePilot1
                     try
                     {
                         int id = Convert.ToInt32(miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
-                        eliminar(id);
+                        eliminarAdmin(id);
                     }
                     catch (Exception ex)
                     {
@@ -1040,7 +1028,7 @@ namespace FilePilot1
 
             }
 
-            private bool eliminar(int id)
+            private bool eliminarAdmin(int id)
             {
                 try
                 {
@@ -1054,6 +1042,11 @@ namespace FilePilot1
                     SqlCommand com2 = new SqlCommand("DELETE FROM Categoria WHERE idUsuario = @idUsuario", conexion.AbrirConexion());
                     com2.Parameters.AddWithValue("@idUsuario", id);
                     com2.ExecuteNonQuery();
+                    conexion.CerrarConexion();
+
+                    SqlCommand com3 = new SqlCommand("DELETE FROM Respaldo WHERE usuarioResponsable = @idUsuario", conexion.AbrirConexion());
+                    com3.Parameters.AddWithValue("@idUsuario", id);
+                    com3.ExecuteNonQuery();
                     conexion.CerrarConexion();
 
                     // Eliminar usuario

@@ -51,5 +51,12 @@ namespace FilePilot1
         {
             // Aquí puedes agregar la lógica que desees ejecutar al hacer clic en el formulario.
         }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            frm_Admin admin = new frm_Admin();
+            admin.Show();
+            this.Hide();
+        }
     }
 }
