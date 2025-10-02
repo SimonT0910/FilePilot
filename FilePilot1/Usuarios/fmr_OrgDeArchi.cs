@@ -145,7 +145,46 @@ namespace FilePilot1
 
         private void fmr_OrgDeArchi_Load(object sender, EventArgs e)
         {
-            ClsTablas.Documento docu = new ClsTablas.Documento();
+            try
+            {
+                if (!string.IsNullOrEmpty(fmr_PantallaInicio.UsuarioActual) &&
+                    int.TryParse(fmr_PantallaInicio.UsuarioActual, out int usuarioId))
+                {
+                    ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
+                    DataTable dt = respaldo.obtenerRespaldo(usuarioId);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        bool tieneRespaldoReciente = false;
+
+                        foreach (DataRow fila in dt.Rows)
+                        {
+                            DateTime fechaRespaldo = Convert.ToDateTime(fila["fecha"]);
+                            string tipoRespaldo = fila["tipo"].ToString();
+
+                            if (fechaRespaldo >= DateTime.Now.AddDays(-3) && tipoRespaldo == "Automático")
+                            {
+                                tieneRespaldoReciente = true;
+                                break;
+                            }
+                        }
+
+                        if (tieneRespaldoReciente)
+                        {
+                            MessageBox.Show(
+                                "📁 Documentos respaldados\n\nEl administrador ha realizado respaldos automáticos de tus documentos. Puedes verificarlos en 'Mirar Respaldos'.",
+                                "Respaldos Disponibles",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // No mostrar error al usuario
+            }
+        ClsTablas.Documento docu = new ClsTablas.Documento();
             int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
             txt_total.Text = total.ToString();
         }

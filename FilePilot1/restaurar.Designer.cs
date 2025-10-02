@@ -200,6 +200,7 @@
             this.Controls.Add(this.label1);
             this.Name = "restaurar";
             this.Text = "restaurar";
+            this.Load += new System.EventHandler(this.restaurar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminRestaura)).EndInit();

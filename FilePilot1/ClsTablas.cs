@@ -561,7 +561,7 @@ namespace FilePilot1
                     micombo.Items.Clear();
                     micombo.Enabled = true;
 
-                   cConexion conexion = new cConexion(); // ✅ Usamos tu clase personalizada
+                    cConexion conexion = new cConexion(); // ✅ Usamos tu clase personalizada
 
                     SqlCommand cmd = new SqlCommand(
                         "SELECT nombre FROM Categoria WHERE idUsuario = @idUsuario ORDER BY nombre",
@@ -841,7 +841,7 @@ namespace FilePilot1
 
                     if (filas > 0)
                     {
-                        return "Documento restauradoexitosamente al sistema";
+                        return "Documento restaurado exitosamente al sistema";
                     }
                     else
                     {
@@ -992,10 +992,10 @@ namespace FilePilot1
                         int id = Convert.ToInt32(miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
 
                         Frm_modificarUsuario modificar = new Frm_modificarUsuario(id, miDatagrid);
-                            modificar.Show();
+                        modificar.Show();
 
 
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -1135,7 +1135,7 @@ namespace FilePilot1
 
                 }
 
-                
+
             }
 
             public bool ValidarAdministrador(string usuario, string contrasena)
@@ -1166,6 +1166,172 @@ namespace FilePilot1
                     conexion.CerrarConexion();
                 }
             }
+
+            public string crearRespaldoAdmin(int idDocumento, int idAdministrador)
+            {
+                try
+                {
+                    string queryInfo = @"SELECT d.nombre, d.tipo, d.categoria, d.rutaArchivo, d.usuarioPropietario 
+                           FROM Documento d WHERE d.idDocumento = @Documento";
+
+                    cmd = new SqlCommand(queryInfo, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@Documento", idDocumento);
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count == 0)
+                        return "Error: No se pudo leer el documento";
+
+                    string nombreArchivo = dt.Rows[0]["nombre"].ToString();
+                    string tipoArchivo = dt.Rows[0]["tipo"]?.ToString() ?? "";
+                    string categoria = dt.Rows[0]["categoria"]?.ToString() ?? "";
+                    string rutaArchivo = dt.Rows[0]["rutaArchivo"].ToString();
+                    int usuarioPropietario = Convert.ToInt32(dt.Rows[0]["usuarioPropietario"]);
+
+                    conexion.CerrarConexion();
+
+                    if (!File.Exists(rutaArchivo))
+                        return "Error: El archivo no existe";
+
+                    byte[] contenido = File.ReadAllBytes(rutaArchivo);
+
+                    string queryInsert = @"INSERT INTO Respaldo (fecha, tipo, nombreArchivo, tipoArchivo, contenido, categoria, usuarioResponsable, idDocumentoOriginal) 
+                              VALUES(GETDATE(), @tipo, @nombreArchivo, @tipoArchivo, @contenido, @categoria, @usuarioResponsable, @idDocumento)";
+
+                    cmd = new SqlCommand(queryInsert, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@tipo", "Automático");
+                    cmd.Parameters.AddWithValue("@nombreArchivo", nombreArchivo);
+                    cmd.Parameters.AddWithValue("@tipoArchivo", tipoArchivo);
+                    cmd.Parameters.AddWithValue("@contenido", contenido);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+                    cmd.Parameters.AddWithValue("@usuarioResponsable", usuarioPropietario);
+                    cmd.Parameters.AddWithValue("@idDocumento", idDocumento);
+
+                    cmd.ExecuteNonQuery();
+
+                    return "Respaldo creado exitosamente";
+                }
+                catch (Exception ex)
+                {
+                    return "Error al crear respaldo: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public string respaldarTodo(int idAdministrador)
+            {
+                SqlDataReader reader = null;
+
+                try
+                {
+                    string queryDocumentos = @"SELECT d.idDocumento FROM Documento d 
+                                 LEFT JOIN Respaldo r ON d.idDocumento = r.idDocumentoOriginal 
+                                 WHERE r.idRespaldo IS NULL";
+
+                    cmd = new SqlCommand(queryDocumentos, conexion.AbrirConexion());
+                    reader = cmd.ExecuteReader();
+
+                    List<int> idsDocumentos = new List<int>();
+                    while (reader.Read())
+                    {
+                        idsDocumentos.Add(reader.GetInt32(0));
+                    }
+                    reader.Close();
+                    conexion.CerrarConexion();
+
+                    if (idsDocumentos.Count == 0)
+                        return "No hay documentos pendientes de respaldo";
+
+                    int exitosos = 0;
+                    int fallidos = 0;
+                    List<string> errores = new List<string>();
+
+                    foreach (int idDocumento in idsDocumentos)
+                    {
+                        string resultado = crearRespaldoAdmin(idDocumento, idAdministrador);
+
+                        if (resultado.Contains("exitosamente"))
+                            exitosos++;
+                        else
+                        {
+                            fallidos++;
+                            errores.Add($"Documento {idDocumento}: {resultado}");
+                        }
+                    }
+
+                    string mensaje = $"Respaldos completados: {exitosos} exitosos, {fallidos} fallidos";
+                    if (errores.Count > 0)
+                        mensaje += $"\n\nErrores:\n{string.Join("\n", errores.Take(5))}";
+
+                    return mensaje;
+                }
+                catch (Exception ex)
+                {
+                    return "Error al respaldar todos los documentos: " + ex.Message;
+                }
+                finally
+                {
+                    reader?.Close();
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public void sinRespaldosAdmin(DataGridView midatagrid)
+            {
+                try
+                {
+                    string query = @"SELECT d.idDocumento, d.fechaSubida, d.nombre, u.nombre as nombreUsuario FROM Documento d, Usuario u WHERE d.usuarioPropietario = u.idUsuario AND d.idDocumento NOT IN (SELECT idDocumentoOriginal FROM Respaldo WHERE idDocumentoOriginal IS NOT NULL)ORDER BY d.nombre;";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+                    midatagrid.Rows.Clear();
+
+                    foreach (DataRow fila in dt.Rows)
+                    {
+                        int nueva = midatagrid.Rows.Add();
+
+                        for (int i = 0; i < midatagrid.Columns.Count; i++)
+                        {
+                            string titulo = midatagrid.Columns[i].HeaderText;
+                            string nombreColumna = midatagrid.Columns[i].Name;
+
+                            //Asignar valores a las columnas que existan
+                            if ((titulo.Equals("Seleccion", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Seleccion", StringComparison.OrdinalIgnoreCase)) && midatagrid.Columns[i] is DataGridViewCheckBoxColumn)
+                                midatagrid.Rows[nueva].Cells[i].Value = false;
+
+                            else if ((titulo.Equals("idDocumento", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("idDocumento", StringComparison.OrdinalIgnoreCase)))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["idDocumento"];
+
+                            else if (titulo.Equals("Fecha", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Fecha", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = Convert.ToDateTime(fila["fechaSubida"]).ToShortDateString();
+
+                            else if (titulo.Equals("Nombre", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("documento", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["Nombre"].ToString();
+
+                            else if (titulo.Equals("idUsuario", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("nombre", StringComparison.OrdinalIgnoreCase))
+                                midatagrid.Rows[nueva].Cells[i].Value = fila["nombreUsuario"].ToString();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al llenar el grid de eliminación: " + ex.Message);
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
         }
     }
-}
+}   
+

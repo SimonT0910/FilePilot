@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.dgvRespaldoGeneral = new System.Windows.Forms.DataGridView();
-            this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRegreso = new System.Windows.Forms.Button();
             this.btnRespaldar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
+            this.seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRespaldoGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
@@ -51,9 +53,11 @@
             this.dgvRespaldoGeneral.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRespaldoGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRespaldoGeneral.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.seleccion,
             this.idDocumento,
-            this.Nombre,
-            this.Fecha});
+            this.Fecha,
+            this.documento,
+            this.nombre});
             this.dgvRespaldoGeneral.Location = new System.Drawing.Point(17, 124);
             this.dgvRespaldoGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRespaldoGeneral.Name = "dgvRespaldoGeneral";
@@ -62,31 +66,6 @@
             this.dgvRespaldoGeneral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRespaldoGeneral.Size = new System.Drawing.Size(766, 383);
             this.dgvRespaldoGeneral.TabIndex = 54;
-            // 
-            // idDocumento
-            // 
-            this.idDocumento.HeaderText = "ID";
-            this.idDocumento.MinimumWidth = 6;
-            this.idDocumento.Name = "idDocumento";
-            this.idDocumento.ReadOnly = true;
-            this.idDocumento.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.FillWeight = 120F;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.FillWeight = 60F;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.MinimumWidth = 6;
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
             // 
             // btnRegreso
             // 
@@ -110,6 +89,7 @@
             this.btnRespaldar.TabIndex = 50;
             this.btnRespaldar.Text = "Respaldar";
             this.btnRespaldar.UseVisualStyleBackColor = true;
+            this.btnRespaldar.Click += new System.EventHandler(this.btnRespaldar_Click);
             // 
             // label1
             // 
@@ -160,6 +140,44 @@
             this.pcb_subir.TabIndex = 49;
             this.pcb_subir.TabStop = false;
             // 
+            // seleccion
+            // 
+            this.seleccion.HeaderText = "seleccion";
+            this.seleccion.MinimumWidth = 6;
+            this.seleccion.Name = "seleccion";
+            this.seleccion.ReadOnly = true;
+            this.seleccion.Visible = false;
+            // 
+            // idDocumento
+            // 
+            this.idDocumento.HeaderText = "ID";
+            this.idDocumento.MinimumWidth = 6;
+            this.idDocumento.Name = "idDocumento";
+            this.idDocumento.ReadOnly = true;
+            this.idDocumento.Visible = false;
+            // 
+            // Fecha
+            // 
+            this.Fecha.FillWeight = 60F;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // documento
+            // 
+            this.documento.HeaderText = "Nombre del documento";
+            this.documento.MinimumWidth = 6;
+            this.documento.Name = "documento";
+            this.documento.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre del usuario";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
             // respaldoGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -175,6 +193,7 @@
             this.Controls.Add(this.label1);
             this.Name = "respaldoGeneral";
             this.Text = "respaldoGeneral";
+            this.Load += new System.EventHandler(this.respaldoGeneral_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRespaldoGeneral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
@@ -193,8 +212,10 @@
         private System.Windows.Forms.Button btnRespaldar;
         private System.Windows.Forms.PictureBox pcb_subir;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
     }
 }

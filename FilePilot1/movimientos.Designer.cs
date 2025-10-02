@@ -33,13 +33,14 @@
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -98,7 +99,8 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.usuario,
+            this.nombre,
+            this.correo,
             this.tipo,
             this.fecha});
             this.dataGridView1.Location = new System.Drawing.Point(144, 190);
@@ -107,27 +109,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(809, 278);
             this.dataGridView1.TabIndex = 28;
-            // 
-            // usuario
-            // 
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.MinimumWidth = 6;
-            this.usuario.Name = "usuario";
-            this.usuario.Width = 200;
-            // 
-            // tipo
-            // 
-            this.tipo.HeaderText = "Tipo de movimiento";
-            this.tipo.MinimumWidth = 6;
-            this.tipo.Name = "tipo";
-            this.tipo.Width = 200;
-            // 
-            // fecha
-            // 
-            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
-            this.fecha.MinimumWidth = 6;
-            this.fecha.Name = "fecha";
-            this.fecha.Width = 200;
             // 
             // txt_busqueda
             // 
@@ -169,6 +150,34 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Filtrar:";
             // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre de usuario";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 125;
+            // 
+            // correo
+            // 
+            this.correo.HeaderText = "Correo";
+            this.correo.MinimumWidth = 6;
+            this.correo.Name = "correo";
+            this.correo.Width = 125;
+            // 
+            // tipo
+            // 
+            this.tipo.HeaderText = "Tipo de movimiento";
+            this.tipo.MinimumWidth = 6;
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 200;
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.Width = 200;
+            // 
             // movimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -202,12 +211,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pcb_subir;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.TextBox txt_busqueda;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
     }
 }
