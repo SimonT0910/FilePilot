@@ -79,9 +79,10 @@ namespace FilePilot1
 
                     MessageBox.Show(resultado, "Resultado del Respaldo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    btnRespaldar.Enabled = true;
-                    btnRespaldar.Text = "Respaldar Todo";
                     CargarDocumentosAdmin();
+
+                    btnRespaldar.Enabled = true;
+                    btnRespaldar.Text = "Respaldado Todo";
                 }
             }
             catch (Exception ex)

@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using static FilePilot1.ClsTablas;
@@ -31,7 +33,7 @@ namespace FilePilot1
 
         }
 
-
+        private static HashSet<string> usuariosConMensajeMostrado = new HashSet<string>();
 
         private void button5_Click(object sender, EventArgs e) { }
         private void button2_Click(object sender, EventArgs e) { }
@@ -147,35 +149,44 @@ namespace FilePilot1
         {
             try
             {
-                if (!string.IsNullOrEmpty(fmr_PantallaInicio.UsuarioActual) &&
-                    int.TryParse(fmr_PantallaInicio.UsuarioActual, out int usuarioId))
+                string usuarioActual = fmr_PantallaInicio.UsuarioActual;
+
+                // Verificar si YA se mostró el mensaje para este usuario
+                if (!usuariosConMensajeMostrado.Contains(usuarioActual))
                 {
-                    ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
-                    DataTable dt = respaldo.obtenerRespaldo(usuarioId);
-
-                    if (dt.Rows.Count > 0)
+                    if (!string.IsNullOrEmpty(usuarioActual) &&
+                        int.TryParse(usuarioActual, out int usuarioId))
                     {
-                        bool tieneRespaldoReciente = false;
+                        ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
+                        DataTable dt = respaldo.obtenerRespaldo(usuarioId);
 
-                        foreach (DataRow fila in dt.Rows)
+                        if (dt.Rows.Count > 0)
                         {
-                            DateTime fechaRespaldo = Convert.ToDateTime(fila["fecha"]);
-                            string tipoRespaldo = fila["tipo"].ToString();
+                            bool tieneRespaldoReciente = false;
 
-                            if (fechaRespaldo >= DateTime.Now.AddDays(-3) && tipoRespaldo == "Automático")
+                            foreach (DataRow fila in dt.Rows)
                             {
-                                tieneRespaldoReciente = true;
-                                break;
-                            }
-                        }
+                                DateTime fechaRespaldo = Convert.ToDateTime(fila["fecha"]);
+                                string tipoRespaldo = fila["tipo"].ToString();
 
-                        if (tieneRespaldoReciente)
-                        {
-                            MessageBox.Show(
-                                "📁 Documentos respaldados\n\nEl administrador ha realizado respaldos automáticos de tus documentos. Puedes verificarlos en 'Mirar Respaldos'.",
-                                "Respaldos Disponibles",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                                if (fechaRespaldo >= DateTime.Now.AddDays(-3) && tipoRespaldo == "Automático")
+                                {
+                                    tieneRespaldoReciente = true;
+                                    break;
+                                }
+                            }
+
+                            if (tieneRespaldoReciente)
+                            {
+                                MessageBox.Show(
+                                    "📁 Documentos respaldados\n\nEl administrador ha realizado respaldos automáticos de tus documentos. Puedes verificarlos en 'Mirar Respaldos'.",
+                                    "Respaldos Disponibles",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                                // Marcar que YA se mostró el mensaje para este usuario
+                                usuariosConMensajeMostrado.Add(usuarioActual);
+                            }
                         }
                     }
                 }
@@ -184,10 +195,12 @@ namespace FilePilot1
             {
                 // No mostrar error al usuario
             }
-        ClsTablas.Documento docu = new ClsTablas.Documento();
+
+            ClsTablas.Documento docu = new ClsTablas.Documento();
             int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
             txt_total.Text = total.ToString();
         }
+
 
         private void txt_total_TextChanged(object sender, EventArgs e)
         {

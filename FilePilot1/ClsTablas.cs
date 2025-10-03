@@ -1281,11 +1281,154 @@ namespace FilePilot1
                 }
             }
 
+            public DataTable obtenerRespaldos(string texto = "")
+            {
+                try
+                {
+                    string query = @"SELECT r.idRespaldo, r.nombreArchivo, r.categoria, r.fecha, r.tipo, 
+                                u.nombre AS usuarioResponsable 
+                         FROM Respaldo r 
+                         INNER JOIN Usuario u ON r.usuarioResponsable = u.idUsuario";
+
+                    // Implementación de búsqueda
+                    if (!string.IsNullOrEmpty(texto))
+                    {
+                        query += @" WHERE (r.nombreArchivo LIKE @busqueda OR 
+                              r.categoria LIKE @busqueda OR 
+                              u.nombre LIKE @busqueda OR
+                              r.tipo LIKE @busqueda OR
+                              CONVERT(VARCHAR, r.fecha, 103) LIKE @busqueda)";
+                    }
+
+                    query += " ORDER BY r.fecha DESC";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+
+                    if (!string.IsNullOrEmpty(texto))
+                    {
+                        cmd.Parameters.AddWithValue("@busqueda", "%" + texto + "%");
+                    }
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener los respaldos: " + ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public string restaurar(int idRespaldo, int idAdministrador)
+            {
+                try
+                {
+                    string queryInfo = @"SELECT r.nombreArchivo, r. tipoArchivo, r.contenido, r.categoria, r.usuarioResponsable FROM Respaldo r WHERE r.idRespaldo = @idRespaldo";
+
+                    cmd = new SqlCommand(queryInfo, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (!reader.Read())
+                    {
+                        return "Error: No se pudo leer la informacion del respaldo";
+                    }
+
+                    string nombreArchivo = reader["nombreArchivo"].ToString();
+                    string tipoArchivo = reader["tipoArchivo"].ToString();
+                    byte[] contenido = (byte[])reader["contenido"];
+                    string categoria = reader["categoria"].ToString();
+                    int usuarioPropietario = Convert.ToInt32(reader["usuarioResponsable"]);
+
+                    reader.Close();
+                    conexion.CerrarConexion();
+
+                    string carpeta = Path.Combine(Application.StartupPath, "ArchivosSubidos");
+                    if (!Directory.Exists(carpeta))
+                    {
+                        Directory.CreateDirectory(carpeta);
+                    }
+
+                    string rutaArchivo = Path.Combine(carpeta, nombreArchivo);
+                    int contador = 1;
+                    while (File.Exists(rutaArchivo))
+                    {
+                        string nombre = Path.GetFileNameWithoutExtension(nombreArchivo);
+                        string extension = Path.GetExtension(nombreArchivo);
+                        rutaArchivo = Path.Combine(carpeta, $"{nombre}({contador}){extension}");
+                        contador++;
+                    }
+
+                    File.WriteAllBytes(rutaArchivo, contenido);
+
+                    string queryInsert = @"INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario, fechaSubida) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario, GETDATE())";
+
+                    cmd = new SqlCommand(queryInsert, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@nombre", nombreArchivo);
+                    cmd.Parameters.AddWithValue("@tipo", tipoArchivo);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+                    cmd.Parameters.AddWithValue("@rutaArchivo", rutaArchivo);
+                    cmd.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+
+                    int filas = cmd.ExecuteNonQuery();
+
+                    if (filas > 0)
+                    {
+                        return "Documento restaurado exitosamente al usuario";
+                    }
+                    else
+                    {
+                        return "Error: No se pudo insertar el documento en la base de datos";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "Error al restaurar el documento: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            public bool eliminarRespaldosAdmin(int idRespaldo)
+            {
+                try
+                {
+                    string queryEliminar = @"DELETE FROM Respaldo WHERE idRespaldo = @idRespaldo";
+
+                    cmd = new SqlCommand(queryEliminar, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idRespaldo", idRespaldo);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    return filas > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el respaldo: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
             public void sinRespaldosAdmin(DataGridView midatagrid)
             {
                 try
                 {
-                    string query = @"SELECT d.idDocumento, d.fechaSubida, d.nombre, u.nombre as nombreUsuario FROM Documento d, Usuario u WHERE d.usuarioPropietario = u.idUsuario AND d.idDocumento NOT IN (SELECT idDocumentoOriginal FROM Respaldo WHERE idDocumentoOriginal IS NOT NULL)ORDER BY d.nombre;";
+                    string query = @"SELECT d.idDocumento, d.fechaSubida, d.nombre, u.nombre as nombreUsuario 
+                        FROM Documento d, Usuario u 
+                        WHERE d.usuarioPropietario = u.idUsuario 
+                        AND d.idDocumento NOT IN (SELECT idDocumentoOriginal FROM Respaldo WHERE idDocumentoOriginal IS NOT NULL)
+                        ORDER BY d.nombre;";
 
                     cmd = new SqlCommand(query, conexion.AbrirConexion());
 
@@ -1304,7 +1447,6 @@ namespace FilePilot1
                             string titulo = midatagrid.Columns[i].HeaderText;
                             string nombreColumna = midatagrid.Columns[i].Name;
 
-                            //Asignar valores a las columnas que existan
                             if ((titulo.Equals("Seleccion", StringComparison.OrdinalIgnoreCase) || nombreColumna.Equals("Seleccion", StringComparison.OrdinalIgnoreCase)) && midatagrid.Columns[i] is DataGridViewCheckBoxColumn)
                                 midatagrid.Rows[nueva].Cells[i].Value = false;
 

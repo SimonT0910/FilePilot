@@ -33,14 +33,17 @@
             this.btnRestaurar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dgvAdminRestaura = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idRespaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idRespaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioPropietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBusquedaAdmin = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminRestaura)).BeginInit();
@@ -81,6 +84,7 @@
             this.btnRestaurar.TabIndex = 45;
             this.btnRestaurar.Text = "Restaurar";
             this.btnRestaurar.UseVisualStyleBackColor = true;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
             // pictureBox2
             // 
@@ -101,42 +105,16 @@
             this.Seleccion,
             this.idRespaldo,
             this.Nombre,
-            this.Fecha});
+            this.categoria,
+            this.Fecha,
+            this.usuarioPropietario,
+            this.tipo});
             this.dgvAdminRestaura.Location = new System.Drawing.Point(27, 180);
             this.dgvAdminRestaura.Name = "dgvAdminRestaura";
             this.dgvAdminRestaura.RowHeadersWidth = 51;
             this.dgvAdminRestaura.RowTemplate.Height = 24;
             this.dgvAdminRestaura.Size = new System.Drawing.Size(758, 351);
             this.dgvAdminRestaura.TabIndex = 43;
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "Seleccion";
-            this.Seleccion.MinimumWidth = 6;
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 80;
-            // 
-            // idRespaldo
-            // 
-            this.idRespaldo.HeaderText = "ID";
-            this.idRespaldo.MinimumWidth = 6;
-            this.idRespaldo.Name = "idRespaldo";
-            this.idRespaldo.Visible = false;
-            this.idRespaldo.Width = 125;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre del archivo";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 200;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha del respaldo";
-            this.Fecha.MinimumWidth = 6;
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 200;
             // 
             // pcb_subir
             // 
@@ -170,18 +148,70 @@
             this.label3.Location = new System.Drawing.Point(299, 109);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 38);
+            this.label3.Size = new System.Drawing.Size(130, 38);
             this.label3.TabIndex = 49;
-            this.label3.Text = "Filtrar:";
+            this.label3.Text = "Buscar:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // comboBox1
+            // Seleccion
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(431, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(354, 37);
-            this.comboBox1.TabIndex = 48;
+            this.Seleccion.HeaderText = "Seleccion";
+            this.Seleccion.MinimumWidth = 6;
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 80;
+            // 
+            // idRespaldo
+            // 
+            this.idRespaldo.HeaderText = "ID";
+            this.idRespaldo.MinimumWidth = 6;
+            this.idRespaldo.Name = "idRespaldo";
+            this.idRespaldo.Visible = false;
+            this.idRespaldo.Width = 125;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre del archivo";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 200;
+            // 
+            // categoria
+            // 
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.MinimumWidth = 6;
+            this.categoria.Name = "categoria";
+            this.categoria.Width = 125;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha del respaldo";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 200;
+            // 
+            // usuarioPropietario
+            // 
+            this.usuarioPropietario.HeaderText = "Usuario propietario";
+            this.usuarioPropietario.MinimumWidth = 6;
+            this.usuarioPropietario.Name = "usuarioPropietario";
+            this.usuarioPropietario.Width = 125;
+            // 
+            // tipo
+            // 
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.MinimumWidth = 6;
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 125;
+            // 
+            // txtBusquedaAdmin
+            // 
+            this.txtBusquedaAdmin.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaAdmin.Location = new System.Drawing.Point(437, 114);
+            this.txtBusquedaAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusquedaAdmin.Name = "txtBusquedaAdmin";
+            this.txtBusquedaAdmin.Size = new System.Drawing.Size(359, 38);
+            this.txtBusquedaAdmin.TabIndex = 50;
+            this.txtBusquedaAdmin.TextChanged += new System.EventHandler(this.txtBusquedaAdmin_TextChanged);
             // 
             // restaurar
             // 
@@ -189,8 +219,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1101, 543);
+            this.Controls.Add(this.txtBusquedaAdmin);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ptb_inicio);
             this.Controls.Add(this.btn_inico);
             this.Controls.Add(this.btnRestaurar);
@@ -217,13 +247,16 @@
         private System.Windows.Forms.Button btnRestaurar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView dgvAdminRestaura;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idRespaldo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.PictureBox pcb_subir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idRespaldo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuarioPropietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.TextBox txtBusquedaAdmin;
     }
 }
