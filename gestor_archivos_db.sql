@@ -71,6 +71,14 @@ CREATE TABLE Categoria (
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
+CREATE TABLE Movimientos (
+idMovimiento INT PRIMARY KEY IDENTITY(1,1),
+fechaMovimiento DATETIME DEFAULT GETDATE(),
+tipoMovimiento VARCHAR(50) NOT NULL,
+idUsuario INT NOT NULL, 
+FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+);
+
 
 select * from Respaldo;
 drop table Usuario;
