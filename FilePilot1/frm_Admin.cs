@@ -56,7 +56,33 @@ namespace FilePilot1
 
         private void frm_Admin_Load(object sender, EventArgs e)
         {
+            CargarMovimientos();
+        }
 
+        private void CargarMovimientos()
+        {
+            try
+            {
+                ClsTablas.Movimientos movi = new ClsTablas.Movimientos();
+                DataTable dt = movi.obtenerUltimos();
+
+                dvgAdmin.Rows.Clear();
+
+                foreach(DataRow fila in dt.Rows)
+                {
+                    int nueva = dvgAdmin.Rows.Add();
+
+                    dvgAdmin.Rows[nueva].Cells["fecha"].Value = Convert.ToDateTime(fila["fechaMovimiento"]).ToString("dd/MM/yyyy HH:mm");
+
+                    dvgAdmin.Rows[nueva].Cells["usuario"].Value = fila["usuario"].ToString();
+
+                    dvgAdmin.Rows[nueva].Cells["tipo"].Value = fila["tipoMovimiento"].ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                //No mostrar error
+            }
         }
 
         private void btnCrear_Click(object sender, EventArgs e)

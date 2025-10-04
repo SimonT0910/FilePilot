@@ -50,6 +50,8 @@ namespace FilePilot1
                 fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi();
                 fmrOrg.Show();
                 this.Hide();
+                ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                mov.registrar(int.Parse(UsuarioActual), "Inicio de Sesión");
             }
             else
             {
@@ -75,6 +77,15 @@ namespace FilePilot1
         }
 
         private void fmr_PantallaInicio_Load(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Day == 15 || DateTime.Now.Day == 30)
+            {
+                ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                mov.limpiar(15);
+            }
+        }
+
+        private void Lbl_orga_Click(object sender, EventArgs e)
         {
 
         }

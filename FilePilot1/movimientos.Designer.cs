@@ -32,18 +32,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.ptb_inicio = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dvgMovimientos = new System.Windows.Forms.DataGridView();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbFiltrado = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMovimientos)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_inico
@@ -95,20 +94,19 @@
             this.ptb_inicio.TabIndex = 9;
             this.ptb_inicio.TabStop = false;
             // 
-            // dataGridView1
+            // dvgMovimientos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dvgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fecha,
             this.nombre,
-            this.correo,
-            this.tipo,
-            this.fecha});
-            this.dataGridView1.Location = new System.Drawing.Point(144, 190);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(809, 278);
-            this.dataGridView1.TabIndex = 28;
+            this.tipo});
+            this.dvgMovimientos.Location = new System.Drawing.Point(144, 190);
+            this.dvgMovimientos.Name = "dvgMovimientos";
+            this.dvgMovimientos.RowHeadersWidth = 51;
+            this.dvgMovimientos.RowTemplate.Height = 24;
+            this.dvgMovimientos.Size = new System.Drawing.Size(809, 278);
+            this.dvgMovimientos.TabIndex = 28;
             // 
             // txt_busqueda
             // 
@@ -118,6 +116,7 @@
             this.txt_busqueda.Name = "txt_busqueda";
             this.txt_busqueda.Size = new System.Drawing.Size(354, 34);
             this.txt_busqueda.TabIndex = 34;
+            this.txt_busqueda.TextChanged += new System.EventHandler(this.txt_busqueda_TextChanged);
             // 
             // label2
             // 
@@ -130,14 +129,16 @@
             this.label2.TabIndex = 33;
             this.label2.Text = "Buscar:";
             // 
-            // comboBox1
+            // cmbFiltrado
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(699, 119);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(354, 37);
-            this.comboBox1.TabIndex = 35;
+            this.cmbFiltrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.cmbFiltrado.FormattingEnabled = true;
+            this.cmbFiltrado.Location = new System.Drawing.Point(699, 119);
+            this.cmbFiltrado.Name = "cmbFiltrado";
+            this.cmbFiltrado.Size = new System.Drawing.Size(354, 37);
+            this.cmbFiltrado.TabIndex = 35;
+            this.cmbFiltrado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltrado_SelectedIndexChanged);
+            this.cmbFiltrado.TextChanged += new System.EventHandler(this.cmbFiltrado_TextChanged);
             // 
             // label3
             // 
@@ -150,6 +151,13 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Filtrar:";
             // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.Width = 200;
+            // 
             // nombre
             // 
             this.nombre.HeaderText = "Nombre de usuario";
@@ -157,26 +165,12 @@
             this.nombre.Name = "nombre";
             this.nombre.Width = 125;
             // 
-            // correo
-            // 
-            this.correo.HeaderText = "Correo";
-            this.correo.MinimumWidth = 6;
-            this.correo.Name = "correo";
-            this.correo.Width = 125;
-            // 
             // tipo
             // 
             this.tipo.HeaderText = "Tipo de movimiento";
             this.tipo.MinimumWidth = 6;
             this.tipo.Name = "tipo";
-            this.tipo.Width = 200;
-            // 
-            // fecha
-            // 
-            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
-            this.fecha.MinimumWidth = 6;
-            this.fecha.Name = "fecha";
-            this.fecha.Width = 200;
+            this.tipo.Width = 300;
             // 
             // movimientos
             // 
@@ -185,10 +179,10 @@
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1094, 547);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbFiltrado);
             this.Controls.Add(this.txt_busqueda);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dvgMovimientos);
             this.Controls.Add(this.pcb_subir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ptb_inicio);
@@ -198,7 +192,7 @@
             this.Load += new System.EventHandler(this.movimientos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMovimientos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,14 +204,13 @@
         private System.Windows.Forms.Button btn_inico;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pcb_subir;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dvgMovimientos;
         private System.Windows.Forms.TextBox txt_busqueda;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbFiltrado;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
     }
 }

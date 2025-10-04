@@ -106,6 +106,9 @@ namespace FilePilot1
             MessageBox.Show(subir);
 
             FilePilot1.Forms.FormUtils.LimpiarCampos(this);
+
+            ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+            mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Subida de Documento");
         }
 
         private void txt_ruta_TextChanged(object sender, EventArgs e)

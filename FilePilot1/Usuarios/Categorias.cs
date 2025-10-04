@@ -305,6 +305,9 @@ namespace FilePilot1
             if (!string.IsNullOrEmpty(nombre))
             {
                 AgregarCategoria(nombre);
+
+                ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Creación de Categoría");
             }
         }
 
@@ -315,6 +318,9 @@ namespace FilePilot1
             if (!string.IsNullOrEmpty(nombre))
             {
                 EliminarCategoria(nombre);
+
+                ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Eliminación de Categoría");
             }
         }
 

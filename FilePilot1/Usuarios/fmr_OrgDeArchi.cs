@@ -41,6 +41,8 @@ namespace FilePilot1
             fmr_PantallaInicio pantallaInicio = new fmr_PantallaInicio();
             pantallaInicio.Show();
             this.Hide();
+            ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+            mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Cierre de Sesión");
         }
 
         private void btn__subir_docum_Click(object sender, EventArgs e)
@@ -159,7 +161,7 @@ namespace FilePilot1
 
                     if (dt.Rows.Count > 0)
                     {
-                        // Buscar el respaldo automático MÁS RECIENTE por ID (no por fecha)
+                        // Buscar el respaldo automático MÁS RECIENTE por ID 
                         int? ultimoIdRespaldo = null;
                         DateTime? ultimaFechaRespaldo = null;
 

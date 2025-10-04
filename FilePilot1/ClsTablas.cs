@@ -413,6 +413,9 @@ namespace FilePilot1
                                     ((fmr_OrgDeArchi)activeForm).refrescar();
                                 }
                             }
+
+                            ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                            mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Eliminación de Documento");
                         }
                     }
                     catch (Exception ex)
@@ -1474,6 +1477,119 @@ namespace FilePilot1
                 }
             }
         }
+
+        public class Movimientos
+        {
+            cConexion conexion = new cConexion();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            //Metodo para regirstrar movimientos
+            public void registrar(int idUsuario, string tipoMovimiento)
+            {
+                try
+                {
+                    string query = @"INSERT INTO Movimientos (tipoMovimiento, idUsuario) VALUES (@tipoMovimiento, @idUsuario)";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@tipoMovimiento", tipoMovimiento);
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar movimiento: " + ex.Message);
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            //Metodo para obtener movimientos con filtros
+            public DataTable Obtener(string usuarioFiltro = "", string tipoFiltro = "")
+            {
+                try
+                {
+                    string query = @"SELECT m.fechaMovimiento, m. tipoMovimiento, u.nombre AS usuario FROM Movimientos m INNER JOIN Usuario u ON m.idUsuario = u.idUsuario WHERE 1=1";
+
+                    if (!string.IsNullOrEmpty(usuarioFiltro))
+                        query += " AND u.nombre LIKE @usuarioFiltro";
+
+                    if (!string.IsNullOrEmpty(tipoFiltro) && tipoFiltro != "Todos")
+                        query += " AND m.tipoMovimiento = @tipoFiltro";
+
+                    query += " ORDER BY m.fechaMovimiento DESC";
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+
+                    if (!string.IsNullOrEmpty(usuarioFiltro))
+                        cmd.Parameters.AddWithValue("@usuarioFiltro", "%" + usuarioFiltro + "%");
+
+                    if (!string.IsNullOrEmpty(tipoFiltro) && tipoFiltro != "Todos")
+                        cmd.Parameters.AddWithValue("@tipoFiltro", tipoFiltro);
+
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener movimientos: " + ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            //Metodo para obtener los ultimos 10 movimientos
+            public DataTable obtenerUltimos()
+            {
+                try
+                {
+                    string query = @"SELECT TOP 10 m.fechaMovimiento, m.tipoMovimiento, u.nombre AS usuario FROM Movimientos m INNER JOIN Usuario u ON m.idUsuario = u.idUsuario ORDER BY m.fechaMovimiento DESC";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener últimos movimientos: " + ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            //Metodo para limpiar movimientos antiguos
+            public void limpiar(int dias = 15)
+            {
+                try
+                {
+                    string query = @"DELETE FROM Movimientos WHERE fechaMovimiento < DATEADD(day, -@dias, GETDATE())";
+
+                    cmd = new SqlCommand(query, conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@dias", dias);
+
+                    int filas = cmd.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    //No mostrar error
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+        }
     }
 }   
-
