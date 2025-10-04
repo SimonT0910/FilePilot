@@ -33,8 +33,6 @@ namespace FilePilot1
 
         }
 
-        private static HashSet<string> usuariosConMensajeMostrado = new HashSet<string>();
-
         private void button5_Click(object sender, EventArgs e) { }
         private void button2_Click(object sender, EventArgs e) { }
         private void pictureBox4_Click(object sender, EventArgs e) { }
@@ -145,38 +143,49 @@ namespace FilePilot1
 
         }
 
+        private static Dictionary<string, int> usuarioUltimoRespaldoId = new Dictionary<string, int>();
+
         private void fmr_OrgDeArchi_Load(object sender, EventArgs e)
         {
             try
             {
                 string usuarioActual = fmr_PantallaInicio.UsuarioActual;
 
-                // Verificar si YA se mostró el mensaje para este usuario
-                if (!usuariosConMensajeMostrado.Contains(usuarioActual))
+                if (!string.IsNullOrEmpty(usuarioActual) &&
+                    int.TryParse(usuarioActual, out int usuarioId))
                 {
-                    if (!string.IsNullOrEmpty(usuarioActual) &&
-                        int.TryParse(usuarioActual, out int usuarioId))
+                    ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
+                    DataTable dt = respaldo.obtenerRespaldo(usuarioId);
+
+                    if (dt.Rows.Count > 0)
                     {
-                        ClsTablas.Respaldo respaldo = new ClsTablas.Respaldo();
-                        DataTable dt = respaldo.obtenerRespaldo(usuarioId);
+                        // Buscar el respaldo automático MÁS RECIENTE por ID (no por fecha)
+                        int? ultimoIdRespaldo = null;
+                        DateTime? ultimaFechaRespaldo = null;
 
-                        if (dt.Rows.Count > 0)
+                        foreach (DataRow fila in dt.Rows)
                         {
-                            bool tieneRespaldoReciente = false;
+                            DateTime fechaRespaldo = Convert.ToDateTime(fila["fecha"]);
+                            string tipoRespaldo = fila["tipo"].ToString();
+                            int idRespaldo = Convert.ToInt32(fila["idRespaldo"]);
 
-                            foreach (DataRow fila in dt.Rows)
+                            if (tipoRespaldo == "Automático" &&
+                                fechaRespaldo >= DateTime.Now.AddDays(-3))
                             {
-                                DateTime fechaRespaldo = Convert.ToDateTime(fila["fecha"]);
-                                string tipoRespaldo = fila["tipo"].ToString();
-
-                                if (fechaRespaldo >= DateTime.Now.AddDays(-3) && tipoRespaldo == "Automático")
+                                // Siempre tomar el respaldo con ID más alto (más reciente)
+                                if (ultimoIdRespaldo == null || idRespaldo > ultimoIdRespaldo)
                                 {
-                                    tieneRespaldoReciente = true;
-                                    break;
+                                    ultimoIdRespaldo = idRespaldo;
+                                    ultimaFechaRespaldo = fechaRespaldo;
                                 }
                             }
+                        }
 
-                            if (tieneRespaldoReciente)
+                        if (ultimoIdRespaldo.HasValue)
+                        {
+                            // Verificar si este usuario ya vio ESTE respaldo específico (por ID)
+                            if (!usuarioUltimoRespaldoId.ContainsKey(usuarioActual) ||
+                                usuarioUltimoRespaldoId[usuarioActual] != ultimoIdRespaldo.Value)
                             {
                                 MessageBox.Show(
                                     "📁 Documentos respaldados\n\nEl administrador ha realizado respaldos automáticos de tus documentos. Puedes verificarlos en 'Mirar Respaldos'.",
@@ -184,8 +193,8 @@ namespace FilePilot1
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
 
-                                // Marcar que YA se mostró el mensaje para este usuario
-                                usuariosConMensajeMostrado.Add(usuarioActual);
+                                // Recordar que este usuario ya vio ESTE respaldo específico
+                                usuarioUltimoRespaldoId[usuarioActual] = ultimoIdRespaldo.Value;
                             }
                         }
                     }
