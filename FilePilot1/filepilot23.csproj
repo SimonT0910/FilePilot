@@ -48,28 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm_Admin.cs">
+    <Compile Include="Administrador\frm_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Admin.Designer.cs">
+    <Compile Include="Administrador\frm_Admin.Designer.cs">
       <DependentUpon>frm_Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="movimientos.cs">
+    <Compile Include="Administrador\movimientos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="movimientos.Designer.cs">
+    <Compile Include="Administrador\movimientos.Designer.cs">
       <DependentUpon>movimientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="respaldoGeneral.cs">
+    <Compile Include="Administrador\respaldoGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="respaldoGeneral.Designer.cs">
+    <Compile Include="Administrador\respaldoGeneral.Designer.cs">
       <DependentUpon>respaldoGeneral.cs</DependentUpon>
     </Compile>
-    <Compile Include="restaurar.cs">
+    <Compile Include="Administrador\restaurar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="restaurar.Designer.cs">
+    <Compile Include="Administrador\restaurar.Designer.cs">
       <DependentUpon>restaurar.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\buscar.cs">
@@ -111,28 +111,28 @@
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms.cs" />
-    <Compile Include="frmVerUs.cs">
+    <Compile Include="Administrador\frmVerUs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVerUs.Designer.cs">
+    <Compile Include="Administrador\frmVerUs.Designer.cs">
       <DependentUpon>frmVerUs.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_Administrador.cs">
+    <Compile Include="Administrador\frm_Administrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Administrador.Designer.cs">
+    <Compile Include="Administrador\frm_Administrador.Designer.cs">
       <DependentUpon>frm_Administrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_modificarUsuario.cs">
+    <Compile Include="Administrador\Frm_modificarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_modificarUsuario.Designer.cs">
+    <Compile Include="Administrador\Frm_modificarUsuario.Designer.cs">
       <DependentUpon>Frm_modificarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FtmRgsAdm.cs">
+    <Compile Include="Administrador\FtmRgsAdm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FtmRgsAdm.Designer.cs">
+    <Compile Include="Administrador\FtmRgsAdm.Designer.cs">
       <DependentUpon>FtmRgsAdm.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\mirarResplados.cs">
@@ -167,16 +167,16 @@
     <Compile Include="Usuarios\registroUsuario.Designer.cs">
       <DependentUpon>registroUsuario.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frm_Admin.resx">
+    <EmbeddedResource Include="Administrador\frm_Admin.resx">
       <DependentUpon>frm_Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="movimientos.resx">
+    <EmbeddedResource Include="Administrador\movimientos.resx">
       <DependentUpon>movimientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="respaldoGeneral.resx">
+    <EmbeddedResource Include="Administrador\respaldoGeneral.resx">
       <DependentUpon>respaldoGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="restaurar.resx">
+    <EmbeddedResource Include="Administrador\restaurar.resx">
       <DependentUpon>restaurar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\buscar.resx">
@@ -197,16 +197,16 @@
     <EmbeddedResource Include="Usuarios\fmr_Subir.resx">
       <DependentUpon>fmr_Subir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVerUs.resx">
+    <EmbeddedResource Include="Administrador\frmVerUs.resx">
       <DependentUpon>frmVerUs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Administrador.resx">
+    <EmbeddedResource Include="Administrador\frm_Administrador.resx">
       <DependentUpon>frm_Administrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_modificarUsuario.resx">
+    <EmbeddedResource Include="Administrador\Frm_modificarUsuario.resx">
       <DependentUpon>Frm_modificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FtmRgsAdm.resx">
+    <EmbeddedResource Include="Administrador\FtmRgsAdm.resx">
       <DependentUpon>FtmRgsAdm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\mirarResplados.resx">
