@@ -13,6 +13,8 @@ namespace FilePilot1
     public partial class movimientos : Form
     {
         private Forms resizer;
+
+        
         public movimientos()
         {
             InitializeComponent();
@@ -37,7 +39,19 @@ namespace FilePilot1
             cmbFiltrado.SelectedIndex = 0;
         }
 
-        private void CargarMovimientos(string usuarioFiltro = "", string tipoFiltro = "")
+        public string UsuarioSeleccionado
+        {
+            get => txt_busqueda.Text;
+            set
+            {
+                txt_busqueda.Text = value;
+                // Filtra los movimientos automáticamente si lo deseas:
+                CargarMovimientos(value);
+            }
+        }
+
+
+        public void CargarMovimientos(string usuarioFiltro = "", string tipoFiltro = "")
         {
             try
             {

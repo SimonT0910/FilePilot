@@ -45,10 +45,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(485, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(364, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(254, 68);
+            this.label1.Size = new System.Drawing.Size(205, 55);
             this.label1.TabIndex = 20;
             this.label1.Text = "Usuarios";
             // 
@@ -60,12 +59,13 @@
             this.nombre,
             this.correo,
             this.fechaRegistro});
-            this.dgv_usuarios.Location = new System.Drawing.Point(247, 186);
-            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_usuarios.Location = new System.Drawing.Point(185, 151);
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.RowHeadersWidth = 51;
-            this.dgv_usuarios.Size = new System.Drawing.Size(729, 484);
+            this.dgv_usuarios.Size = new System.Drawing.Size(547, 393);
             this.dgv_usuarios.TabIndex = 23;
+            this.dgv_usuarios.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_usuarios_CellMouseDown);
+            this.dgv_usuarios.DoubleClick += new System.EventHandler(this.dgv_usuarios_DoubleClick);
             // 
             // Id
             // 
@@ -100,10 +100,9 @@
             // 
             this.btn_salir.BackgroundImage = global::FilePilot1.Properties.Resources.cerrar_sesion;
             this.btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_salir.Location = new System.Drawing.Point(4, 28);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_salir.Location = new System.Drawing.Point(3, 23);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(100, 65);
+            this.btn_salir.Size = new System.Drawing.Size(75, 53);
             this.btn_salir.TabIndex = 22;
             this.btn_salir.UseVisualStyleBackColor = true;
             this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
@@ -114,24 +113,22 @@
             this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.ver_usuarios;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(1064, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(798, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 140);
+            this.pictureBox1.Size = new System.Drawing.Size(143, 114);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
             // frmVerUs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1271, 713);
+            this.ClientSize = new System.Drawing.Size(953, 579);
             this.Controls.Add(this.dgv_usuarios);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmVerUs";
             this.Text = "frmVerUs";
             this.Load += new System.EventHandler(this.frmVerUs_Load);

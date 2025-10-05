@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace FilePilot1
 {
     public partial class frmVerUs : Form
     {
+        cConexion conexion;
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataTable dt;
         private Forms resizer;
         public frmVerUs()
         {
@@ -57,6 +62,44 @@ namespace FilePilot1
             frm_Admin admin = new frm_Admin();
             admin.Show();
             this.Hide();
+        }
+
+        private void dgv_usuarios_DoubleClick(object sender, EventArgs e)
+        {
+            cConexion conexion = new cConexion();
+            int id = Convert.ToInt32(dgv_usuarios.CurrentRow.Cells["ID"].Value);
+            cmd = new SqlCommand("SELECT contraseña FROM Usuario WHERE idUsuario = @id", conexion.AbrirConexion());
+            cmd.Parameters.AddWithValue("@id", id);
+            da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            da.Fill(dt);
+            string contraseña = dt.Rows[0]["contraseña"].ToString();
+            ClsTablas.Usuario usuario = new ClsTablas.Usuario();
+            string validarUsuario = usuario.validarUsuario(id.ToString(), contraseña);
+
+            if (validarUsuario.Equals("Correcto"))
+            {
+                MessageBox.Show("Inicio de sesión exitoso");
+                fmr_PantallaInicio.UsuarioActual = id.ToString();
+                fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi();
+
+                fmrOrg.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(validarUsuario);
+            }
+        }
+
+        private void dgv_usuarios_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dgv_usuarios.ClearSelection();
+                dgv_usuarios.Rows[e.RowIndex].Selected = true;
+                dgv_usuarios.CurrentCell = dgv_usuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
         }
     }
 }

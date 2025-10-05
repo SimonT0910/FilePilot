@@ -959,29 +959,34 @@ namespace FilePilot1
                 {
                     click = click.Replace("Movimientos", "");
 
-                    //try
-                    //{
+                    try
+                    {
+                        if (miDatagrid.SelectedRows.Count > 0)
+                        {
 
-                    //    cmd = new SqlCommand("Select rutaArchivo from Documento where nombre = @nombre and usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
-                    //    cmd.Parameters.AddWithValue("@nombre", miDatagrid.Rows[int.Parse(click)].Cells[0].Value.ToString());
-                    //    cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
-                    //    SqlDataReader reader = cmd.ExecuteReader();
+                            string nombreUsuario = miDatagrid.SelectedRows[0].Cells["nombre"].Value.ToString();
 
-                    //    if (reader.Read())
-                    //    {
-                    //        string rutaArchivo = reader.GetString(0);
-                    //        abrir(rutaArchivo);
+                            movimientos move = new movimientos();
+                            move.UsuarioSeleccionado = nombreUsuario;
+                        
+                            move.Show();
 
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MessageBox.Show("Error: " + ex.Message);
-                    //}
-                    //finally
-                    //{
-                    //    conexion.CerrarConexion();
-                    //}
+                            Form activeForm = Application.OpenForms["frmVerUs"];
+                            if (activeForm != null)
+                            {
+                                activeForm.Close();
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.CerrarConexion();
+                    }
 
 
 
