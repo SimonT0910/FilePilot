@@ -26,6 +26,7 @@ namespace FilePilot1
         {
             lblCategoria.Text = CategoriaSeleccionada;
             cargarDocumentos();
+            dvgCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void cargarDocumentos()

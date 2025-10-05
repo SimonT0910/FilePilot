@@ -39,7 +39,7 @@ namespace FilePilot1
 
         private void frmVerUs_Load(object sender, EventArgs e)
         {
-
+            dgv_usuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void dgv_usuarios_MouseClick(object sender, MouseEventArgs e)

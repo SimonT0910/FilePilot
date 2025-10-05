@@ -25,6 +25,7 @@ namespace FilePilot1
         {
             CargarMovimientos();
             CargarFiltros();
+            dvgMovimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarFiltros()

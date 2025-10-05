@@ -38,6 +38,7 @@ namespace FilePilot1
             CargarRespaldos();
             dgvRestauracion.AllowUserToAddRows = false;
             dgvRestauracion.ReadOnly = false;
+            dgvRestauracion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarRespaldos()

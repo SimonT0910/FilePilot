@@ -35,6 +35,7 @@ namespace FilePilot1
             CargarDocumentos();
             dgvMirarRespaldos.AllowUserToAddRows = false;
             dgvMirarRespaldos.ReadOnly = false;
+            dgvMirarRespaldos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarDocumentos()

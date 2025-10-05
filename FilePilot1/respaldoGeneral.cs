@@ -31,6 +31,7 @@ namespace FilePilot1
             CargarDocumentosAdmin();
             dgvRespaldoGeneral.AllowUserToAddRows = false;
             dgvRespaldoGeneral.ReadOnly = false;
+            dgvRespaldoGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarDocumentosAdmin()

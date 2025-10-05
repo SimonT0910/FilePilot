@@ -33,13 +33,13 @@
             this.pcb_subir = new System.Windows.Forms.PictureBox();
             this.ptb_inicio = new System.Windows.Forms.PictureBox();
             this.dvgMovimientos = new System.Windows.Forms.DataGridView();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbFiltrado = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgMovimientos)).BeginInit();
@@ -108,6 +108,27 @@
             this.dvgMovimientos.Size = new System.Drawing.Size(809, 278);
             this.dvgMovimientos.TabIndex = 28;
             // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.Width = 200;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre de usuario";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 125;
+            // 
+            // tipo
+            // 
+            this.tipo.HeaderText = "Tipo de movimiento";
+            this.tipo.MinimumWidth = 6;
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 300;
+            // 
             // txt_busqueda
             // 
             this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,27 +172,6 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Filtrar:";
             // 
-            // fecha
-            // 
-            this.fecha.HeaderText = "Fecha de realizacion del movimiento";
-            this.fecha.MinimumWidth = 6;
-            this.fecha.Name = "fecha";
-            this.fecha.Width = 200;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre de usuario";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            this.nombre.Width = 125;
-            // 
-            // tipo
-            // 
-            this.tipo.HeaderText = "Tipo de movimiento";
-            this.tipo.MinimumWidth = 6;
-            this.tipo.Name = "tipo";
-            this.tipo.Width = 300;
-            // 
             // movimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,7 +188,6 @@
             this.Controls.Add(this.ptb_inicio);
             this.Controls.Add(this.btn_inico);
             this.Name = "movimientos";
-            this.Text = "movimientos";
             this.Load += new System.EventHandler(this.movimientos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_subir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_inicio)).EndInit();

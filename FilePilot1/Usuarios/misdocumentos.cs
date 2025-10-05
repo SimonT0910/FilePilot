@@ -41,6 +41,8 @@ namespace FilePilot1
             documento.llenarGrid(dgvMisDocumentos, int.Parse(fmr_PantallaInicio.UsuarioActual));
 
             total_documentos = dgvMisDocumentos.Rows.Cast<DataGridViewRow>().Count(r => !r.IsNewRow);
+
+            dgvMisDocumentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public static int total_documentos {  get; set; }

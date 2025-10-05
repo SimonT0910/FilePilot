@@ -26,6 +26,8 @@ namespace FilePilot1
             documento.llenarGrid(dgvBuscar, int.Parse(fmr_PantallaInicio.UsuarioActual));
 
             total_documentos = dgvBuscar.Rows.Cast<DataGridViewRow>().Count(r => !r.IsNewRow);
+
+            dgvBuscar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void label1_Click(object sender, EventArgs e)

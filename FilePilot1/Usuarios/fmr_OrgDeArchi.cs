@@ -210,6 +210,8 @@ namespace FilePilot1
             ClsTablas.Documento docu = new ClsTablas.Documento();
             int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
             txt_total.Text = total.ToString();
+
+            dgv_recientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
 

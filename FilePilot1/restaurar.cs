@@ -32,6 +32,7 @@ namespace FilePilot1
             CargarSistema();
             dgvAdminRestaura.AllowUserToAddRows = false;
             dgvAdminRestaura.ReadOnly = false;
+            dgvAdminRestaura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarSistema(string textoBusqueda = "")

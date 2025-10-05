@@ -57,6 +57,7 @@ namespace FilePilot1
         private void frm_Admin_Load(object sender, EventArgs e)
         {
             CargarMovimientos();
+            dvgAdmin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarMovimientos()
