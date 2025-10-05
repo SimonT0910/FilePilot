@@ -209,21 +209,18 @@ namespace FilePilot1
             }
 
             if (admin)
-                Desactivar();
+            {
+                btn__subir_docum.Enabled = false;
+                btn_mirar_respaldos.Enabled = false;
+                Btn_categorias.Enabled = false;
+                btn_Mis_documentos.Enabled = false;
+            }
 
             ClsTablas.Documento docu = new ClsTablas.Documento();
             int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
             txt_total.Text = total.ToString();
 
             dgv_recientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void Desactivar()
-        {
-            btn__subir_docum.Enabled = false;
-            btn_mirar_respaldos.Enabled = false;
-            Btn_categorias.Enabled = false;
-            btn_Mis_documentos.Enabled = false;
         }
 
         private void txt_total_TextChanged(object sender, EventArgs e)
