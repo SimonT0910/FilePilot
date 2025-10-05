@@ -20,7 +20,7 @@ namespace FilePilot1
         SqlCommand cmd;
         SqlDataAdapter da = new SqlDataAdapter();
         DataTable dt = new DataTable();
-
+        public bool admin { get; set; }
 
         public fmr_OrgDeArchi()
         {
@@ -134,6 +134,7 @@ namespace FilePilot1
             {
 
                 ClsTablas.Documento documento = new ClsTablas.Documento();
+                documento.admin = this.admin;
                 documento.menu(dgv_recientes,e);
             }
         }
@@ -207,6 +208,9 @@ namespace FilePilot1
                 // No mostrar error al usuario
             }
 
+            if (admin)
+                Desactivar();
+
             ClsTablas.Documento docu = new ClsTablas.Documento();
             int total = docu.contador(int.Parse(fmr_PantallaInicio.UsuarioActual));
             txt_total.Text = total.ToString();
@@ -214,6 +218,13 @@ namespace FilePilot1
             dgv_recientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        private void Desactivar()
+        {
+            btn__subir_docum.Enabled = false;
+            btn_mirar_respaldos.Enabled = false;
+            Btn_categorias.Enabled = false;
+            btn_Mis_documentos.Enabled = false;
+        }
 
         private void txt_total_TextChanged(object sender, EventArgs e)
         {

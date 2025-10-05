@@ -67,23 +67,24 @@ namespace FilePilot1
         private void dgv_usuarios_DoubleClick(object sender, EventArgs e)
         {
             cConexion conexion = new cConexion();
-            int id = Convert.ToInt32(dgv_usuarios.CurrentRow.Cells["ID"].Value);
+            int id = Convert.ToInt32(dgv_usuarios.CurrentRow.Cells[0].Value);
             cmd = new SqlCommand("SELECT contraseña FROM Usuario WHERE idUsuario = @id", conexion.AbrirConexion());
             cmd.Parameters.AddWithValue("@id", id);
             da = new SqlDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt);
+
             string contraseña = dt.Rows[0]["contraseña"].ToString();
             ClsTablas.Usuario usuario = new ClsTablas.Usuario();
             string validarUsuario = usuario.validarUsuario(id.ToString(), contraseña);
 
             if (validarUsuario.Equals("Correcto"))
             {
-                MessageBox.Show("Inicio de sesión exitoso");
+                MessageBox.Show("Inicio de sesión existoso");
                 fmr_PantallaInicio.UsuarioActual = id.ToString();
-                fmr_OrgDeArchi fmrOrg = new fmr_OrgDeArchi();
-
-                fmrOrg.Show();
+                fmr_OrgDeArchi org = new fmr_OrgDeArchi();
+                org.admin = true;
+                org.Show();
                 this.Hide();
             }
             else

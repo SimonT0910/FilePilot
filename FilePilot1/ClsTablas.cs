@@ -145,6 +145,8 @@ namespace FilePilot1
             public string RutaArchivo { get => rutaArchivo; set => rutaArchivo = value; }
             public int UsuarioPropietario { get => usuarioPropietario; set => usuarioPropietario = value; }
 
+            public bool admin { get; set; }
+
             public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario)
             {
 
@@ -309,15 +311,20 @@ namespace FilePilot1
             public void menu(DataGridView midatagrid, MouseEventArgs e)
             {
                 this.miDatagrid = midatagrid;
-
                 ContextMenuStrip menu = new System.Windows.Forms.ContextMenuStrip();
-                int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;//obtine las cordenadas de  donde se dio clic y con vase a esas cordenadas obtiene la fila a la que le dio clic
+                int posicion = midatagrid.HitTest(e.X, e.Y).RowIndex;
+
                 if (posicion > -1)
                 {
                     menu.Items.Add("Abrir").Name = "Abrir" + posicion;
-                    menu.Items.Add("Modificar").Name = "Modificar" + posicion;
-                    menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
+
+                    if (!admin)
+                    {
+                        menu.Items.Add("Modificar").Name = "Modificar" + posicion;
+                        menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
+                    }
                 }
+
                 menu.Show(midatagrid, new Point(e.X, e.Y));
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick);
             }
