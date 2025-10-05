@@ -41,6 +41,9 @@ namespace FilePilot1
                 frm_Admin a = new frm_Admin();
                 a.Show();
                 this.Hide();
+
+                fmr_PantallaInicio inicio = new fmr_PantallaInicio();
+                this.Hide();
             }
             else
             {

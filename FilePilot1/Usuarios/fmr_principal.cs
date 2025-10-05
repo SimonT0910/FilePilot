@@ -73,7 +73,6 @@ namespace FilePilot1
         {
             frm_Administrador administrador = new frm_Administrador();
             administrador.Show();
-            
         }
 
         private void fmr_PantallaInicio_Load(object sender, EventArgs e)

@@ -42,8 +42,6 @@ namespace FilePilot1
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
-        fmr_PantallaInicio inicio = new fmr_PantallaInicio();
-            inicio.Show();
             this.Hide();
         }
 
