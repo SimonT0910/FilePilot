@@ -50,6 +50,7 @@
             this.FiletPilot.Size = new System.Drawing.Size(326, 89);
             this.FiletPilot.TabIndex = 0;
             this.FiletPilot.Text = "FilePilot";
+            this.FiletPilot.Click += new System.EventHandler(this.FiletPilot_Click);
             // 
             // Lbl_orga
             // 
@@ -89,7 +90,7 @@
             // 
             this.txt_usuario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_usuario.Location = new System.Drawing.Point(579, 316);
-            this.txt_usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(335, 30);
             this.txt_usuario.TabIndex = 4;
@@ -98,8 +99,9 @@
             // 
             this.txt_contra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_contra.Location = new System.Drawing.Point(579, 402);
-            this.txt_contra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_contra.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contra.Name = "txt_contra";
+            this.txt_contra.PasswordChar = '*';
             this.txt_contra.Size = new System.Drawing.Size(335, 30);
             this.txt_contra.TabIndex = 5;
             // 
@@ -116,7 +118,7 @@
             this.btn_trabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_trabajador.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_trabajador.Location = new System.Drawing.Point(705, 478);
-            this.btn_trabajador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_trabajador.Margin = new System.Windows.Forms.Padding(4);
             this.btn_trabajador.Name = "btn_trabajador";
             this.btn_trabajador.Size = new System.Drawing.Size(87, 69);
             this.btn_trabajador.TabIndex = 6;
@@ -130,7 +132,7 @@
             this.btn_registrarse.BackgroundImage = global::FilePilot1.Properties.Resources.registrarse;
             this.btn_registrarse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_registrarse.Location = new System.Drawing.Point(545, 478);
-            this.btn_registrarse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_registrarse.Margin = new System.Windows.Forms.Padding(4);
             this.btn_registrarse.Name = "btn_registrarse";
             this.btn_registrarse.Size = new System.Drawing.Size(88, 66);
             this.btn_registrarse.TabIndex = 7;
@@ -143,7 +145,7 @@
             this.btn_iniciar.BackgroundImage = global::FilePilot1.Properties.Resources.inicio_sesion;
             this.btn_iniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_iniciar.Location = new System.Drawing.Point(848, 478);
-            this.btn_iniciar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_iniciar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_iniciar.Name = "btn_iniciar";
             this.btn_iniciar.Size = new System.Drawing.Size(84, 70);
             this.btn_iniciar.TabIndex = 8;

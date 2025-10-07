@@ -212,7 +212,6 @@ namespace FilePilot1
             {
                 btn__subir_docum.Enabled = false;
                 btn_mirar_respaldos.Enabled = false;
-                Btn_categorias.Enabled = false;
                 btn_Mis_documentos.Enabled = false;
             }
 

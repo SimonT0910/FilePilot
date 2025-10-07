@@ -58,7 +58,7 @@
             this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.area_trabajador;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(359, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 92);
             this.pictureBox1.TabIndex = 1;
@@ -80,8 +80,9 @@
             // 
             this.txt_contraseña.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_contraseña.Location = new System.Drawing.Point(259, 251);
-            this.txt_contraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_contraseña.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contraseña.Name = "txt_contraseña";
+            this.txt_contraseña.PasswordChar = '*';
             this.txt_contraseña.Size = new System.Drawing.Size(232, 38);
             this.txt_contraseña.TabIndex = 3;
             // 
@@ -91,7 +92,7 @@
             this.pcb_Subir.BackgroundImage = global::FilePilot1.Properties.Resources.entrar;
             this.pcb_Subir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcb_Subir.Location = new System.Drawing.Point(133, 367);
-            this.pcb_Subir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcb_Subir.Margin = new System.Windows.Forms.Padding(4);
             this.pcb_Subir.Name = "pcb_Subir";
             this.pcb_Subir.Size = new System.Drawing.Size(71, 59);
             this.pcb_Subir.TabIndex = 7;
@@ -102,7 +103,7 @@
             this.btn_entrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_entrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_entrar.Location = new System.Drawing.Point(229, 367);
-            this.btn_entrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_entrar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_entrar.Name = "btn_entrar";
             this.btn_entrar.Size = new System.Drawing.Size(167, 59);
             this.btn_entrar.TabIndex = 8;
@@ -114,7 +115,7 @@
             // 
             this.Txt_nombre.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_nombre.Location = new System.Drawing.Point(259, 160);
-            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_nombre.Name = "Txt_nombre";
             this.Txt_nombre.Size = new System.Drawing.Size(232, 38);
             this.Txt_nombre.TabIndex = 10;
@@ -145,7 +146,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_Administrador";
             this.Text = "frm_Administrador";
             this.Load += new System.EventHandler(this.frm_Administrador_Load);

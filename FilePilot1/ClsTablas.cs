@@ -144,7 +144,6 @@ namespace FilePilot1
             public string Categoria { get => categoria; set => categoria = value; }
             public string RutaArchivo { get => rutaArchivo; set => rutaArchivo = value; }
             public int UsuarioPropietario { get => usuarioPropietario; set => usuarioPropietario = value; }
-
             public bool admin { get; set; }
 
             public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario)
