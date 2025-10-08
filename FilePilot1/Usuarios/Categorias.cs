@@ -76,6 +76,12 @@ namespace FilePilot1
         private void Categorias_Load(object sender, EventArgs e)
         {
             CargarCategorias();
+
+            if (admin)
+            {
+                btnAgregarCate.Enabled = false;
+                btnEliminarCate.Enabled = false;
+            }
         }
 
         private void AgregarCategoria(string nombre)

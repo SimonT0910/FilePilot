@@ -59,6 +59,7 @@ namespace FilePilot1
             {
 
                 ClsTablas.Documento documento = new ClsTablas.Documento();
+                documento.admin = this.admin;
                 documento.menu(dvgCategorias, e);
             }
         }
