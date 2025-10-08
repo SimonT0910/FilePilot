@@ -112,7 +112,15 @@ namespace FilePilot1
 
         private void Btn_categorias_Click(object sender, EventArgs e)
         {
-            Categorias categorias = new Categorias();
+            Categorias categorias;
+            if (admin)
+            {
+                categorias = new Categorias(true);
+            }
+            else
+            {
+                categorias = new Categorias();
+            }
             categorias.Show();
             this.Hide();
         }

@@ -16,10 +16,18 @@ namespace FilePilot1
     {
         private Forms resizer;
         public string CategoriaSeleccionada { get; set; }
+        public bool admin { get; set; }
         public categoriaSeparada()
         {
             InitializeComponent();
             resizer = new Forms(this);
+        }
+
+        public categoriaSeparada(bool esAdministrador)
+        {
+            InitializeComponent();
+            resizer = new Forms(this);
+            this.admin = esAdministrador;
         }
 
         private void categoriaSeparada_Load(object sender, EventArgs e)
@@ -62,9 +70,18 @@ namespace FilePilot1
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            Categorias regreso = new Categorias();
-            regreso.Show();
-            this.Hide();
+            if (admin)
+            {
+                Categorias regreso = new Categorias(true);
+                regreso.Show();
+                this.Hide();
+            }
+            else
+            {
+                Categorias regreso = new Categorias();
+                regreso.Show();
+                this.Hide();
+            }
         }
     }
 }

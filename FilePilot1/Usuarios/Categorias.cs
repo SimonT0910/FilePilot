@@ -39,12 +39,25 @@ namespace FilePilot1
 
         }
 
+        public Categorias(bool esAdministrador)
+        {
+            InitializeComponent();
+            resizer = new Forms(this);
+            usuarioId = int.Parse(fmr_PantallaInicio.UsuarioActual);
+            this.admin = esAdministrador;  // Asignar el valor de admin
+
+            rutaBaseCategorias = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "FilePilot", "Categorias", usuarioId.ToString());
+
+            if (!Directory.Exists(rutaBaseCategorias))
+                Directory.CreateDirectory(rutaBaseCategorias);
+        }
+
         private void btn_inico_Click(object sender, EventArgs e)
         {
             if (admin)
             {
-                fmr_OrgDeArchi OrgDeArchi = new fmr_OrgDeArchi();
-                OrgDeArchi.Show();
+                frm_Admin adminForm = new frm_Admin();
+                adminForm.Show();
                 this.Hide();
             }
             else
@@ -140,7 +153,17 @@ namespace FilePilot1
 
         private void abrirCategoria(string nombre)
         {
-            categoriaSeparada formCategoria = new categoriaSeparada();
+            categoriaSeparada formCategoria;
+
+            if (admin)
+            {
+                formCategoria = new categoriaSeparada(true);
+            }
+            else
+            {
+                formCategoria = new categoriaSeparada();
+            }
+
             formCategoria.CategoriaSeleccionada = nombre;
             formCategoria.Show();
             this.Hide();
