@@ -88,6 +88,8 @@ namespace FilePilot1
 
         private void AgregarCategoriaVisual(String nombre)
         {
+            //Limitar la longitud del nombre visible
+            string nombreV = nombre.Length > 15 ? nombre.Substring(0, 12) + "...": nombre;
 
             Panel contenedor = new Panel();
             contenedor.Margin = new Padding(10);
@@ -104,14 +106,19 @@ namespace FilePilot1
             pb.Click += (sender, e) => abrirCategoria(nombre);
 
             Label lbl = new Label();
-            lbl.Text = nombre;
-            lbl.TextAlign = ContentAlignment.TopCenter;
+            lbl.Text = nombreV;
             lbl.Width = contenedor.Width - 10;
+            lbl.Height = 35;
             lbl.Location = new Point(5, pb.Bottom + 5);
             lbl.Font = new Font("Times New Roman", 10, FontStyle.Bold);
-            lbl.MaximumSize = new Size(contenedor.Width - 10, 0);
-            lbl.AutoSize = true;
+            lbl.AutoSize = false;
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.AutoEllipsis = true;
             lbl.Click += (sender, e) => abrirCategoria(nombre);
+
+            ToolTip tool = new ToolTip(); //Mostar nombre completo al dejar el mouse encima
+            tool.SetToolTip(lbl, nombre);
+            tool.SetToolTip(pb, nombre);
 
             contenedor.Controls.Add(pb);
             contenedor.Controls.Add(lbl);

@@ -418,7 +418,7 @@ namespace FilePilot1
                                     string nuevaDescripcion = Microsoft.VisualBasic.Interaction.InputBox(
                                         $"Modificar descripción para:\n{nombre}",
                                         "Modificar Descripción",
-                                        actual, -1, -1);
+                                        actual, -1, -1); //Para que se muestre en la mitad de la interfaz o por defecto
 
                                     if (!string.IsNullOrWhiteSpace(nuevaDescripcion))
                                     {
