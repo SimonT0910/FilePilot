@@ -46,65 +46,27 @@ namespace FilePilot1
         {
             cConexion conexion = new cConexion();
 
-            if (string.IsNullOrWhiteSpace(txt_nombre.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text) || (txt_nombre.Text.Equals(dt.Rows[0]["nombre"].ToString()) && txtCorreo.Text.Equals(dt.Rows[0]["correo"].ToString()) && txtContraseña.Text.Equals(dt.Rows[0]["contraseña"].ToString())))
+            // Validación básica
+            if (string.IsNullOrWhiteSpace(txt_nombre.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
-                MessageBox.Show(dt.Rows[0]["nombre"].ToString());
                 MessageBox.Show("Por favor, verifique bien todos los campos.");
                 return;
             }
-            else if (txt_nombre.Text != (dt.Rows[0]["nombre"].ToString()))
+
+            try
             {
-                cmd = new SqlCommand("UPDATE Usuario SET nombre = @nombre, fechaRegistro = @fecha WHERE idUsuario = @id", conexion.AbrirConexion());
+                cmd = new SqlCommand(
+                    "UPDATE Usuario SET nombre = @nombre, correo = @correo, contraseña = @contraseña, fechaRegistro = @fecha WHERE idUsuario = @id",
+                    conexion.AbrirConexion()
+                );
                 cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
-                cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                cmd.Parameters.AddWithValue("@id", id);
-                int filasAfectadas = cmd.ExecuteNonQuery();//no devuelve nada, solo ejecuta la consulta y da el numero de filas afectadas
-                if (filasAfectadas > 0)
-                {
-                    MessageBox.Show("Usuario modificado exitosamente.");
-
-                    this.Hide();
-                    miDataGrid.Rows.Clear();
-                    miDataGrid.Refresh();
-                    ClsTablas.usuarios usuario = new ClsTablas.usuarios();
-                    usuario.verUsuarios(miDataGrid);
-
-
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo modificar el usuario. Inténtalo de nuevo.");
-                }
-            }
-            else if (txtCorreo.Text != (dt.Rows[0]["correo"].ToString()))
-            {
-                cmd = new SqlCommand("UPDATE Usuario SET correo = @correo, fechaRegistro = @fecha WHERE idUsuario = @id", conexion.AbrirConexion());
                 cmd.Parameters.AddWithValue("@correo", txtCorreo.Text);
-                cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                cmd.Parameters.AddWithValue("@id", id);
-                int filasAfectadas = cmd.ExecuteNonQuery();
-                if (filasAfectadas > 0)
-                {
-                    MessageBox.Show("Usuario modificado exitosamente.");
-
-                    this.Hide();
-                    miDataGrid.Rows.Clear();
-                    miDataGrid.Refresh();
-                    ClsTablas.usuarios usuario = new ClsTablas.usuarios();
-                    usuario.verUsuarios(miDataGrid);
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo modificar el usuario. Inténtalo de nuevo.");
-                }
-            }
-
-            else if (txtContraseña.Text != (dt.Rows[0]["contraseña"].ToString()))
-            {
-                cmd = new SqlCommand("UPDATE Usuario SET contraseña = @contraseña, fechaRegistro = @fecha WHERE idUsuario = @id", conexion.AbrirConexion());
                 cmd.Parameters.AddWithValue("@contraseña", txtContraseña.Text);
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
                 cmd.Parameters.AddWithValue("@id", id);
+
                 int filasAfectadas = cmd.ExecuteNonQuery();
                 if (filasAfectadas > 0)
                 {
@@ -120,37 +82,9 @@ namespace FilePilot1
                     MessageBox.Show("No se pudo modificar el usuario. Inténtalo de nuevo.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                try
-                {
-                    cmd = new SqlCommand("UPDATE Usuario SET nombre = @nombre, correo = @correo, contraseña = @contra, fechaRegistro = @fecha WHERE idUsuario = @id", conexion.AbrirConexion());
-                    cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
-                    cmd.Parameters.AddWithValue("@correo", txtCorreo.Text);
-                    cmd.Parameters.AddWithValue("@contra", txtContraseña.Text);
-                    cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                    {
-                        MessageBox.Show("Usuario modificado exitosamente.");
-
-                        this.Hide();
-                        miDataGrid.Rows.Clear();
-                        miDataGrid.Refresh();
-                        ClsTablas.usuarios usuario = new ClsTablas.usuarios();
-                        usuario.verUsuarios(miDataGrid);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo modificar el usuario. Inténtalo de nuevo.");
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al modificar el usuario: " + ex.Message);
-                }
+                MessageBox.Show("Error al modificar el usuario: " + ex.Message);
             }
         }
 
