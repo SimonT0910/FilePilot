@@ -54,7 +54,7 @@ namespace FilePilot1
 
         private void frmVerUs_MouseClick(object sender, MouseEventArgs e)
         {
-            // Aquí puedes agregar la lógica que desees ejecutar al hacer clic en el formulario.
+
         }
 
         private void btn_salir_Click(object sender, EventArgs e)

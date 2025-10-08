@@ -38,11 +38,22 @@ namespace FilePilot1
         private void pictureBox4_Click(object sender, EventArgs e) { }
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            fmr_PantallaInicio pantallaInicio = new fmr_PantallaInicio();
-            pantallaInicio.Show();
-            this.Hide();
-            ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
-            mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Cierre de Sesión");
+
+            if (admin)
+            {
+                frm_Admin admin = new frm_Admin();
+                admin.Show();
+                this.Close();
+            }
+            else
+            {
+
+                fmr_PantallaInicio pantallaInicio = new fmr_PantallaInicio();
+                pantallaInicio.Show();
+                this.Hide();
+                ClsTablas.Movimientos mov = new ClsTablas.Movimientos();
+                mov.registrar(int.Parse(fmr_PantallaInicio.UsuarioActual), "Cierre de Sesión");
+            }
         }
 
         private void btn__subir_docum_Click(object sender, EventArgs e)
