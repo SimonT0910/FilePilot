@@ -100,9 +100,15 @@ namespace FilePilot1
             string categoria = cmb_categoria.Text;
             string ruta = txt_ruta.Text;
             int idUsuario = int.Parse(fmr_PantallaInicio.UsuarioActual);
+            string descripcion = txt_descripcion.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(descripcion))
+            {
+                descripcion = "Sin descripción";
+            }
 
             ClsTablas.Documento documento = new ClsTablas.Documento();
-            string subir = documento.subirDocumento(nombre, tipo, categoria, ruta, idUsuario);
+            string subir = documento.subirDocumento(nombre, tipo, categoria, ruta, idUsuario, descripcion);
             MessageBox.Show(subir);
 
             FilePilot1.Forms.FormUtils.LimpiarCampos(this);

@@ -18,9 +18,9 @@ CREATE TABLE Documento (
     rutaArchivo VARCHAR(255),
     fechaSubida DATE DEFAULT GETDATE(),
     usuarioPropietario INT,
+    descripcion VARCHAR(200) NOT NULL,
     FOREIGN KEY (usuarioPropietario) REFERENCES Usuario(idUsuario)
 );
-
 
 CREATE TABLE LogSistema (
     idLog INT PRIMARY KEY IDENTITY(1,1),

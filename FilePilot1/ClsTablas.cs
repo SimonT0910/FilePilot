@@ -146,7 +146,7 @@ namespace FilePilot1
             public int UsuarioPropietario { get => usuarioPropietario; set => usuarioPropietario = value; }
             public bool admin { get; set; }
 
-            public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario)
+            public string subirDocumento(string nombre, string tipo, string categoria, string rutaArchivo, int usuarioPropietario, string descripcion)
             {
 
                 try
@@ -163,13 +163,14 @@ namespace FilePilot1
                     }
                     else
                     {
-                        SqlCommand comando = new SqlCommand("INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario)", conexion.AbrirConexion());
+                        SqlCommand comando = new SqlCommand("INSERT INTO Documento (nombre, tipo, categoria, rutaArchivo, usuarioPropietario, descripcion) VALUES (@nombre, @tipo, @categoria, @rutaArchivo, @usuarioPropietario, @descripcion)", conexion.AbrirConexion());
                         comando.CommandType = CommandType.Text;
                         comando.Parameters.AddWithValue("@nombre", nombre);
                         comando.Parameters.AddWithValue("@Tipo", tipo);
                         comando.Parameters.AddWithValue("@categoria", categoria);
                         comando.Parameters.AddWithValue("@rutaArchivo", rutaArchivo);
                         comando.Parameters.AddWithValue("@usuarioPropietario", usuarioPropietario);
+                        comando.Parameters.AddWithValue("@descripcion", descripcion);
                         comando.ExecuteNonQuery();
                         return ("el archivo fue subido exitosamente");
                     }
@@ -319,6 +320,7 @@ namespace FilePilot1
 
                     if (!admin)
                     {
+                        menu.Items.Add("Ver descrición").Name = "Ver descripción" + posicion;
                         menu.Items.Add("Modificar").Name = "Modificar" + posicion;
                         menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
                     }
@@ -366,6 +368,89 @@ namespace FilePilot1
 
 
                 }
+                if (click.Contains("Ver descripción"))
+                {
+                    click = click.Replace("Ver descripción", "");
+                    try
+                    {
+                        int rowIndex = int.Parse(click);
+                        string nombre = miDatagrid.Rows[rowIndex].Cells[0].Value.ToString();
+
+                        cmd = new SqlCommand("SELECT idDocumento FROM Documento WHERE nombre = @nombre AND usuarioPropietario = @usuarioPropietario", conexion.AbrirConexion());
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@usuarioPropietario", int.Parse(fmr_PantallaInicio.UsuarioActual));
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            int idDocumento = reader.GetInt32(0);
+                            reader.Close();
+
+                            string actual = obtenerDescripcion(idDocumento);
+
+                            if (actual == "Sin descripción")
+                            {
+                                DialogResult resultado = MessageBox.Show($"El documento '{nombre}' no tiene descripción.\n\n¿Desea agregar una descripción?", "Sin descripción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                                if (resultado == DialogResult.Yes)
+                                {
+                                    string nueva = Microsoft.VisualBasic.Interaction.InputBox($"Agregar descripción para:\n {nombre}", "Agregar descripción", "", -1, -1);
+
+                                    if (!string.IsNullOrWhiteSpace(nueva))
+                                    {
+                                        if (Actualizar(idDocumento, nueva.Trim()))
+                                        {
+                                            MessageBox.Show("Descripción agregada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Error al guardar la descripción", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                DialogResult resultado = MessageBox.Show($"{nombre}\n\n Descripción:\n{actual}\n\n¿Desea modificar la descripción?", "Descripción del Documento", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                                if (resultado == DialogResult.Yes)
+                                {
+                                    string nuevaDescripcion = Microsoft.VisualBasic.Interaction.InputBox(
+                                        $"Modificar descripción para:\n{nombre}",
+                                        "Modificar Descripción",
+                                        actual, -1, -1);
+
+                                    if (!string.IsNullOrWhiteSpace(nuevaDescripcion))
+                                    {
+                                        if (Actualizar(idDocumento, nuevaDescripcion.Trim()))
+                                        {
+                                            MessageBox.Show("Descripción actualizada correctamente", "Éxito",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Error al actualizar la descripción", "Error",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el documento en la base de datos");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al manejar la descripción: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.CerrarConexion();
+                    }
+                }
+
                 if (click.Contains("Modificar"))
                 {
                     click = click.Replace("Modificar", "");
@@ -543,7 +628,49 @@ namespace FilePilot1
                 }
             }
 
+            //Obtener descripcion del documento
+            public string obtenerDescripcion(int idDocumento)
+            {
+                try
+                {
+                    cmd = new SqlCommand("SELECT descripcion FROM Documento WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@idDocumento", idDocumento);
 
+                    object resultado = cmd.ExecuteScalar();
+                    return resultado?.ToString() ?? "Sin descripción";
+                }
+                catch (Exception ex)
+                {
+                    return "Error al obtener la descripción: " + ex.Message;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
+
+            //Actualizar descripcion
+            public bool Actualizar(int idDocumento, string nuevaDescripcion)
+            {
+                try
+                {
+                    cmd = new SqlCommand("UPDATE Documento SET descripcion = @descripcion WHERE idDocumento = @idDocumento", conexion.AbrirConexion());
+                    cmd.Parameters.AddWithValue("@descripcion", nuevaDescripcion);
+                    cmd.Parameters.AddWithValue("@idDocumento", idDocumento);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    return filas > 0;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar descripcion: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexion.CerrarConexion();
+                }
+            }
 
 
         }
