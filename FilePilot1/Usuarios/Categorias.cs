@@ -21,6 +21,8 @@ namespace FilePilot1
         private int usuarioId;
         private string rutaBaseCategorias;
 
+        public bool admin { get; set; }
+
 
         public Categorias()
         {
@@ -39,9 +41,18 @@ namespace FilePilot1
 
         private void btn_inico_Click(object sender, EventArgs e)
         {
-            fmr_OrgDeArchi fmr_OrgDeArchi = new fmr_OrgDeArchi();
-            fmr_OrgDeArchi.Show();
-            this.Hide();
+            if (admin)
+            {
+                fmr_OrgDeArchi OrgDeArchi = new fmr_OrgDeArchi();
+                OrgDeArchi.Show();
+                this.Hide();
+            }
+            else
+            {
+                fmr_OrgDeArchi fmr_OrgDeArchi = new fmr_OrgDeArchi();
+                fmr_OrgDeArchi.Show();
+                this.Hide();
+            }
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
