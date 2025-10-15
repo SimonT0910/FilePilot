@@ -313,5 +313,8 @@
   <ItemGroup>
     <None Include="imagenes\crearAdministrador.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\logo.png.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

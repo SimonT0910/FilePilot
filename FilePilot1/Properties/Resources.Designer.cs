@@ -313,6 +313,16 @@ namespace FilePilot1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_png {
+            get {
+                object obj = ResourceManager.GetObject("logo.png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mirar_respaldos {
             get {
                 object obj = ResourceManager.GetObject("mirar_respaldos", resourceCulture);

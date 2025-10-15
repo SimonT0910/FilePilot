@@ -320,7 +320,7 @@ namespace FilePilot1
 
                     if (!admin)
                     {
-                        menu.Items.Add("Ver descrición").Name = "Ver descripción" + posicion;
+                        menu.Items.Add("Ver descripción").Name = "Ver descripción" + posicion;
                         menu.Items.Add("Modificar").Name = "Modificar" + posicion;
                         menu.Items.Add("Eliminar").Name = "Eliminar" + posicion;
                     }
