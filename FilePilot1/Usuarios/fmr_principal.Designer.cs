@@ -52,7 +52,7 @@
             this.Lbl_orga.AutoSize = true;
             this.Lbl_orga.BackColor = System.Drawing.Color.Transparent;
             this.Lbl_orga.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_orga.Location = new System.Drawing.Point(434, 227);
+            this.Lbl_orga.Location = new System.Drawing.Point(436, 116);
             this.Lbl_orga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_orga.Name = "Lbl_orga";
             this.Lbl_orga.Size = new System.Drawing.Size(538, 34);
@@ -66,7 +66,7 @@
             this.lbl_usu.BackColor = System.Drawing.Color.Transparent;
             this.lbl_usu.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_usu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_usu.Location = new System.Drawing.Point(435, 319);
+            this.lbl_usu.Location = new System.Drawing.Point(437, 208);
             this.lbl_usu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_usu.Name = "lbl_usu";
             this.lbl_usu.Size = new System.Drawing.Size(99, 28);
@@ -84,7 +84,7 @@
             // txt_usuario
             // 
             this.txt_usuario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_usuario.Location = new System.Drawing.Point(579, 316);
+            this.txt_usuario.Location = new System.Drawing.Point(581, 205);
             this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(335, 30);
@@ -93,7 +93,7 @@
             // txt_contra
             // 
             this.txt_contra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_contra.Location = new System.Drawing.Point(579, 402);
+            this.txt_contra.Location = new System.Drawing.Point(581, 291);
             this.txt_contra.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contra.Name = "txt_contra";
             this.txt_contra.PasswordChar = '*';
@@ -111,7 +111,7 @@
             this.btn_trabajador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_trabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btn_trabajador.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_trabajador.Location = new System.Drawing.Point(524, 484);
+            this.btn_trabajador.Location = new System.Drawing.Point(526, 373);
             this.btn_trabajador.Margin = new System.Windows.Forms.Padding(4);
             this.btn_trabajador.Name = "btn_trabajador";
             this.btn_trabajador.Size = new System.Drawing.Size(167, 60);
@@ -125,7 +125,7 @@
             this.btn_registrarse.BackColor = System.Drawing.Color.White;
             this.btn_registrarse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_registrarse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_registrarse.Location = new System.Drawing.Point(805, 523);
+            this.btn_registrarse.Location = new System.Drawing.Point(807, 412);
             this.btn_registrarse.Margin = new System.Windows.Forms.Padding(4);
             this.btn_registrarse.Name = "btn_registrarse";
             this.btn_registrarse.Size = new System.Drawing.Size(167, 60);
@@ -139,7 +139,7 @@
             this.btn_iniciar.BackColor = System.Drawing.Color.White;
             this.btn_iniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_iniciar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_iniciar.Location = new System.Drawing.Point(805, 455);
+            this.btn_iniciar.Location = new System.Drawing.Point(807, 344);
             this.btn_iniciar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_iniciar.Name = "btn_iniciar";
             this.btn_iniciar.Size = new System.Drawing.Size(167, 59);
@@ -154,7 +154,7 @@
             this.lbl_contra.BackColor = System.Drawing.Color.Transparent;
             this.lbl_contra.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_contra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_contra.Location = new System.Drawing.Point(435, 407);
+            this.lbl_contra.Location = new System.Drawing.Point(437, 296);
             this.lbl_contra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_contra.Name = "lbl_contra";
             this.lbl_contra.Size = new System.Drawing.Size(134, 28);
@@ -163,11 +163,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.logo_png;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::FilePilot1.Properties.Resources.logo_png_Photoroom;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(464, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(403, 224);
+            this.pictureBox1.Size = new System.Drawing.Size(186, 150);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -176,7 +177,7 @@
             this.pcb_categorias.BackColor = System.Drawing.Color.White;
             this.pcb_categorias.BackgroundImage = global::FilePilot1.Properties.Resources.registrarse1;
             this.pcb_categorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcb_categorias.Location = new System.Drawing.Point(726, 523);
+            this.pcb_categorias.Location = new System.Drawing.Point(728, 412);
             this.pcb_categorias.Margin = new System.Windows.Forms.Padding(4);
             this.pcb_categorias.Name = "pcb_categorias";
             this.pcb_categorias.Size = new System.Drawing.Size(71, 59);
@@ -188,7 +189,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.BackgroundImage = global::FilePilot1.Properties.Resources.area_trabajador;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(445, 484);
+            this.pictureBox2.Location = new System.Drawing.Point(447, 373);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(71, 59);
@@ -200,7 +201,7 @@
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.BackgroundImage = global::FilePilot1.Properties.Resources.inicio_sesion;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(726, 455);
+            this.pictureBox3.Location = new System.Drawing.Point(728, 344);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(71, 59);
@@ -228,6 +229,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_usu);
             this.Controls.Add(this.Lbl_orga);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fmr_PantallaInicio";
             this.Text = "Pantalla inicio";

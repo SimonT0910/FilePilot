@@ -316,5 +316,11 @@
   <ItemGroup>
     <None Include="imagenes\logo.png.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imagenes\logo.png-Photoroom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
